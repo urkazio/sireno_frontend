@@ -1,0 +1,22 @@
+.blue-bar {
+    background-color: blue;
+    padding: 10px;
+}
+
+.bluelight-bar {
+    background-color: rgb(0, 132, 255);
+    padding: 10px;
+}
+
+
+.blue-bar h3 {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.bluelight-bar h6 {
+    margin: 0;
+    padding: 2;
+    color: white;
+}
