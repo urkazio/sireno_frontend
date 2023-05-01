@@ -1,0 +1,16 @@
+.navbar-alumno {
+    background-color: blue !important;
+  }
+  
+  .navbar-docente {
+    background-color: orange !important;
+  }
+  
+  .navbar-admin {
+    background-color: black !important;
+  }
+  
+  .navbar-login {
+    background-color: white !important;
+  }
+  

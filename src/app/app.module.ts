@@ -3,9 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { PrivateComponent } from './components/private/private.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 
 // +++++++++++++++++ MODULES +++++++++++++++++ --> definicion de modulos y cosas
@@ -19,15 +16,18 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 // +++++++++++++++++ PROVIDERS +++++++++++++++++
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt' //servicio que permite decodioficar y verificar el valor del token desde el lado del servidor
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { IndexAlumnosComponent } from './components/index-alumnos/index-alumnos.component';
+import { IndexDocentesComponent } from './components/index-docentes/index-docentes.component';
+import { IndexAdminsComponent } from './components/index-admins/index-admins.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    PrivateComponent,
-    AdminComponent,
-    LoginComponent
+    LoginComponent,
+    IndexAlumnosComponent,
+    IndexDocentesComponent,
+    IndexAdminsComponent
   ],
   imports: [
     BrowserModule,

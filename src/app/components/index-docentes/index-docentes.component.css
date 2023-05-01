@@ -1,0 +1,22 @@
+.btn-orange {
+    color: #fff;
+    background-color: #ff8c00;
+    border-color: #ff8c00;
+  }
+  
+  .btn-orange:hover {
+    color: #fff;
+    background-color: #ff7c00;
+    border-color: #ff7c00;
+  }
+
+  .shadow {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+
+  
+  .btn-fixed-width {
+    width: 300px; /* ajusta el ancho a tu gusto */
+  }
+  
