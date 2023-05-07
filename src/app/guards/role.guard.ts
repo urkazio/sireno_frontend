@@ -30,12 +30,13 @@ export class RoleGuard implements CanActivate {
       const { usuario, rol } = decoded;
 
       // comprobar si esta autentiucado y ademas el rol es el adecuado
-      if(!this.authService.isAuth() || rol !== expectedRole){
+      if(rol !== expectedRole){
         console.log('Usuario no autorizado');
         this.router.navigate(["login"]);
         return false;
+      }else{
+        return true;
       }
-      return true;
     }else{  
       console.log('La sesión ha expirado');
       this.router.navigate(["login"]);

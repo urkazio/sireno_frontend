@@ -1,0 +1,18 @@
+{
+  "navbar.home": "Hasiera",
+  "navbar.admin": "Kudeatzailea",
+  "navbar.student": "Ikaslea",
+  "navbar.teacher": "Irakaslea",
+  "navbar.login": "Saioa hasi",
+  "navbar.logout": "Saioa itxi",
+  "navbar.langES": "ES",
+  "navbar.langEN": "EN",
+  "navbar.langEU": "EU",
+  "login.usuario": "Erabiltzailea",
+  "login.password": "Pasahitza",
+  "login.incorrectPassword": "Pasahitz okerra. Mesedez, saiatu berriro.",
+  "login.access": "Sartu",
+  "login.accessRestriction": "Sarrera UPV/EHUko unibertsitate komunitateko LDAP kontuei mugatua dago.",
+  "login.title": "Login SiREn0",
+  "login.subtitle": "Lineako inkestak biltzeko sistema"
+}

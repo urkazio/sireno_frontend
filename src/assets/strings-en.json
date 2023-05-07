@@ -1,0 +1,19 @@
+{
+  "navbar.home": "Home",
+  "navbar.admin": "Admin",
+  "navbar.student": "Student",
+  "navbar.teacher": "Teacher",
+  "navbar.login": "Log In",
+  "navbar.logout": "Log Out",
+  "navbar.langES": "ES",
+  "navbar.langEN": "EN",
+  "navbar.langEU": "EU",
+  "login.usuario": "User",
+  "login.password": "Password",
+  "login.incorrectPassword": "Incorrect password. Please try again.",
+  "login.access": "Access",
+  "login.accessRestriction": "Access is restricted to LDAP accounts belonging to the university community of UPV/EHU.",
+  "login.title": "Login SiREn0",
+  "login.subtitle": "Online Survey Collection System"
+
+}

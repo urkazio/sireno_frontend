@@ -14,3 +14,8 @@
     background-color: white !important;
   }
   
+  .no-hover:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.568);
+    cursor: default;
+  }

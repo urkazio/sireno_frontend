@@ -1,0 +1,20 @@
+{
+  "navbar.home": "Inicio",
+  "navbar.admin": "Admin",
+  "navbar.student": "Alumno",
+  "navbar.teacher": "Docente",
+  "navbar.login": "Iniciar sesión",
+  "navbar.logout": "Cerrar sesión",
+  "navbar.langES": "ES",
+  "navbar.langEN": "EN",
+  "navbar.langEU": "EU",
+  "login.usuario": "Usuario",
+  "login.password": "Contraseña",
+  "login.incorrectPassword": "Contraseña incorrecta. Por favor, inténtalo de nuevo.",
+  "login.access": "Acceder",
+  "login.accessRestriction": "El acceso es restringido a las cuentas de LDAP pertenecientes a la comunidad universitaria de la UPV/EHU.",
+  "login.title": "SiREn0 Login",
+  "login.subtitle": "Sistema de Recogida de Encuestas Online"
+
+  }
+  

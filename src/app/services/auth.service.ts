@@ -16,6 +16,12 @@ export class AuthService {
     return this.http.post(`${this.URL}/user/signin`,user);
   }
 
+  logOut() {
+    // Eliminar el token del localStorage u otras tareas relacionadas con cerrar sesión
+    localStorage.removeItem('token');
+    // Otras acciones que desees realizar al cerrar sesión
+  }
+
 
   //
   isAuth():boolean{

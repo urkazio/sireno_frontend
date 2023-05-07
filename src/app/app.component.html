@@ -1,18 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand">SiREnO</a>
+    <a class="navbar-brand">{{ strings['navbar.home'] }}</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" routerLink="indexAdmins" routerLinkActive="active">Admin</a>
-        <a class="nav-link" routerLink="indexAlumnos" routerLinkActive="active">Alumno</a>
-        <a class="nav-link" routerLink="indexDocentes" routerLinkActive="active">Docente</a>
-        <a class="nav-link" routerLink="login" routerLinkActive="active">Login</a>
+        <a class="nav-link" routerLink="indexAdmins" routerLinkActive="active">{{ strings['navbar.admin'] }}</a>
+        <a class="nav-link" routerLink="indexAlumnos" routerLinkActive="active">{{ strings['navbar.student'] }}</a>
+        <a class="nav-link" routerLink="indexDocentes" routerLinkActive="active">{{ strings['navbar.teacher'] }}</a>
+        <a class="nav-link" routerLink="login" routerLinkActive="active">{{ strings['navbar.login'] }}</a>
+        <a class="nav-link" (click)="onLogoutClick()" *ngIf="isLoggedIn()" style="cursor: pointer;">{{ strings['navbar.logout'] }}</a>
+        <a class="nav-link" style="cursor: pointer;" (click)="changeLanguage('es')">{{ strings['navbar.langES'] }}</a>
+        <a class="nav-link no-hover">|</a>
+        <a class="nav-link" style="cursor: pointer;" (click)="changeLanguage('en')">{{ strings['navbar.langEN'] }}</a>
+        <a class="nav-link no-hover">|</a>
+        <a class="nav-link" style="cursor: pointer;" (click)="changeLanguage('eu')">{{ strings['navbar.langEU'] }}</a>
       </div>
     </div>
   </div>
 </nav>
 
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
+

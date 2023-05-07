@@ -19,6 +19,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { IndexAlumnosComponent } from './components/index-alumnos/index-alumnos.component';
 import { IndexDocentesComponent } from './components/index-docentes/index-docentes.component';
 import { IndexAdminsComponent } from './components/index-admins/index-admins.component';
+import { PopupComponent } from './components/popup/popup.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { IndexAdminsComponent } from './components/index-admins/index-admins.com
     LoginComponent,
     IndexAlumnosComponent,
     IndexDocentesComponent,
-    IndexAdminsComponent
+    IndexAdminsComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

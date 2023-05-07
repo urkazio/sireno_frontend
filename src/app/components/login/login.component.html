@@ -1,21 +1,27 @@
+<app-popup></app-popup>
+
 <div class="blue-bar pt-3 pb-3">
-  <h3 class="text-center">Login SiREnO</h3>
+  <h3 class="text-center">{{ strings['login.title'] }}</h3>
 </div>
 <div class="bluelight-bar pt-3 pb-3">
-  <h6 class="text-center">Sistema de Recogida de Encuestas Online</h6>
+  <h6 class="text-center">{{ strings['login.subtitle'] }}</h6>
 </div>
 
 <div class="container mt-5 col-6 col-md-3">
   <div class="mx-auto">
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Usuario</label>
+      <label for="exampleFormControlInput1" class="form-label">{{ strings['login.usuario'] }}</label>
       <input [(ngModel)]="user.user" type="email" class="form-control">
     </div>
     <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Contraseña</label>
+      <label for="exampleFormControlTextarea1" class="form-label">{{ strings['login.password'] }}</label>
       <input [(ngModel)]="user.pass" type="password" class="form-control">  
     </div>
-    <button class="btn btn-primary" (click)="logIn()">Acceder</button>
-    <label for="exampleFormControlTextarea1" class="form-label small font-italic mt-3">El acceso es restringido a las cuentas de LDAP pertenecientes a la comunidad universitaria de la UPV/EHU.</label>
+    <div *ngIf="contrasenaIncorrecta" class="alert alert-danger mt-3">
+      {{ strings['login.incorrectPassword'] }}
+    </div>
+    <button class="btn btn-primary" (click)="logIn()">{{ strings['login.access'] }}</button>
+    
+    <label for="exampleFormControlTextarea1" class="form-label small font-italic mt-3">{{ strings['login.accessRestriction'] }}</label>
   </div>
 </div>

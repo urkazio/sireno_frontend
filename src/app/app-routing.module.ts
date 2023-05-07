@@ -9,11 +9,11 @@ import { IndexAlumnosComponent } from './components/index-alumnos/index-alumnos.
 
 //rutas que mapean el nombre del path de la url con el componente al que acceden
 const routes: Routes = [
-  { path:'login', component: LoginComponent},
-  { path:'indexAlumnos', component: IndexAlumnosComponent, canActivate:[RoleGuard], data:{ expectedRole: 'alumno' }},
-  { path:'indexDocentes', component: IndexDocentesComponent, canActivate:[RoleGuard], data:{ expectedRole: 'docente' }},
-  { path:'indexAdmins', component: IndexAdminsComponent, canActivate:[RoleGuard], data:{ expectedRole: 'admin' }},
-  { path:'**', pathMatch: 'full', redirectTo: 'home'} // por defecto redirige al home
+  { path:'login', component: LoginComponent, canActivate:[AuthGuard]},
+  { path:'indexAlumnos', component: IndexAlumnosComponent, canActivate:[RoleGuard], data:{ expectedRole: '1' }},
+  { path:'indexDocentes', component: IndexDocentesComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
+  { path:'indexAdmins', component: IndexAdminsComponent, canActivate:[RoleGuard], data:{ expectedRole: '2' }},
+  { path:'**', pathMatch: 'full', redirectTo: 'login'} // por defecto redirige al home
 ];
 
 

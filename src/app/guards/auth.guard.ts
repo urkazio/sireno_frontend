@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+// importar el servicio de decodificacion
+import decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -12,17 +14,13 @@ export class AuthGuard implements CanActivate {
 
   }
 
+  // el login solo es accesible si el token es null (no hay token)
   canActivate():boolean{
-
-    if(!this.authService.isAuth()){
-
-      console.log('La sesión ha expirado');
-      // redirigir a la pantalla de login en caso de no tener token valido
-      this.router.navigate(['login']); 
+    const token = localStorage.getItem('token');
+    if (token==null){
+      return true;
+    }else{
       return false;
     }
-
-    return true;
   }
-  
 }
