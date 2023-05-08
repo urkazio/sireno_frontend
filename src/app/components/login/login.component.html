@@ -1,4 +1,28 @@
-<app-popup></app-popup>
+<div id="popupContainer" class="modal fade" tabindex="-1" role="dialog" [class.show]="contrasenaIncorrecta">
+  <!-- Contenido del popup -->
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Encabezado del popup -->
+      <div class="modal-header">
+        <h4 class="modal-title">Título del Pop-up</h4>
+        <button type="button" class="close"           aria-label="Close" (click)="onClosePopup()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <!-- Cuerpo del popup -->
+      <div class="modal-body">
+        Contenido del Pop-up
+      </div>
+      
+      <!-- Pie del popup -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onClosePopup()">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="blue-bar pt-3 pb-3">
   <h3 class="text-center">{{ strings['login.title'] }}</h3>
@@ -25,3 +49,5 @@
     <label for="exampleFormControlTextarea1" class="form-label small font-italic mt-3">{{ strings['login.accessRestriction'] }}</label>
   </div>
 </div>
+
+        

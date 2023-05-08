@@ -1,0 +1,63 @@
+/* Estilos para el contenedor del popup */
+#popupContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  /* Estilos para el contenido del popup */
+  .modal-dialog {
+    margin: 15% auto;
+    max-width: 500px;
+  }
+  
+  .modal-content {
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .modal-title {
+    font-size: 18px;
+  }
+  
+  .modal-body {
+    margin-bottom: 20px;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Estilos adicionales */
+  .blue-bar {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+  }
+  
+  .bluelight-bar {
+    background-color: lightblue;
+    color: white;
+    padding: 10px;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  .alert {
+    margin-top: 10px;
+  }
+  

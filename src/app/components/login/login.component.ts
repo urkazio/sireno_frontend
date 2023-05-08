@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
   popup: PopupComponent = new PopupComponent();
   contrasenaIncorrecta: boolean = false;
   user = {
-    user: '', // Valores por defecto para el objeto user, cambiar a valores vacíos posteriormente
-    pass: ''
+    user: 'urko', // Valores por defecto para el objeto user, cambiar a valores vacíos posteriormente
+    pass: '123'
   };
 
   constructor(
@@ -103,9 +103,17 @@ export class LoginComponent implements OnInit {
   }
       
   openPopup() {
-    this.popup = new PopupComponent(); // Crear una instancia del componente popup
-    // Lógica adicional para configurar el componente popup si es necesario
-    this.popup.open(); // Abrir el componente popup
+    const popupElement = document.getElementById('popupContainer');
+    if (popupElement) {
+      popupElement.classList.add('show');
+    }
+  }
+
+  onClosePopup() {
+    const popupElement = document.getElementById('popupContainer');
+    if (popupElement) {
+      popupElement.classList.remove('show');
+    }
   }
 
 }
