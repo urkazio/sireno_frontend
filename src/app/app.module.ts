@@ -19,7 +19,10 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { IndexAlumnosComponent } from './components/index-alumnos/index-alumnos.component';
 import { IndexDocentesComponent } from './components/index-docentes/index-docentes.component';
 import { IndexAdminsComponent } from './components/index-admins/index-admins.component';
-import { PopupComponent } from './components/popup/popup.component';
+import { PopupRolesComponent } from './components/popups/popup-roles-do-al/popup-roles-do-al.component';
+import { PopupOkComponent } from './components/popups/popup-ok/popup-ok.component';
+import { PopupRolesDoAdComponent } from './components/popups/popup-roles-do-ad/popup-roles-do-ad.component';
+import { PopupRolesDoAlAdComponent } from './components/popups/popup-roles-do-al-ad/popup-roles-do-al-ad.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { PopupComponent } from './components/popup/popup.component';
     IndexAlumnosComponent,
     IndexDocentesComponent,
     IndexAdminsComponent,
-    PopupComponent
+    PopupRolesComponent,
+    PopupOkComponent,
+    PopupRolesDoAdComponent,
+    PopupRolesDoAlAdComponent
   ],
   imports: [
     BrowserModule,

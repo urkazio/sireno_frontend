@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { PopupComponent } from '../popup/popup.component';
 import { LanguageService } from '../../services/languaje.service';
+import { PopupfactoryService } from '../../services/popupfactory.service';
+
+
+
 
 import decode from 'jwt-decode';
 
@@ -15,24 +17,27 @@ import decode from 'jwt-decode';
 export class LoginComponent implements OnInit {
 
   strings: any; // Variable para almacenar los textos
-  popup: PopupComponent = new PopupComponent();
   contrasenaIncorrecta: boolean = false;
   user = {
     user: 'urko', // Valores por defecto para el objeto user, cambiar a valores vacíos posteriormente
-    pass: '123'
+    pass: '123',
+    rol: ''
   };
 
   constructor(
     private authService: AuthService, // Servicio de autenticación
     private router: Router, // Router para redirigir al usuario
-    private languageService: LanguageService // Servicio de idioma
+    private languageService: LanguageService, // Servicio de idioma
+    private popupfactoryService: PopupfactoryService  // factoria de popUps encargada de la gestion
   ) {}
+
 
   ngOnInit() {
     this.languageService.currentLanguage$.subscribe(lang => {
       this.loadStrings(lang);
     });
   }
+
 
   loadStrings(lang: string) {
     this.languageService.loadStrings(lang).subscribe(
@@ -45,24 +50,83 @@ export class LoginComponent implements OnInit {
     );
   }
 
+
   changeLanguage(lang: string) {
     this.languageService.changeLanguage(lang); // Cambia el idioma actual utilizando el servicio de idioma
   }
 
+
   logIn() {
-    // Al hacer clic en el botón de login se consume el servicio de autenticación
-    this.authService.signIn(this.user).subscribe((res: any) => {
-      if (res === 'Usuario o clave incorrectos') {
-        // Realiza las acciones necesarias en caso de error
-        this.contrasenaIncorrecta = true; // Establece la variable a true en caso de error
-        this.openPopup();
-      } else {
-        // Si el login es correcto, se guarda el token obtenido en localStorage
-        localStorage.setItem('token', res);
-        this.redirigirTrasLogin();
+
+    // esta llamada obtiene el rol asociado al usuario que se intenta identificar
+    // en caso de que un usuario tenga varios roles, debe elegir uno de ellos
+    this.authService.getRole(this.user).subscribe((role: any) => {
+      
+      console.log("rol: " +role);
+      
+      switch (role) {
+
+        case '0': //Docente
+        this.user.rol = "0";
+        this.logInWithRole();
+        break;
+
+        case '1': //Alumno
+          this.user.rol = "1";
+          this.logInWithRole();
+          break;
+
+        case '2': //Admin
+          this.user.rol = "2";
+          this.logInWithRole();
+          break;
+
+        case '3': //Docente y Alumno
+          this.popupfactoryService.openPopupRoles_do_al().then((pref_rol: string) => {
+            console.log('Selected option:', pref_rol);
+            this.user.rol = pref_rol;
+            this.logInWithRole();
+          });
+          break;
+
+        case '4': //Docente y Admin
+          this.popupfactoryService.openPopupRoles_do_ad().then((pref_rol: string) => {
+            console.log('Selected option:', pref_rol);
+            this.user.rol = pref_rol;
+            this.logInWithRole();
+          });
+          break;
+
+        case '5': //Docente, Alumno y Admin
+          this.popupfactoryService.openPopupRoles_do_al_ad().then((pref_rol: string) => {
+            console.log('Selected option:', pref_rol);
+            this.user.rol = pref_rol;
+            this.logInWithRole();
+
+          });
+          break;
       }
+
+    
     });
   }
+
+
+  logInWithRole(){
+    
+      // Al hacer clic en el botón de login se consume el servicio de autenticación
+      this.authService.signIn(this.user).subscribe((res: any) => {
+
+        if (res === 'Usuario o clave incorrectos') {
+          this.contrasenaIncorrecta = true; // Establece la variable a true en caso de error
+        } else {
+          // Si el login es correcto, se guarda el token obtenido en localStorage
+          localStorage.setItem('token', res);
+          this.redirigirTrasLogin();
+        }
+      });
+  }
+
 
   redirigirTrasLogin() {
     const token = localStorage.getItem('token');
@@ -82,37 +146,30 @@ export class LoginComponent implements OnInit {
         console.log('Usuario no autorizado');
         this.router.navigate(['login']);
       } else {
+
         // Comprobar los roles y redirigir según el rol del usuario
-        if (rol == '0') {
-          console.log('Bienvenido docente');
-          this.router.navigate(['indexDocentes']);
-        } else if (rol == '1') {
-          console.log('Bienvenido alumno');
-          this.router.navigate(['indexAlumnos']);
-        } else if (rol == '2') {
-          console.log('Bienvenido admin');
-          this.router.navigate(['indexAdmins']);
-        } else {
-          this.router.navigate(['login']);
+        switch (rol) {
+
+          case '0': //Docente
+            console.log('Bienvenido docente');
+            this.router.navigate(['indexDocentes']);
+            break;
+
+          case '1': //Alumno
+            console.log('Bienvenido alumno');
+            this.router.navigate(['indexAlumnos']);
+            break;
+
+          case '2': //Admin
+            console.log('Bienvenido admin');
+            this.router.navigate(['indexAdmins']);
+            break;
         }
       }
+
     } else {
       console.log('La sesión ha expirado');
       this.router.navigate(['login']);
-    }
-  }
-      
-  openPopup() {
-    const popupElement = document.getElementById('popupContainer');
-    if (popupElement) {
-      popupElement.classList.add('show');
-    }
-  }
-
-  onClosePopup() {
-    const popupElement = document.getElementById('popupContainer');
-    if (popupElement) {
-      popupElement.classList.remove('show');
     }
   }
 

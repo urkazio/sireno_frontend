@@ -16,6 +16,11 @@ export class AuthService {
     return this.http.post(`${this.URL}/user/signin`,user);
   }
 
+  getRole(user:any){
+    //devolver un obserbale que va a ser la consulta
+    return this.http.post(`${this.URL}/user/getrole`,user);
+  }
+
   logOut() {
     // Eliminar el token del localStorage u otras tareas relacionadas con cerrar sesión
     localStorage.removeItem('token');

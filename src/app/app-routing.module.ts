@@ -6,6 +6,7 @@ import { RoleGuard } from './guards/role.guard';
 import { IndexAdminsComponent } from './components/index-admins/index-admins.component';
 import { IndexDocentesComponent } from './components/index-docentes/index-docentes.component';
 import { IndexAlumnosComponent } from './components/index-alumnos/index-alumnos.component';
+import { PopupRolesComponent } from './components/popups/popup-roles-do-al/popup-roles-do-al.component';
 
 //rutas que mapean el nombre del path de la url con el componente al que acceden
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  entryComponents: [ PopupRolesComponent ]
 })
 export class AppRoutingModule { }

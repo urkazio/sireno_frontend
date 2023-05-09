@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h5 class="modal-title">Modal title</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
+</div>
+<div class="modal-body">
+  <p>Modal body text goes here.</p>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="0" [(ngModel)]="selectedOption">
+    <label class="form-check-label" for="exampleRadios1">
+      Docente
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="1" [(ngModel)]="selectedOption">
+    <label class="form-check-label" for="exampleRadios2">
+      Alumno
+    </label>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancelar</button>
+  <button type="button" class="btn btn-primary" (click)="onSaveChanges()">Save changes</button>
+</div>
