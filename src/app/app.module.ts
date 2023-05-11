@@ -16,13 +16,17 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 // +++++++++++++++++ PROVIDERS +++++++++++++++++
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt' //servicio que permite decodioficar y verificar el valor del token desde el lado del servidor
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { IndexAlumnosComponent } from './components/index-alumnos/index-alumnos.component';
-import { IndexDocentesComponent } from './components/index-docentes/index-docentes.component';
-import { IndexAdminsComponent } from './components/index-admins/index-admins.component';
-import { PopupRolesComponent } from './components/popups/popup-roles-do-al/popup-roles-do-al.component';
-import { PopupOkComponent } from './components/popups/popup-ok/popup-ok.component';
-import { PopupRolesDoAdComponent } from './components/popups/popup-roles-do-ad/popup-roles-do-ad.component';
-import { PopupRolesDoAlAdComponent } from './components/popups/popup-roles-do-al-ad/popup-roles-do-al-ad.component';
+import { IndexAlumnosComponent } from './components/alumnos/index-alumnos/index-alumnos.component';
+import { IndexDocentesComponent } from './components/docentes/index-docentes/index-docentes.component';
+import { IndexAdminsComponent } from './components/admins/index-admins/index-admins.component';
+import { PopupRolesComponent } from './components/shared/popups/popup-roles-do-al/popup-roles-do-al.component';
+import { PopupOkComponent } from './components/shared/popups/popup-ok/popup-ok.component';
+import { PopupRolesDoAdComponent } from './components/shared/popups/popup-roles-do-ad/popup-roles-do-ad.component';
+import { PopupRolesDoAlAdComponent } from './components/shared/popups/popup-roles-do-al-ad/popup-roles-do-al-ad.component';
+import { NavbarInicioComponent } from './components/shared/navbars/navbar-inicio/navbar-inicio.component';
+import { NavbarAlumnosComponent } from './components/shared/navbars/navbar-alumnos/navbar-alumnos.component';
+import { NavbarAdminsComponent } from './components/shared/navbars/navbar-admins/navbar-admins.component';
+import { NavbarDocentesComponent } from './components/shared/navbars/navbar-docentes/navbar-docentes.component';
 
 
 @NgModule({
@@ -35,7 +39,11 @@ import { PopupRolesDoAlAdComponent } from './components/popups/popup-roles-do-al
     PopupRolesComponent,
     PopupOkComponent,
     PopupRolesDoAdComponent,
-    PopupRolesDoAlAdComponent
+    PopupRolesDoAlAdComponent,
+    NavbarInicioComponent,
+    NavbarAlumnosComponent,
+    NavbarAdminsComponent,
+    NavbarDocentesComponent
   ],
   imports: [
     BrowserModule,

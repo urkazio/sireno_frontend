@@ -102,8 +102,11 @@ export class LoginComponent implements OnInit {
             console.log('Selected option:', pref_rol);
             this.user.rol = pref_rol;
             this.logInWithRole();
-
           });
+          break;
+        
+        case 'Usuario o clave incorrectos':
+          this.contrasenaIncorrecta = true; // Establece la variable a true en caso de error
           break;
       }
 
@@ -117,13 +120,9 @@ export class LoginComponent implements OnInit {
       // Al hacer clic en el botón de login se consume el servicio de autenticación
       this.authService.signIn(this.user).subscribe((res: any) => {
 
-        if (res === 'Usuario o clave incorrectos') {
-          this.contrasenaIncorrecta = true; // Establece la variable a true en caso de error
-        } else {
-          // Si el login es correcto, se guarda el token obtenido en localStorage
-          localStorage.setItem('token', res);
+          localStorage.setItem('token', res); //se guarda el token obtenido en localStorage
           this.redirigirTrasLogin();
-        }
+        
       });
   }
 

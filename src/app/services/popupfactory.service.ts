@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PopupRolesComponent } from '../components/popups/popup-roles-do-al/popup-roles-do-al.component';
-import { PopupRolesDoAdComponent } from '../components/popups/popup-roles-do-ad/popup-roles-do-ad.component';
-import { PopupRolesDoAlAdComponent } from '../components/popups/popup-roles-do-al-ad/popup-roles-do-al-ad.component';
-import { PopupOkComponent } from '../components/popups/popup-ok/popup-ok.component';
+import { PopupRolesComponent } from '../components/shared/popups/popup-roles-do-al/popup-roles-do-al.component';
+import { PopupRolesDoAdComponent } from '../components/shared/popups/popup-roles-do-ad/popup-roles-do-ad.component';
+import { PopupRolesDoAlAdComponent } from '../components/shared/popups/popup-roles-do-al-ad/popup-roles-do-al-ad.component';
+import { PopupOkComponent } from '../components/shared/popups/popup-ok/popup-ok.component';
 
 
 

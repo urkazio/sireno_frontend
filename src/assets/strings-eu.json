@@ -14,5 +14,11 @@
   "login.access": "Sartu",
   "login.accessRestriction": "Sarrera UPV/EHUko unibertsitate komunitateko LDAP kontuei mugatua dago.",
   "login.title": "Login SiREn0",
-  "login.subtitle": "Lineako inkestak biltzeko sistema"
+  "login.subtitle": "Lineako inkestak biltzeko sistema",
+  "popup.title": "Sarbide gisa",
+  "popup.docente": "Irakaslea",
+  "popup.alumno": "Ikaslea",
+  "popup.admin": "Administratzailea",
+  "popup.aceptar": "Onartu",
+  "popup.cancelar": "Ezeztatu"
 }

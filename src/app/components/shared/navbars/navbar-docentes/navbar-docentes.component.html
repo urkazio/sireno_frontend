@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+  <div class="container-fluid">
+    <div class="d-flex justify-content-between w-100">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="indexDocentes" style="cursor: pointer; color: #ffffff;">{{ strings['navbar.home'] }}</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="nav-link no-hover" style="color: #ffffff;">|</a>
+        <a class="nav-link" style="cursor: pointer; color: #ffffff;" (click)="onLogoutClick()" *ngIf="isLoggedIn()">{{ strings['navbar.logout'] }}</a>
+      </div>
+      <div class="navbar-nav">
+        <a class="nav-link" style="cursor: pointer; color: #ffffff;" (click)="changeLanguage('es')">{{ strings['navbar.langES'] }}</a>
+        <a class="nav-link no-hover" style="color: #ffffff;">|</a>
+        <a class="nav-link" style="cursor: pointer; color: #ffffff;" (click)="changeLanguage('en')">{{ strings['navbar.langEN'] }}</a>
+        <a class="nav-link no-hover" style="color: #ffffff;">|</a>
+        <a class="nav-link" style="cursor: pointer; color: #ffffff;" (click)="changeLanguage('eu')">{{ strings['navbar.langEU'] }}</a>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    </div>
+  </div>
+</nav>

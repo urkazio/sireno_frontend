@@ -14,6 +14,11 @@
   "login.access": "Access",
   "login.accessRestriction": "Access is restricted to LDAP accounts belonging to the university community of UPV/EHU.",
   "login.title": "Login SiREn0",
-  "login.subtitle": "Online Survey Collection System"
-
+  "login.subtitle": "Online Survey Collection System",
+  "popup.title": "Log in as",
+  "popup.docente": "Teacher",
+  "popup.alumno": "Student",
+  "popup.admin": "Administrator",
+  "popup.aceptar": "Accept",
+  "popup.cancelar": "Cancel"
 }

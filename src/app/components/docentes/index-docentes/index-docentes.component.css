@@ -1,13 +1,13 @@
 .btn-orange {
     color: #fff;
-    background-color: #ff6a00;
-    border-color: #ff6a00;
+    background-color: #F7A237;
+    border-color: #F7A237;
   }
   
   .btn-orange:hover {
     color: #fff;
-    background-color: #ff5900;
-    border-color: #ff5900;
+    background-color: #e69129;
+    border-color: #e69129;
   }
 
   .shadow {
@@ -19,7 +19,7 @@
   }
 
   .orange-bar {
-    background-color: #ff6a00;
+    background-color: #F7A237;
     padding: 10px;
   }
   

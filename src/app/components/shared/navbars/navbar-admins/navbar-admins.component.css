@@ -1,0 +1,8 @@
+.bg-custom {
+  background-color: #1a1a1a;
+}
+
+.navbar-nav .nav-link:hover {
+  text-decoration: underline;
+}
+  
