@@ -33,8 +33,16 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    this.languageService.currentLanguage$.subscribe(lang => {
-      this.loadStrings(lang);
+    const lang = 'es'; // Idioma predeterminado
+    this.languageService.currentLanguage$.subscribe(lang => { // Suscripción a cambios en el idioma actual
+      this.languageService.loadStrings(lang).subscribe( // Carga los strings correspondientes al idioma actual
+        data => {
+          this.strings = data; // Almacena los textos cargados en la variable 'strings'
+        },
+        error => {
+          console.error(`Error loading strings for ${lang}:`, error); // Muestra un mensaje de error si falla la carga de los textos
+        }
+      );
     });
   }
 
