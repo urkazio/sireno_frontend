@@ -18,7 +18,11 @@ export class AuthService {
 
   getRole(user:any){
     //devolver un obserbale que va a ser la consulta
-    return this.http.post(`${this.URL}/user/getrole`,user);
+    const username = {
+      user: user
+    };
+
+    return this.http.post(`${this.URL}/user/getrole`,username);
   }
 
   logOut() {

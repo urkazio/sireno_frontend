@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   strings: any; // Variable para almacenar los textos
   contrasenaIncorrecta: boolean = false;
   user = {
-    user: 'urko', // Valores por defecto para el objeto user, cambiar a valores vacíos posteriormente
+    user: 'usuario0', // Valores por defecto para el objeto user, cambiar a valores vacíos posteriormente
     pass: '123',
     rol: ''
   };
@@ -68,9 +68,9 @@ export class LoginComponent implements OnInit {
 
     // esta llamada obtiene el rol asociado al usuario que se intenta identificar
     // en caso de que un usuario tenga varios roles, debe elegir uno de ellos
-    this.authService.getRole(this.user).subscribe((role: any) => {
+    this.authService.getRole(this.user.user).subscribe((role: any) => {
       
-      console.log("rol: " +role);
+      console.log("role: "+role)
       
       switch (role) {
 
@@ -91,7 +91,6 @@ export class LoginComponent implements OnInit {
 
         case '3': //Docente y Alumno
           this.popupfactoryService.openPopupRoles_do_al().then((pref_rol: string) => {
-            console.log('Selected option:', pref_rol);
             this.user.rol = pref_rol;
             this.logInWithRole();
           });
@@ -99,7 +98,6 @@ export class LoginComponent implements OnInit {
 
         case '4': //Docente y Admin
           this.popupfactoryService.openPopupRoles_do_ad().then((pref_rol: string) => {
-            console.log('Selected option:', pref_rol);
             this.user.rol = pref_rol;
             this.logInWithRole();
           });
@@ -107,15 +105,11 @@ export class LoginComponent implements OnInit {
 
         case '5': //Docente, Alumno y Admin
           this.popupfactoryService.openPopupRoles_do_al_ad().then((pref_rol: string) => {
-            console.log('Selected option:', pref_rol);
             this.user.rol = pref_rol;
             this.logInWithRole();
           });
           break;
         
-        case 'Usuario o clave incorrectos':
-          this.contrasenaIncorrecta = true; // Establece la variable a true en caso de error
-          break;
       }
 
     
@@ -128,9 +122,14 @@ export class LoginComponent implements OnInit {
       // Al hacer clic en el botón de login se consume el servicio de autenticación
       this.authService.signIn(this.user).subscribe((res: any) => {
 
+        if(res == 'Usuario o clave incorrectos'){
+          this.contrasenaIncorrecta = true; // Establece la variable a true en caso de error
+        }else{
           localStorage.setItem('token', res); //se guarda el token obtenido en localStorage
-          this.redirigirTrasLogin();
-        
+          this.redirigirTrasLogin();  
+        }
+
+
       });
   }
 
@@ -146,7 +145,7 @@ export class LoginComponent implements OnInit {
       }
 
       const decoded = decode(token) as MiUsuario; // Decodifica el token y lo asigna al objeto 'decoded'
-      const { usuario, rol } = decoded; // Extrae el usuario y el rol del objeto 'decoded'
+      const { rol } = decoded; // Extrae el usuario y el rol del objeto 'decoded'
 
       // Comprobar si está autenticado
       if (!this.authService.isAuth()) {
@@ -171,6 +170,7 @@ export class LoginComponent implements OnInit {
             console.log('Bienvenido admin');
             this.router.navigate(['indexAdmins']);
             break;
+
         }
       }
 

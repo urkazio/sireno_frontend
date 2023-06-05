@@ -20,6 +20,8 @@ export class AuthGuard implements CanActivate {
     if (token==null){
       return true;
     }else{
+      this.authService.logOut(); // Realiza la operación de cierre de sesión
+      this.router.navigate(["login"]); // Navega hacia la página de inicio de sesión
       return false;
     }
   }
