@@ -27,6 +27,8 @@ import { NavbarInicioComponent } from './components/shared/navbars/navbar-inicio
 import { NavbarAlumnosComponent } from './components/shared/navbars/navbar-alumnos/navbar-alumnos.component';
 import { NavbarAdminsComponent } from './components/shared/navbars/navbar-admins/navbar-admins.component';
 import { NavbarDocentesComponent } from './components/shared/navbars/navbar-docentes/navbar-docentes.component';
+import { CampanaAbiertaComponent } from './components/shared/campañas/campana-abierta/campana-abierta.component';
+import { CampanaCerradaComponent } from './components/shared/campañas/campana-cerrada/campana-cerrada.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { NavbarDocentesComponent } from './components/shared/navbars/navbar-doce
     NavbarInicioComponent,
     NavbarAlumnosComponent,
     NavbarAdminsComponent,
-    NavbarDocentesComponent
+    NavbarDocentesComponent,
+    CampanaAbiertaComponent,
+    CampanaCerradaComponent
   ],
   imports: [
     BrowserModule,

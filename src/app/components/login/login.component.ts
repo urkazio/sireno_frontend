@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   strings: any; // Variable para almacenar los textos
   contrasenaIncorrecta: boolean = false;
   user = {
-    user: 'usuario0', // Valores por defecto para el objeto user, cambiar a valores vacíos posteriormente
+    user: 'alum000', // Valores por defecto para el objeto user, cambiar a valores vacíos posteriormente
     pass: '123',
     rol: ''
   };
