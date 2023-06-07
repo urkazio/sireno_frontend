@@ -20,5 +20,10 @@
   "popup.alumno": "Ikaslea",
   "popup.admin": "Administratzailea",
   "popup.aceptar": "Onartu",
-  "popup.cancelar": "Ezeztatu"
+  "popup.cancelar": "Ezeztatu",
+  "alumno.bar": "Inkesta eskuragarriak",
+  "profesor": "Irakaslea",
+  "responder": "Erantzun",
+  "encuesta.cerrada": "Inkesta itxita"
+
 }

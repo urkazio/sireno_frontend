@@ -1,10 +1,130 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { interval, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { LanguageService } from '../../../../services/languaje.service';
+
 
 @Component({
   selector: 'app-campana-abierta',
   templateUrl: './campana-abierta.component.html',
   styleUrls: ['./campana-abierta.component.css']
 })
-export class CampanaAbiertaComponent {
 
+
+export class CampanaAbiertaComponent implements OnInit {
+
+  nombreAsignatura: string = '';
+  profesor: string = '';
+  cod_campana: string = '';
+  nombre_campana: string = '';
+  fecha_fin: Date | null = null;
+  abierta_antes: number | null = null;
+  cod_encuesta: string = '';
+  cod_situacion_docente: string = '';
+  cod_asignatura: string = '';
+  nombre_asignatura: string = '';
+  cod_docente: string = '';
+  nombre_docente: string = '';
+  num_curso: number | null = null;
+  anno_curso: string = '';
+  fecha_fin_activacion: Date | null = null;
+  mostrarCampana: boolean = true;
+  
+  strings: any; // Variable para almacenar los textos
+  tiempoRestante: Observable<string> = new Observable<string>();
+
+  constructor(
+    private languageService: LanguageService, // Servicio de idioma
+  ) {}
+
+
+  ngOnInit() {
+
+    //actualizar el tiempo restante de las campañas con un observable
+    this.tiempoRestante = interval(1000).pipe(
+      map(() => this.getTiempoCierre())
+    );
+
+    //gestion de idiomas
+    const lang = 'es'; // Idioma predeterminado
+    this.languageService.currentLanguage$.subscribe(lang => { // Suscripción a cambios en el idioma actual
+      this.languageService.loadStrings(lang).subscribe( // Carga los strings correspondientes al idioma actual
+        data => {
+          this.strings = data; // Almacena los textos cargados en la variable 'strings'
+        },
+        error => {
+          console.error(`Error loading strings for ${lang}:`, error); // Muestra un mensaje de error si falla la carga de los textos
+        }
+      );
+    });
+  }
+
+  loadStrings(lang: string) {
+    this.languageService.loadStrings(lang).subscribe(
+      data => {
+        this.strings = data; // Almacena los textos cargados en la variable 'strings'
+      },
+      error => {
+        console.error(`Error loading strings for ${lang}:`, error); // Muestra un mensaje de error si falla la carga de los textos
+      }
+    );
+  }
+
+
+  changeLanguage(lang: string) {
+    this.languageService.changeLanguage(lang); // Cambia el idioma actual utilizando el servicio de idioma
+  }
+  
+  getTiempoCierre() {
+    const fechaActual = new Date();
+    const fechaFinActivacion = this.fecha_fin_activacion;
+  
+    if (fechaFinActivacion) {
+      // Calcula la diferencia en milisegundos
+      const diferenciaMs = fechaFinActivacion.getTime() - fechaActual.getTime();
+
+      // Verifica si el tiempo restante es menor o igual a cero
+      if (diferenciaMs <= 0) {
+        this.mostrarCampana = false; // Oculta la campaña
+        return ''; // Retorna una cadena vacía para no mostrar el tiempo restante
+      }
+  
+      // Calcula las horas, minutos y segundos
+      const segundos = Math.floor(diferenciaMs / 1000);
+      const minutos = Math.floor(segundos / 60);
+      const horas = Math.floor(minutos / 60);
+  
+      // Formatea la diferencia en hh:mm:ss
+      const horasFormateadas = this.agregarCerosIzquierda(horas);
+      const minutosFormateados = this.agregarCerosIzquierda(minutos % 60);
+      const segundosFormateados = this.agregarCerosIzquierda(segundos % 60);
+  
+      return `${horasFormateadas}h: ${minutosFormateados}m: ${segundosFormateados}s`;
+    }
+  
+    return ''; // Retorna un valor por defecto en caso de que fecha_fin_activacion sea null
+  }
+  
+  agregarCerosIzquierda(valor: number) {
+    return valor < 10 ? `0${valor}` : `${valor}`;
+  }
+    
+  mostrarObjeto() {
+    console.log({
+      cod_campana: this.cod_campana,
+      nombre_campana: this.nombre_campana,
+      fecha_fin: this.fecha_fin,
+      abierta_antes: this.abierta_antes,
+      cod_encuesta: this.cod_encuesta,
+      cod_situacion_docente: this.cod_situacion_docente,
+      cod_asignatura: this.cod_asignatura,
+      nombre_asignatura: this.nombre_asignatura,
+      cod_docente: this.cod_docente,
+      nombre_docente: this.nombre_docente,
+      num_curso: this.num_curso,
+      anno_curso: this.anno_curso,
+      fecha_fin_activacion: this.fecha_fin_activacion
+      // Agrega más propiedades según necesites
+    });
+  }
 }

@@ -1,12 +1,12 @@
-<div class="card text-center">
-    <div class="card-header">
-        <h5 class="card-title">Desarrollo Avanzado de Software</h5>
-      </div>
+<div class="card text-center shadow" *ngIf="mostrarCampana">
+  <div class="card-header">
+      <h5 class="card-title d-inline">{{ nombre_asignatura }} <h6 class="d-inline">{{ anno_curso }}</h6></h5>
+    </div>
     <div class="card-body">
-        <p class="card-text">Profesor: Mikel Villamañe.</p>
-        <a href="#" class="btn btn-primary custom-btn-color">Responder</a>
+      <p class="card-text">{{ strings['profesor'] }}: {{ nombre_docente }}</p>
+      <button class="btn btn-primary custom-btn-color" (click)="mostrarObjeto()">{{ strings['responder'] }}</button>
     </div>
     <div class="card-footer text-muted">
-        35h : 33m : 25s
+      {{ tiempoRestante | async }}
     </div>
-</div>
+  </div>

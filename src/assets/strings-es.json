@@ -20,7 +20,12 @@
   "popup.alumno": "Alumno",
   "popup.admin": "Administrador",
   "popup.aceptar": "Aceptar",
-  "popup.cancelar": "Cancelar"
+  "popup.cancelar": "Cancelar",
+  "alumno.bar": "Encuestas disponibles",
+  "profesor": "Profesor",
+  "responder": "Responder",
+  "encuesta.cerrada": "Encuesta cerrada"
+
 
   }
   

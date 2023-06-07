@@ -20,5 +20,9 @@
   "popup.alumno": "Student",
   "popup.admin": "Administrator",
   "popup.aceptar": "Accept",
-  "popup.cancelar": "Cancel"
+  "popup.cancelar": "Cancel",
+  "alumno.bar": "Avaliable surveys",
+  "profesor": "Professor",
+  "responder": "Respond",
+  "encuesta.cerrada": "Survey closed"
 }

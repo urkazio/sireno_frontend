@@ -44,4 +44,8 @@ export class AuthService {
     return true;
   }
 
+
+  getCampanas(){
+    return this.http.post(`${this.URL}/alumno/getCampannas`, {});
+  }
 }

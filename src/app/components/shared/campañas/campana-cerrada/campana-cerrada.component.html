@@ -1,1 +1,12 @@
-<p>campana-cerrada works!</p>
+<div class="card text-center shadow">
+  <div class="card-header">
+    <h5 class="card-title d-inline">{{ nombre_asignatura }} <h6 class="d-inline">{{ anno_curso }}</h6></h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{ strings['profesor'] }}: {{ nombre_docente }}</p>
+    <button class="btn btn-primary custom-btn-color" (click)="mostrarObjeto()">{{ strings['responder'] }}</button>
+  </div>
+  <div class="card-footer text-muted">
+    {{ strings['encuesta.cerrada'] }}
+  </div>
+</div>
