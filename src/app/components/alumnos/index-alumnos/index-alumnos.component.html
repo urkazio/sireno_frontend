@@ -5,5 +5,10 @@
     <h3 class="text-center">{{ strings['alumno.bar'] }}</h3>
 </div>
 
+<div *ngIf="noHayEncuestasDisponibles" class="mt-5 text-center">
+    <p>No tienes encuestas disponibles en este momento.</p>
+  </div>
+  
+
 <!-- aqui se van insertando los componentes de las campañas-->
 

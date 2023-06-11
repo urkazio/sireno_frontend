@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { interval, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LanguageService } from '../../../../services/languaje.service';
+import { AuthService } from '../../../../services/auth.service';
+
 
 
 @Component({
@@ -32,9 +34,12 @@ export class CampanaAbiertaComponent implements OnInit {
   
   strings: any; // Variable para almacenar los textos
   tiempoRestante: Observable<string> = new Observable<string>();
+  
 
   constructor(
     private languageService: LanguageService, // Servicio de idioma
+    private authService: AuthService, // Servicio de autenticación
+
   ) {}
 
 
@@ -110,6 +115,7 @@ export class CampanaAbiertaComponent implements OnInit {
   }
     
   mostrarObjeto() {
+    /*
     console.log({
       cod_campana: this.cod_campana,
       nombre_campana: this.nombre_campana,
@@ -123,8 +129,14 @@ export class CampanaAbiertaComponent implements OnInit {
       nombre_docente: this.nombre_docente,
       num_curso: this.num_curso,
       anno_curso: this.anno_curso,
-      fecha_fin_activacion: this.fecha_fin_activacion
-      // Agrega más propiedades según necesites
+      fecha_fin_activacion: this.fecha_fin_activacion,
+      lenguaje: this.languageService.getCurrentLanguageValue()
+    });
+    */
+    console.log(this.cod_encuesta)
+
+    this.authService.getEncuesta(this.cod_encuesta, this.languageService.getCurrentLanguageValue()).subscribe((encuesta: any) => {
+      console.log(encuesta)
     });
   }
 }

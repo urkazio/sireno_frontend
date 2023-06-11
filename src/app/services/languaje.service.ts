@@ -18,4 +18,8 @@ export class LanguageService {
   changeLanguage(lang: string) {
     this.currentLanguage.next(lang); // Actualiza el idioma actual con el valor proporcionado
   }
+
+  getCurrentLanguageValue(): string {
+    return this.currentLanguage.getValue();
+  }
 }

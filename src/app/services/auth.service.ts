@@ -48,4 +48,14 @@ export class AuthService {
   getCampanas(){
     return this.http.post(`${this.URL}/alumno/getCampannas`, {});
   }
+
+  getEncuesta(cod_encuesta:string, idioma:string){
+
+    const datos_encuesta = {
+      cod_encuesta : cod_encuesta,
+      idioma : idioma
+    };
+
+    return this.http.post(`${this.URL}/alumno/getEncuesta`, datos_encuesta);
+  }
 }

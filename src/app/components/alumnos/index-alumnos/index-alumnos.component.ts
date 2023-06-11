@@ -13,13 +13,14 @@ import { CampanaCerradaComponent } from '../../shared/campañas/campana-cerrada/
 export class IndexAlumnosComponent implements OnInit{
 
   strings: any; // Variable para almacenar los textos
+  noHayEncuestasDisponibles: boolean = true;
+
 
   constructor(
     private authService: AuthService, // Servicio de autenticación
     private languageService: LanguageService, // Servicio de idioma
     private resolver: ComponentFactoryResolver,
-    private viewContainerRef: ViewContainerRef
-
+    private viewContainerRef: ViewContainerRef,
   ) {}
 
   ngOnInit() {
@@ -67,6 +68,7 @@ export class IndexAlumnosComponent implements OnInit{
       let factory;
       let componentRef;
       let instance;
+      this.noHayEncuestasDisponibles=false;
 
       if (campana.abierta_antes == 1) {
         factory = this.resolver.resolveComponentFactory(CampanaAbiertaComponent);
