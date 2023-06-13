@@ -7,6 +7,10 @@ import { IndexAdminsComponent } from './components/admins/index-admins/index-adm
 import { IndexDocentesComponent } from './components/docentes/index-docentes/index-docentes.component';
 import { IndexAlumnosComponent } from './components/alumnos/index-alumnos/index-alumnos.component';
 import { PopupRolesComponent } from './components/shared/popups/popup-roles-do-al/popup-roles-do-al.component';
+import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encuesta1/encuesta1.component';
+import { EncuestaGuard } from './guards/encuesta.guard';
+
+
 
 //rutas que mapean el nombre del path de la url con el componente al que acceden
 const routes: Routes = [
@@ -14,13 +18,16 @@ const routes: Routes = [
   { path:'indexAlumnos', component: IndexAlumnosComponent, canActivate:[RoleGuard], data:{ expectedRole: '1' }},
   { path:'indexDocentes', component: IndexDocentesComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'indexAdmins', component: IndexAdminsComponent, canActivate:[RoleGuard], data:{ expectedRole: '2' }},
-  { path:'**', pathMatch: 'full', redirectTo: 'login'} // por defecto redirige al home
+  {path: 'encuesta', component: Encuesta1Component, canActivate: [RoleGuard, EncuestaGuard], data: { expectedRole: '1' }
+  },  { path:'**', pathMatch: 'full', redirectTo: 'login'} // por defecto redirige al home
 ];
 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  entryComponents: [ PopupRolesComponent ]
+  entryComponents: [ PopupRolesComponent ],
+  providers: [EncuestaGuard] 
+
 })
 export class AppRoutingModule { }

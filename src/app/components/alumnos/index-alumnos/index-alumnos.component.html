@@ -1,14 +1,15 @@
 <!-- insercion del navbar -->
-<app-navbar-alumnos></app-navbar-alumnos>
+<app-navbar-alumnos class="fixed-bar"></app-navbar-alumnos>
 
-<div class="blue-bar pt-3 pb-3">
+<div class="blue-bar pt-3 pb-3 second-bar">
     <h3 class="text-center">{{ strings['alumno.bar'] }}</h3>
 </div>
 
-<div *ngIf="noHayEncuestasDisponibles" class="mt-5 text-center">
+<div *ngIf="noHayEncuestasDisponibles" class="mensaje">
     <p>No tienes encuestas disponibles en este momento.</p>
-  </div>
-  
+</div>
 
 <!-- aqui se van insertando los componentes de las campañas-->
+
+
 

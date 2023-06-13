@@ -24,7 +24,11 @@
   "alumno.bar": "Encuestas disponibles",
   "profesor": "Profesor",
   "responder": "Responder",
-  "encuesta.cerrada": "Encuesta aún sin activar"
+  "encuesta.cerrada": "Encuesta aún sin activar",
+  "tiempo.restante" : "Tiempo restante",
+  "encuesta.grado": "Encuesta de Grado",
+  "encuesta.master": "Encuesta de Máster",
+  "ns.nr": "ns/nr"
 
 
   }

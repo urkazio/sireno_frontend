@@ -1,3 +1,14 @@
+.fixed-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que las barras estén por encima del contenido */
+}
+
+.second-bar {
+    margin-top: 56px; /* Ajusta este valor según sea necesario para el margen deseado */
+}
+
 .blue-bar {
     background-color: rgb(0, 0, 179);
     padding: 10px;
@@ -8,4 +19,13 @@
     padding: 0;
     color: white;
 }
+
+.container {
+    margin-top: 150px;
+  }
+
+.mensaje {
+    margin-top: 40px;
+    text-align: center;
+ }
 

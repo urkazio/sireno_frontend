@@ -4,10 +4,10 @@
   </div>
   <div class="card-body">
     <p class="card-text">{{ strings['profesor'] }}: {{ nombre_docente }}</p>
-    <button class="btn btn-primary custom-btn-color" (click)="mostrarObjeto()">{{ strings['responder'] }}</button>
+    <button class="btn btn-primary custom-btn-color" (click)="responder()">{{ strings['responder'] }}</button>
   </div>
   <div class="card-footer text-muted">
-    <small>Tiempo restante</small> <br />
+    <small>{{ strings['tiempo.restante'] }}</small> <br />
     {{ tiempoRestante | async }}
   </div>
 </div>

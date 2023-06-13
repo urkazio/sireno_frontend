@@ -101,6 +101,7 @@ export class IndexAlumnosComponent implements OnInit{
       const container = document.createElement('div');
       container.classList.add('container', 'mt-5', 'col-12', 'col-md-5');
       container.style.marginBottom = '40px'; // Ajusta el valor según el margen deseado
+      container.style.marginTop = '150px';
       container.appendChild(componentRef.location.nativeElement);
       this.viewContainerRef.element.nativeElement.appendChild(container);
     });

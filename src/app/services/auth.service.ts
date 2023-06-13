@@ -58,4 +58,9 @@ export class AuthService {
 
     return this.http.post(`${this.URL}/alumno/getEncuesta`, datos_encuesta);
   }
+
+  getSDsAlumno(){
+    return this.http.post(`${this.URL}/alumno/getSDsAlumno`, {});
+  }
+
 }

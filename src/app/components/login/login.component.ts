@@ -5,8 +5,6 @@ import { LanguageService } from '../../services/languaje.service';
 import { PopupfactoryService } from '../../services/popupfactory.service';
 
 
-
-
 import decode from 'jwt-decode';
 
 @Component({

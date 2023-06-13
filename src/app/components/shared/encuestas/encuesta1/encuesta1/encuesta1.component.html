@@ -1,0 +1,46 @@
+<!-- insercion del navbar -->
+<app-navbar-alumnos class="fixed-bar"></app-navbar-alumnos>
+
+<div class="blue-bar pt-3 pb-3 fixed-bar second-bar">
+  <h4 class="text-center" *ngIf="cod_encuesta === 'enc001'">{{ strings ["encuesta.grado"] }}</h4>
+  <h4 class="text-center" *ngIf="cod_encuesta === 'enc002'">{{ strings ["encuesta.master"] }}</h4>
+  <div class="tiempo">
+    {{ strings['tiempo.restante'] }}: {{ tiempoRestante | async }}
+  </div>
+</div>
+
+
+<div class="encuesta ">
+  <div class="mt-5 col-md-7 mx-auto">
+    <div class="card shadow">
+      <div class="card-header text-center float-right">
+        <div class="card-title d-inline">
+          <h4 class="asignatura">{{ this.nombreAsignatura }}</h4>
+          <h6 class="profesor"> {{ strings['profesor'] }}: {{ this.nombre_docente }}</h6>
+        </div>
+      </div>
+      <div class="card-body text-left" *ngFor="let pregunta of encuesta; let i = index" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
+        <div style="display: inline-block;">
+          {{ pregunta.texto_pregunta }}
+        </div>
+        <div class="opciones" *ngIf="pregunta.respuestas.length > 0" style="display: inline;"> <!--alinea la pregunta y la respuesta-->
+          <div class="respuesta" *ngFor="let respuesta of pregunta.respuestas" style="display: inline;"> <!--alinea las respuestas-->
+            <label style="margin-left: 10px;">
+              <input type="radio" name="{{ pregunta.cod_pregunta }}" [value]="respuesta.cod_respuesta"
+              [(ngModel)]="respuesta.selected">
+              <ng-container *ngIf="respuesta.texto !== '99'; else ns_nr">{{ respuesta.texto }}</ng-container>
+              <ng-template #ns_nr>{{ strings['ns.nr'] }}</ng-template>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary custom-btn-color">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  

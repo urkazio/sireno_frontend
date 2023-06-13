@@ -1,0 +1,56 @@
+.fixed-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que las barras estén por encima del contenido */
+}
+
+.fixed-bar.second-bar {
+  margin-top: 56px; /* Ajusta este valor según sea necesario para el margen deseado */
+}
+
+.blue-bar {
+  background-color: rgb(0, 0, 179);
+  padding: 10px;
+}
+
+.blue-bar h4 {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.tiempo{
+  color: #ffffff;
+  text-align: center;
+  padding-top: 5px;
+}
+
+.encuesta {
+  margin-top: 200px; /* Ajusta este valor según sea necesario para el margen deseado */
+  margin-bottom: 40px;
+}
+
+.fila-gris-oscuro {
+  background-color: #e0e0e0;
+}
+
+.fila-gris-claro {
+  background-color: #eeeeee;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*
+
+.fila-gris-oscuro {
+  background-color: #ebf0ff;
+}
+
+.fila-gris-claro {
+  background-color: #f0f4ff;
+
+*/

@@ -24,5 +24,9 @@
   "alumno.bar": "Avaliable surveys",
   "profesor": "Professor",
   "responder": "Respond",
-  "encuesta.cerrada": "Survey not yet activated"
+  "encuesta.cerrada": "Survey not yet activated",
+  "tiempo.restante" : "Remaining time",
+  "encuesta.grado": "Bachelor's Survey",
+  "encuesta.master": "Master's Survey",
+  "ns.nr": "dk/da"
 }

@@ -24,6 +24,10 @@
   "alumno.bar": "Inkesta eskuragarriak",
   "profesor": "Irakaslea",
   "responder": "Erantzun",
-  "encuesta.cerrada": "Oraindik ez da aktibatu inkesta"
+  "encuesta.cerrada": "Oraindik ez da aktibatu inkesta",
+  "tiempo.restante" : "Geratzen den denbora",
+  "encuesta.grado": "Graduaren inkesta",
+  "encuesta.master": "Masterren inkesta",
+  "ns.nr": "ed/ee"
 
 }
