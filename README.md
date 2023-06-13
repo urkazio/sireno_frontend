@@ -20,4 +20,4 @@ SiREnO (Sistema de Recogida de Encuestas Online) es un proyecto de Trabajo de Fi
 - Abre tu navegador y accede a la URL local (http://localhost:4200/).
 
 ## Contacto
-[Contáctame por correo electrónico](urkoupv@gmail.com)
+urkoupv@gmail.com
