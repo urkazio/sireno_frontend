@@ -28,6 +28,8 @@
   "tiempo.restante" : "Geratzen den denbora",
   "encuesta.grado": "Graduaren inkesta",
   "encuesta.master": "Masterren inkesta",
-  "ns.nr": "ed/ee"
+  "ns.nr": "ed/ee",
+  "popup.encuesta.head": "Erantzunik gabeko galderak daude.",
+  "popup.encuesta.body": "Mesedez, erantzun galdera guztiak jarraitu aurretik."
 
 }

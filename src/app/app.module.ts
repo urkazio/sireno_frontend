@@ -29,7 +29,7 @@ import { NavbarAdminsComponent } from './components/shared/navbars/navbar-admins
 import { NavbarDocentesComponent } from './components/shared/navbars/navbar-docentes/navbar-docentes.component';
 import { CampanaAbiertaComponent } from './components/shared/campañas/campana-abierta/campana-abierta.component';
 import { CampanaCerradaComponent } from './components/shared/campañas/campana-cerrada/campana-cerrada.component';
-import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encuesta1/encuesta1.component';
+import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encuesta1.component';
 
 
 @NgModule({

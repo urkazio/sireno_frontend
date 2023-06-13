@@ -1,11 +1,12 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { LanguageService } from '../../../../../services/languaje.service';
-import { AuthService } from '../../../../../services/auth.service';
+import { LanguageService } from '../../../../services/languaje.service';
+import { AuthService } from '../../../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { interval, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { DataSharingService } from '../../../../../services/data.service';
+import { DataSharingService } from '../../../../services/data.service';
+import { PopupfactoryService } from '../../../../services/popupfactory.service';
 
 
 
@@ -32,7 +33,8 @@ export class Encuesta1Component implements OnInit {
     private route: ActivatedRoute,
     private renderer: Renderer2, // para gestionar que que todas las respuestas han sido marcadas
     private router: Router, // Router para redirigir al usuario
-    private dataSharingService: DataSharingService
+    private dataSharingService: DataSharingService,
+    private popupfactoryService: PopupfactoryService
     ) {}
 
   ngOnInit() {
@@ -90,7 +92,7 @@ export class Encuesta1Component implements OnInit {
     });
   
     if (preguntasSinRespuesta.length > 0) {
-      alert('Por favor, seleccione una respuesta para cada pregunta.');
+      this.popupfactoryService.openOkPoup(this.strings["popup.encuesta.head"], this.strings["popup.encuesta.body"]);
     } else {
       // Aquí puedes enviar la encuesta
     }

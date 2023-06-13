@@ -7,7 +7,7 @@ import { IndexAdminsComponent } from './components/admins/index-admins/index-adm
 import { IndexDocentesComponent } from './components/docentes/index-docentes/index-docentes.component';
 import { IndexAlumnosComponent } from './components/alumnos/index-alumnos/index-alumnos.component';
 import { PopupRolesComponent } from './components/shared/popups/popup-roles-do-al/popup-roles-do-al.component';
-import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encuesta1/encuesta1.component';
+import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encuesta1.component';
 import { EncuestaGuard } from './guards/encuesta.guard';
 
 

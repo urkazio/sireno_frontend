@@ -28,7 +28,9 @@
   "tiempo.restante" : "Tiempo restante",
   "encuesta.grado": "Encuesta de Grado",
   "encuesta.master": "Encuesta de Máster",
-  "ns.nr": "ns/nr"
+  "ns.nr": "ns/nr",
+  "popup.encuesta.head": "Hay preguntas sin responder.",
+  "popup.encuesta.body": "Por favor, complete todas las preguntas antes de continuar."
 
 
   }
