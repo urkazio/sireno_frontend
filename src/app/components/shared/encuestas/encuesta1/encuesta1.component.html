@@ -35,7 +35,8 @@
         </div>
       </div>
       <div class="card-footer text-center">
-        <button class="btn btn-primary custom-btn-color">Enviar</button>
+        <button class="btn btn-secondary custom-btn-color" style="margin-right: 30px;" (click)="cancelar()">{{ strings['popup.cancelar'] }}</button>
+        <button class="btn btn-primary custom-btn-color" (click)="enviar()">{{ strings['enviar'] }}</button>
       </div>
     </div>
   </div>

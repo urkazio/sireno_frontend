@@ -22,7 +22,7 @@
   "popup.aceptar": "Aceptar",
   "popup.cancelar": "Cancelar",
   "alumno.bar": "Encuestas disponibles",
-  "profesor": "Profesor",
+  "profesor": "Docente",
   "responder": "Responder",
   "encuesta.cerrada": "Encuesta aún sin activar",
   "tiempo.restante" : "Tiempo restante",
@@ -30,8 +30,10 @@
   "encuesta.master": "Encuesta de Máster",
   "ns.nr": "ns/nr",
   "popup.encuesta.head": "Hay preguntas sin responder.",
-  "popup.encuesta.body": "Por favor, complete todas las preguntas antes de continuar."
-
-
+  "popup.encuesta.body": "Haga clic en el botón 'Aceptar' si aún desea enviar la encuesta.",
+  "popup.canclear.head": "¿Está seguro de que desea salir?",
+  "popup.canclear.body": "Se perderán las respuestas seleccionadas.",
+  "enviar" : "Enviar"
+  
   }
   

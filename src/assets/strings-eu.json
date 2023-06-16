@@ -19,7 +19,7 @@
   "popup.docente": "Irakaslea",
   "popup.alumno": "Ikaslea",
   "popup.admin": "Administratzailea",
-  "popup.aceptar": "Onartu",
+  "popup.aceptar": "Ados",
   "popup.cancelar": "Ezeztatu",
   "alumno.bar": "Inkesta eskuragarriak",
   "profesor": "Irakaslea",
@@ -30,6 +30,9 @@
   "encuesta.master": "Masterren inkesta",
   "ns.nr": "ed/ee",
   "popup.encuesta.head": "Erantzunik gabeko galderak daude.",
-  "popup.encuesta.body": "Mesedez, erantzun galdera guztiak jarraitu aurretik."
+  "popup.encuesta.body": "Egin klik 'Ados' botoian inkesta bidali nahi baduzu oraindik.",
+  "popup.canclear.head": "Zihur zaude irten nahi duzula?",
+  "popup.canclear.body": "Aukeratutako erantzunak galduko dira.",
+  "enviar": "Bidali"
 
 }

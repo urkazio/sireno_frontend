@@ -68,10 +68,6 @@ export class Encuesta1Component implements OnInit {
       );
     });
  
-    const enviarButton = document.querySelector('.custom-btn-color') as HTMLElement;
-    this.renderer.listen(enviarButton, 'click', () => {
-      this.verificarRespuestas();
-    });
 
   }
 
@@ -93,8 +89,6 @@ export class Encuesta1Component implements OnInit {
   
     if (preguntasSinRespuesta.length > 0) {
       this.popupfactoryService.openOkPoup(this.strings["popup.encuesta.head"], this.strings["popup.encuesta.body"]);
-    } else {
-      // Aquí puedes enviar la encuesta
     }
   }
 
@@ -110,7 +104,7 @@ export class Encuesta1Component implements OnInit {
       
       // Verifica si el tiempo restante es menor o igual a cero
       if (diferenciaMs <= 0) {
-        this.router.navigate(['indexAlumnos']);
+        this.cancelar();
       }
   
       // Calcula las horas, minutos y segundos
@@ -134,5 +128,16 @@ export class Encuesta1Component implements OnInit {
     return valor < 10 ? `0${valor}` : `${valor}`;
   }
   
+  async cancelar() {
+    const result = await this.popupfactoryService.openOkPoup(this.strings["popup.canclear.head"], this.strings["popup.canclear.body"]);
+    if (result) {
+      this.router.navigate(['indexAlumnos']);
+    }
+  }
+  
+
+  enviar(){
+    this.verificarRespuestas();
+  }
 }
 

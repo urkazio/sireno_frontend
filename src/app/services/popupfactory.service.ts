@@ -45,11 +45,19 @@ export class PopupfactoryService {
     }
 
   // abre el popup 'de okay' con valores custom 
-  openOkPoup(title: string, mensaje: string){
+  openOkPoup(title: string, mensaje: string): Promise<boolean> {
     const modalRef = this.modalService.open(PopupOkComponent);
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.mensaje = mensaje;
-    return modalRef;
+
+    //devuelve true si ha pulsado el boton aceptar
+    return new Promise<boolean>((resolve) => {
+      const acceptButton = document.querySelector('.modal-footer button.btn-primary');
+      acceptButton?.addEventListener('click', () => {
+        resolve(true);
+      });
+    });
   }
+  
 
 }

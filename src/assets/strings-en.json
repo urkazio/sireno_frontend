@@ -30,6 +30,9 @@
   "encuesta.master": "Master's Survey",
   "ns.nr": "dk/da",
   "popup.encuesta.head": "There are unanswered questions.",
-  "popup.encuesta.body": "Please complete all the questions before proceeding."
+  "popup.encuesta.body": "Click the 'Accept' button if you still want to send the survey.",
+  "popup.canclear.head": "Are you sure you want to exit?",
+  "popup.canclear.body": "Selected responses will be lost.",
+  "enviar" : "Send"
 
 }

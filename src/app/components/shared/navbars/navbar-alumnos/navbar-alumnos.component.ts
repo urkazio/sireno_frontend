@@ -37,6 +37,10 @@ export class NavbarAlumnosComponent {
     this.router.navigate(["login"]); // Navega hacia la página de inicio de sesión
   }
 
+  goHome() {
+    this.router.navigate(["indexAlumnos"]); // Navega hacia la página de inicio de sesión
+  }
+
   isLoggedIn(): boolean {
     const token = localStorage.getItem('token'); // Comprueba si existe un token en el almacenamiento local
     return token !== null; // Devuelve true si el usuario está autenticado (el token existe), de lo contrario devuelve false
