@@ -1,27 +1,23 @@
-# SirenoFrontend
+# SiREnO (frontend)
+SiREnO (Sistema de Recogida de Encuestas Online) es un proyecto de Trabajo de Fin de Grado que tiene como objetivo digitalizar el proceso de recopilación y análisis de las encuestas de satisfacción del alumnado en la Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU). Este proyecto se centra en el desarrollo del frontend de la aplicación web, proporcionando una interfaz intuitiva y amigable para los usuarios.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.7.
+## Características principales
+- Inicio de sesión seguro para administradores y usuarios del sistema.
+- Visualización de las encuestas disponibles y su estado (abiertas, cerradas, en progreso).
+- Rellenar las encuestas de forma interactiva y fácil de usar.
+- Edición y actualización de las respuestas antes de enviar la encuesta.
+- Generación de informes y análisis estadísticos a partir de los datos recopilados.
 
-## Development server
+## Tecnologías utilizadas
+- Framework de JavaScript (Angular) junto con HTML5, CSS3 y Typescript para la estructura, diseño y funcionalidad del frontend.
+- Integración con API RESTful para interactuar con el backend y gestionar los datos de las encuestas.
+- Almacenamiento de datos en una base de datos (MySQL) para el acceso y la persistencia de la información.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Clona este repositorio en tu máquina local:
+- Instala las dependencias necesarias utilizando el gestor de paquetes de tu elección (npm, yarn, etc.).
+- Configura las variables de entorno necesarias para conectarse a la API RESTful y la base de datos.
+- Ejecuta el comando ng serve para iniciar la aplicación en el entorno de desarrollo.
+- Abre tu navegador y accede a la URL local (http://localhost:4200/).
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Contacto
+urkoupv@gmail.com
