@@ -39,12 +39,20 @@ export class EncuestaGuard implements CanActivate {
     }
 
     if (this.cod_situacion_docente && this.nombreAsignatura && this.nombre_docente && this.fecha_fin_activacion && this.cod_encuesta) {
+
       // Obtener la lista de cod_situaciones del servicio
       return this.authService.getSDsAlumno().pipe(
         map((situaciones_docentes: Object) => {
           // Verificar si cod_situacion_docente está en la lista
           if (Object.values(situaciones_docentes).includes(this.cod_situacion_docente)) {
-            return true;
+            // Verificar si campaña de la situacion docente es activa
+            const isActiva = this.authService.isActiva(this.cod_situacion_docente);
+            if (isActiva){
+              return true;
+            }else{
+              this.router.navigate(['indexAlumnos']);
+              return false;
+            }
           } else {
             // Si cod_situacion_docente no está en la lista, redirigir al usuario
             this.router.navigate(['indexAlumnos']);

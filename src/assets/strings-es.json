@@ -33,7 +33,11 @@
   "popup.encuesta.body": "Haga clic en el botón 'Aceptar' si aún desea enviar la encuesta.",
   "popup.canclear.head": "¿Está seguro de que desea salir?",
   "popup.canclear.body": "Se perderán las respuestas seleccionadas.",
-  "enviar" : "Enviar"
+  "enviar" : "Enviar",
+  "popup.enviada.head": "Encuesta enviada",
+  "popup.enviada.body": "Las respuestas se han enviado exitosamente",
+  "popup.errorEnvio.head": "Error de envío",
+  "popup.errorEnvio.body": "Ha habido un error en el envio de la encuesta. Vuelva a intenrarlo más tarde."
   
   }
   

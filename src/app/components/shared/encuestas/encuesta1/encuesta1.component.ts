@@ -1,7 +1,6 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { LanguageService } from '../../../../services/languaje.service';
 import { AuthService } from '../../../../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
 import { interval, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -24,20 +23,28 @@ export class Encuesta1Component implements OnInit {
   nombreAsignatura : string = '';
   nombre_docente : string = '';
   fecha_fin_activacion: Date | null = null;
+  numerica : number | null = null;
   strings: any; // Variable para almacenar los textos
   tiempoRestante: Observable<string> = new Observable<string>();
 
   constructor(
     private authService: AuthService, 
     private languageService: LanguageService,
-    private route: ActivatedRoute,
-    private renderer: Renderer2, // para gestionar que que todas las respuestas han sido marcadas
     private router: Router, // Router para redirigir al usuario
     private dataSharingService: DataSharingService,
-    private popupfactoryService: PopupfactoryService
+    private popupfactoryService: PopupfactoryService,
     ) {}
 
+
+    @HostListener('window:beforeunload', ['$event'])
+    unloadHandler(event: Event) {
+      event.preventDefault();
+      event.returnValue = false;
+    }
+    
+
   ngOnInit() {
+
     //recuperar los parametros pasados por la vista llamadora
     const parametros = this.dataSharingService.getData('parametrosEncuesta');
 
@@ -82,14 +89,16 @@ export class Encuesta1Component implements OnInit {
     );
   }
 
-  verificarRespuestas() {
+  async verificarRespuestas() {
     const preguntasSinRespuesta = this.encuesta.filter(pregunta => {
       return !pregunta.respuestas.some((respuesta: { cod_respuesta: string, texto: string, selected: boolean }) => respuesta.selected);
     });
   
     if (preguntasSinRespuesta.length > 0) {
-      this.popupfactoryService.openOkPoup(this.strings["popup.encuesta.head"], this.strings["popup.encuesta.body"]);
+      const result = await this.popupfactoryService.openOkPoup(this.strings["popup.encuesta.head"], this.strings["popup.encuesta.body"]);
+      return result;
     }
+    return true;
   }
 
   getTiempoCierre() {
@@ -130,14 +139,54 @@ export class Encuesta1Component implements OnInit {
   
   async cancelar() {
     const result = await this.popupfactoryService.openOkPoup(this.strings["popup.canclear.head"], this.strings["popup.canclear.body"]);
+    console.log(result);
     if (result) {
       this.router.navigate(['indexAlumnos']);
     }
   }
   
 
-  enviar(){
-    this.verificarRespuestas();
+  async enviar() {
+
+    //invocar al popup
+    const enviar = await this.verificarRespuestas();
+
+    if (enviar) {
+      let respuestasJSON = [];
+
+      //iterar la encuesta para agrupar cada pregunta con su respuesta en un JSON
+      for (let i = 0; i < this.encuesta.length; i++) {
+        const pregunta = this.encuesta[i];
+
+        if (pregunta.respuestas.some((respuesta: any) => respuesta.selected)) {
+          const respuestaSeleccionada = pregunta.respuestas.find((respuesta: any) => respuesta.selected);
+          const respuestaJSON = {
+            numerica : pregunta.numerica,
+            cod_pregunta: pregunta.cod_pregunta,
+            cod_respuesta: respuestaSeleccionada.cod_respuesta
+          };
+          respuestasJSON.push(respuestaJSON);
+        }
+
+      }
+
+      //enviar el JSON de respuestas al back-end
+      const exitoso = this.authService.enviarRespuestasAlumno(respuestasJSON, this.cod_situacion_docente);
+      exitoso.subscribe(() => {
+          // si el envio de respuestas ha sido exitoso --> redirigir y notificar
+          this.router.navigate(['indexAlumnos']);
+          this.popupfactoryService.openOkPoup(this.strings["popup.enviada.head"], this.strings["popup.enviada.body"]);
+        },
+        error => {
+          console.log('Error:', error);
+          this.popupfactoryService.openOkPoup(this.strings["popup.errorEnvio.head"], this.strings["popup.errorEnvio.body"]);
+        }
+      );
+    }
   }
+  
+  
+
+
 }
 

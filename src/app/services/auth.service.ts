@@ -63,4 +63,19 @@ export class AuthService {
     return this.http.post(`${this.URL}/alumno/getSDsAlumno`, {});
   }
 
+  isActiva(cod_situacion_docente:string){
+    return this.http.post(`${this.URL}/alumno/isActiva`, cod_situacion_docente);
+  }
+
+  enviarRespuestasAlumno(respuestas:any, cod_situacion_docente:string){
+
+    const datos_respuesta = {
+      respuestas : respuestas,
+      cod_situacion_docente : cod_situacion_docente
+    };
+    
+    const exitoso = this.http.post(`${this.URL}/alumno/setRespuestas`, datos_respuesta);
+    return exitoso;
+  }
+
 }

@@ -33,6 +33,10 @@
   "popup.encuesta.body": "Egin klik 'Ados' botoian inkesta bidali nahi baduzu oraindik.",
   "popup.canclear.head": "Zihur zaude irten nahi duzula?",
   "popup.canclear.body": "Aukeratutako erantzunak galduko dira.",
-  "enviar": "Bidali"
+  "enviar": "Bidali",
+  "popup.enviada.head": "Inkesta bidali da",
+  "popup.enviada.body": "Erantzunak behar bezala bidali dira",
+  "popup.errorEnvio.head": "Akatsa bidaltzean",
+  "popup.errorEnvio.body": "Errore bat gertatu da inkesta bidaltzean. Mesedez, saiatu berriro geroago."
 
 }

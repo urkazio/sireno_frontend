@@ -33,6 +33,10 @@
   "popup.encuesta.body": "Click the 'Accept' button if you still want to send the survey.",
   "popup.canclear.head": "Are you sure you want to exit?",
   "popup.canclear.body": "Selected responses will be lost.",
-  "enviar" : "Send"
+  "enviar" : "Send",
+  "popup.enviada.head": "Survey Sent",
+  "popup.enviada.body": "The responses have been successfully sent",
+  "popup.errorEnvio.head": "Sending Error",
+  "popup.errorEnvio.body": "There was an error in sending the survey. Please try again later."
 
 }
