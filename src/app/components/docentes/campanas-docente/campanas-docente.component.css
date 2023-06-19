@@ -1,0 +1,16 @@
+.orange-bar {
+    background-color: #F7A237;
+    padding: 10px;
+  }
+  
+  .orange-bar h3 {
+    margin: 0;
+    padding: 0;
+    color: white;
+  }
+  
+  .orange-bar h6 {
+    margin-top: 10px;
+    padding: 0;
+    color: white;
+  }

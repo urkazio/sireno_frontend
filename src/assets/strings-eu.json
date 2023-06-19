@@ -25,7 +25,7 @@
   "profesor": "Irakaslea",
   "responder": "Erantzun",
   "encuesta.cerrada": "Oraindik ez da aktibatu inkesta",
-  "tiempo.restante" : "Geratzen den denbora",
+  "tiempo.restante" : "Erantzuteko geratzen den denbora",
   "encuesta.grado": "Graduaren inkesta",
   "encuesta.master": "Masterren inkesta",
   "ns.nr": "ed/ee",
@@ -37,6 +37,16 @@
   "popup.enviada.head": "Inkesta bidali da",
   "popup.enviada.body": "Erantzunak behar bezala bidali dira",
   "popup.errorEnvio.head": "Akatsa bidaltzean",
-  "popup.errorEnvio.body": "Errore bat gertatu da inkesta bidaltzean. Mesedez, saiatu berriro geroago."
+  "popup.errorEnvio.body": "Errore bat gertatu da inkesta bidaltzean. Mesedez, saiatu berriro geroago.",
+  "consultar.informes": "Txostenak kontsultatu",
+  "consultar.encuestas": "Inkestak kontsultatu",
+  "campanas.curso": "Aurtenko Kanpainak",
+  "navbar.doc.head": "SiREnO Menu Nagusia",
+  "navbar.doc.body": "UPV/EHU Irakasleak",
+  "activar.encuesta": "Inkesta aktibatu",
+  "tiempo.restante2": "Inkesta aktibatzeko geratzen den denbora",
+  "no.encuestas": "Une honetan ez dituzu inkestarik eskuragarri",
+  "no.campanas": "Une honetan ez dituzu kampainiarik eskuragarri",
+  "veces.abierta": "Zenbat aldiz irekita"
 
 }

@@ -1,0 +1,14 @@
+<div class="card text-center shadow" *ngIf="mostrarCampana">
+    <div class="card-header">
+      <h5 class="card-title d-inline">{{ nombre_Asignatura }} <h6 class="d-inline">{{ anno_curso }}</h6></h5>
+    </div>
+    <div class="card-body">
+      <p>{{ strings['veces.abierta'] }}: {{ veces_abierta }}</p>
+      <button class="btn btn-primary custom-btn-color" (click)="activar()">{{ strings['activar.encuesta'] }}</button>
+    </div>
+    <div class="card-footer text-muted">
+      <small>{{ strings['tiempo.restante2'] }}</small> <br />
+      {{ tiempoRestante | async }}
+    </div>
+  </div>
+  

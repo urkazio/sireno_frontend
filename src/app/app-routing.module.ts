@@ -9,6 +9,7 @@ import { IndexAlumnosComponent } from './components/alumnos/index-alumnos/index-
 import { PopupRolesComponent } from './components/shared/popups/popup-roles-do-al/popup-roles-do-al.component';
 import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encuesta1.component';
 import { EncuestaGuard } from './guards/encuesta.guard';
+import { CampanasDocenteComponent } from './components/docentes/campanas-docente/campanas-docente.component';
 
 
 
@@ -18,8 +19,9 @@ const routes: Routes = [
   { path:'indexAlumnos', component: IndexAlumnosComponent, canActivate:[RoleGuard], data:{ expectedRole: '1' }},
   { path:'indexDocentes', component: IndexDocentesComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'indexAdmins', component: IndexAdminsComponent, canActivate:[RoleGuard], data:{ expectedRole: '2' }},
-  {path: 'encuesta', component: Encuesta1Component, canActivate: [RoleGuard, EncuestaGuard], data: { expectedRole: '1' }
-  },  { path:'**', pathMatch: 'full', redirectTo: 'login'} // por defecto redirige al home
+  {path: 'encuesta', component: Encuesta1Component, canActivate: [RoleGuard, EncuestaGuard], data: { expectedRole: '1' }},
+  { path:'campanasDocente', component: CampanasDocenteComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
+  { path:'**', pathMatch: 'full', redirectTo: 'login'} // por defecto redirige al home
 ];
 
 

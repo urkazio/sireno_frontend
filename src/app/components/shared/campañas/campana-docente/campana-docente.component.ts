@@ -5,33 +5,22 @@ import { LanguageService } from '../../../../services/languaje.service';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../../../../services/data.service';
 
-
 @Component({
-  selector: 'app-campana-abierta',
-  templateUrl: './campana-abierta.component.html',
-  styleUrls: ['./campana-abierta.component.css']
+  selector: 'app-campana-docente',
+  templateUrl: './campana-docente.component.html',
+  styleUrls: ['./campana-docente.component.css']
 })
+export class CampanaDocenteComponent implements OnInit {
 
-
-export class CampanaAbiertaComponent implements OnInit {
-
-  nombreAsignatura: string = '';
-  profesor: string = '';
-  cod_campana: string = '';
-  nombre_campana: string = '';
-  fecha_fin: Date | null = null;
-  abierta_antes: number | null = null;
-  cod_encuesta: string = '';
+  mostrarCampana: boolean = true;
   cod_situacion_docente: string = '';
-  cod_asignatura: string = '';
-  nombre_asignatura: string = '';
-  cod_docente: string = '';
-  nombre_docente: string = '';
+  n_alum_total: number | null = null;
+  n_alum_respondido: number | null = null;
+  nombre_Asignatura: string = '';
+  fecha_fin: Date | null = null;
   num_curso: number | null = null;
   anno_curso: string = '';
-  fecha_fin_activacion: Date | null = null;
-  mostrarCampana: boolean = true;
-  
+  veces_abierta: number | null = null;
   strings: any; // Variable para almacenar los textos
   tiempoRestante: Observable<string> = new Observable<string>();
   
@@ -63,10 +52,11 @@ export class CampanaAbiertaComponent implements OnInit {
       );
     });
   }
+
   
   getTiempoCierre() {
     const fechaActual = new Date();
-    const fechaFinActivacion = this.fecha_fin_activacion;
+    const fechaFinActivacion = this.fecha_fin;
   
     if (fechaFinActivacion) {
       // Calcula la diferencia en milisegundos
@@ -98,8 +88,9 @@ export class CampanaAbiertaComponent implements OnInit {
     return valor < 10 ? `0${valor}` : `${valor}`;
   }
     
-  responder() {
+  activar() {
 
+    /*
     // pasar los parametros necesarios a la vista de la encuesta
     const parametros = {
       cod_encuesta: this.cod_encuesta,
@@ -112,6 +103,7 @@ export class CampanaAbiertaComponent implements OnInit {
     this.dataSharingService.setData('parametrosEncuesta', parametros);
 
     this.router.navigate(['encuesta']);
+    */
 
   }
 }

@@ -25,7 +25,7 @@
   "profesor": "Docente",
   "responder": "Responder",
   "encuesta.cerrada": "Encuesta aún sin activar",
-  "tiempo.restante" : "Tiempo restante",
+  "tiempo.restante" : "Tiempo restante para responder",
   "encuesta.grado": "Encuesta de Grado",
   "encuesta.master": "Encuesta de Máster",
   "ns.nr": "ns/nr",
@@ -37,7 +37,20 @@
   "popup.enviada.head": "Encuesta enviada",
   "popup.enviada.body": "Las respuestas se han enviado exitosamente",
   "popup.errorEnvio.head": "Error de envío",
-  "popup.errorEnvio.body": "Ha habido un error en el envio de la encuesta. Vuelva a intenrarlo más tarde."
+  "popup.errorEnvio.body": "Ha habido un error en el envio de la encuesta. Vuelva a intenrarlo más tarde.",
+  "consultar.informes": "Consultar informes",
+  "consultar.encuestas": "Consultar encuestas",
+  "campanas.curso": "Campañas en  Curso",
+  "navbar.doc.head": "Menú Principal SiREnO",
+  "navbar.doc.body": "Profesorado UPV/EHU",
+  "activar.encuesta": "Activar Encuesta",
+  "tiempo.restante2": "Tiempo restante para activar la encuesta",
+  "no.encuestas": "No tienes encuestas disponibles en este momento.",
+  "no.campanas": "No tienes campañas en curso en este momento.",
+  "veces.abierta": "Veces abierta"
+
+
+
   
   }
   

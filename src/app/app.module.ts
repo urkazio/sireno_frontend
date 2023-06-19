@@ -30,6 +30,8 @@ import { NavbarDocentesComponent } from './components/shared/navbars/navbar-doce
 import { CampanaAbiertaComponent } from './components/shared/campañas/campana-abierta/campana-abierta.component';
 import { CampanaCerradaComponent } from './components/shared/campañas/campana-cerrada/campana-cerrada.component';
 import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encuesta1.component';
+import { CampanasDocenteComponent } from './components/docentes/campanas-docente/campanas-docente.component';
+import { CampanaDocenteComponent } from './components/shared/campañas/campana-docente/campana-docente.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encu
     NavbarDocentesComponent,
     CampanaAbiertaComponent,
     CampanaCerradaComponent,
-    Encuesta1Component
+    Encuesta1Component,
+    CampanasDocenteComponent,
+    CampanaDocenteComponent
   ],
   imports: [
     BrowserModule,

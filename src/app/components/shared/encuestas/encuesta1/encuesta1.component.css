@@ -44,6 +44,17 @@
   justify-content: space-between;
 }
 
+.btn-primary {
+  background-color: rgb(28, 0, 189);
+  border-color: rgb(28, 0, 189);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: rgb(0, 0, 148);
+  border-color: rgb(0, 0, 148);
+}
+
 /*
 
 .fila-gris-oscuro {

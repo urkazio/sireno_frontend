@@ -25,7 +25,7 @@
   "profesor": "Professor",
   "responder": "Respond",
   "encuesta.cerrada": "Survey not yet activated.",
-  "tiempo.restante" : "Remaining time",
+  "tiempo.restante" : "Remaining time to answer",
   "encuesta.grado": "Bachelor's Survey",
   "encuesta.master": "Master's Survey",
   "ns.nr": "dk/da",
@@ -37,6 +37,16 @@
   "popup.enviada.head": "Survey Sent",
   "popup.enviada.body": "The responses have been successfully sent",
   "popup.errorEnvio.head": "Sending Error",
-  "popup.errorEnvio.body": "There was an error in sending the survey. Please try again later."
+  "popup.errorEnvio.body": "There was an error in sending the survey. Please try again later.",
+  "consultar.informes": "Consult reports",
+  "consultar.encuestas": "Consult surveys",
+  "campanas.curso": "Ongoing Campaigns",
+  "navbar.doc.head": "SiREnO Main Menu",
+  "navbar.doc.body": "UPV/EHU Faculty",
+  "activar.encuesta": "Activate Survey",
+  "tiempo.restante2": "Remaining time to activate the survey",
+  "no.encuestas": "You don't have any surveys available at the moment.",
+  "no.campanas": "You don't have any ongoing campaigns at the moment.",
+  "veces.abierta": "Times opened"
 
 }

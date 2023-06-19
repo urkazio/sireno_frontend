@@ -44,6 +44,7 @@ export class AuthService {
     return true;
   }
 
+  //---------------------------------- alumnos  ----------------------------------------------
 
   getCampanas(){
     return this.http.post(`${this.URL}/alumno/getCampannas`, {});
@@ -76,6 +77,12 @@ export class AuthService {
     
     const exitoso = this.http.post(`${this.URL}/alumno/setRespuestas`, datos_respuesta);
     return exitoso;
+  }
+
+  //---------------------------------- docentes ----------------------------------------------
+
+  getCampannasDocente(){
+    return this.http.post(`${this.URL}/docente/getCampannas`, {});
   }
 
 }

@@ -44,22 +44,6 @@ export class CampanaCerradaComponent implements OnInit {
       );
     });
   }
-
-  loadStrings(lang: string) {
-    this.languageService.loadStrings(lang).subscribe(
-      data => {
-        this.strings = data; // Almacena los textos cargados en la variable 'strings'
-      },
-      error => {
-        console.error(`Error loading strings for ${lang}:`, error); // Muestra un mensaje de error si falla la carga de los textos
-      }
-    );
-  }
-
-
-  changeLanguage(lang: string) {
-    this.languageService.changeLanguage(lang); // Cambia el idioma actual utilizando el servicio de idioma
-  }
   
 
   mostrarObjeto() {

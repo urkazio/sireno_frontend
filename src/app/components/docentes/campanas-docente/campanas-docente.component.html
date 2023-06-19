@@ -1,0 +1,10 @@
+<!-- insercion del navbar -->
+<app-navbar-docentes></app-navbar-docentes>
+
+<div class="orange-bar pt-3 pb-3">
+    <h3 class="text-center">{{ strings['campanas.curso'] }}</h3>
+</div>
+
+<div *ngIf="noHayCampanasValidas" class="mensaje">
+    <p>{{ strings['no.campanas'] }}</p>
+</div>
