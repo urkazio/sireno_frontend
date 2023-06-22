@@ -47,7 +47,13 @@
   "tiempo.restante2": "Tiempo restante para activar la encuesta",
   "no.encuestas": "No tienes encuestas disponibles en este momento.",
   "no.campanas": "No tienes campañas en curso en este momento.",
-  "veces.abierta": "Veces abierta"
+  "veces.abierta": "Veces abierta",
+  "alumnos.encuestados" : "Alumnos encuestados",
+  "cerrar.encuesta": "Cerrar Encuesta",
+  "tiempo.restante3": "Tiempo restante hasta el cierre de la encuesta",
+  "encuesta.abierta": "Encuesta abierta"
+
+
 
 
 

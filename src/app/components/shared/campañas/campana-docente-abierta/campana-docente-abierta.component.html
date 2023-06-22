@@ -1,0 +1,15 @@
+<div class="card text-center shadow" *ngIf="mostrarCampana">
+    <div class="card-header">
+      <h5 class="card-title d-inline">{{ nombre_Asignatura }} <h6 class="d-inline">{{ anno_curso }}</h6></h5>
+    </div>
+    <div class="card-body">
+        <h5 class="encuesta-abierta">{{ strings['encuesta.abierta'] }}</h5>
+        <p>{{ strings['alumnos.encuestados'] }}: {{ n_alum_respondido }}/{{ n_alum_total }}</p>
+      <button class="btn btn-primary custom-btn-color" (click)="cerrar()">{{ strings['cerrar.encuesta'] }}</button>
+    </div>
+    <div class="card-footer text-muted">
+      <small>{{ strings['tiempo.restante3'] }}</small> <br />
+      {{ tiempoRestante | async }}
+    </div>
+  </div>
+  

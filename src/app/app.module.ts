@@ -32,6 +32,7 @@ import { CampanaCerradaComponent } from './components/shared/campañas/campana-c
 import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encuesta1.component';
 import { CampanasDocenteComponent } from './components/docentes/campanas-docente/campanas-docente.component';
 import { CampanaDocenteComponent } from './components/shared/campañas/campana-docente/campana-docente.component';
+import { CampanaDocenteAbiertaComponent } from './components/shared/campañas/campana-docente-abierta/campana-docente-abierta.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { CampanaDocenteComponent } from './components/shared/campañas/campana-d
     CampanaCerradaComponent,
     Encuesta1Component,
     CampanasDocenteComponent,
-    CampanaDocenteComponent
+    CampanaDocenteComponent,
+    CampanaDocenteAbiertaComponent
   ],
   imports: [
     BrowserModule,

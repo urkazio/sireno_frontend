@@ -47,6 +47,10 @@
   "tiempo.restante2": "Remaining time to activate the survey",
   "no.encuestas": "You don't have any surveys available at the moment.",
   "no.campanas": "You don't have any ongoing campaigns at the moment.",
-  "veces.abierta": "Times opened"
+  "veces.abierta": "Times opened",
+  "alumnos.encuestados" : "Students surveyed",
+  "cerrar.encuesta": "Close Survey",
+  "tiempo.restante3": "Time remaining until the survey closes",
+  "encuesta.abierta": "Survey open"
 
 }

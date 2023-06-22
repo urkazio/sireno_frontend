@@ -47,6 +47,10 @@
   "tiempo.restante2": "Inkesta aktibatzeko geratzen den denbora",
   "no.encuestas": "Une honetan ez dituzu inkestarik eskuragarri",
   "no.campanas": "Une honetan ez dituzu kampainiarik eskuragarri",
-  "veces.abierta": "Zenbat aldiz irekita"
+  "veces.abierta": "Zenbat aldiz irekita",
+  "cerrar.encuesta": "Inkesta itxi",
+  "alumnos.encuestados" : "Inkestatutako ikasleak",
+  "tiempo.restante3": "Inkesta itxi arte geratzen den denbora",
+  "encuesta.abierta": "Inkesta irekia"
 
 }

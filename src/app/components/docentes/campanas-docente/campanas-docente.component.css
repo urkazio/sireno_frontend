@@ -14,3 +14,23 @@
     padding: 0;
     color: white;
   }
+
+  .fixed-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que las barras estén por encima del contenido */
+}
+
+.second-bar {
+    margin-top: 56px; /* Ajusta este valor según sea necesario para el margen deseado */
+}
+
+.container {
+    margin-top: 150px;
+  }
+
+.mensaje {
+    margin-top: 40px;
+    text-align: center;
+ }

@@ -1,16 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { interval, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LanguageService } from '../../../../services/languaje.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../../../../services/data.service';
+import { CampanasDocenteComponent } from '../../../docentes/campanas-docente/campanas-docente.component';
+
 
 @Component({
-  selector: 'app-campana-docente',
-  templateUrl: './campana-docente.component.html',
-  styleUrls: ['./campana-docente.component.css']
+  selector: 'app-campana-docente-abierta',
+  templateUrl: './campana-docente-abierta.component.html',
+  styleUrls: ['./campana-docente-abierta.component.css']
 })
-export class CampanaDocenteComponent implements OnInit {
+export class CampanaDocenteAbiertaComponent implements OnInit {
 
   mostrarCampana: boolean = true;
   cod_situacion_docente: string = '';
@@ -27,9 +30,11 @@ export class CampanaDocenteComponent implements OnInit {
   
 
   constructor(
+    private authService: AuthService, // Servicio de autenticación
     private languageService: LanguageService, // Servicio de idioma
-    private router: Router, // Router para redirigir al usuario
-    private dataSharingService: DataSharingService // servicio de datos para pasar al componente 2
+    private viewContainerRef: ViewContainerRef,
+    private resolver: ComponentFactoryResolver,
+    private router: Router
   ) {}
 
 
@@ -57,16 +62,15 @@ export class CampanaDocenteComponent implements OnInit {
   
   getTiempoCierre() {
     const fechaActual = new Date();
-    const fechaFinCammpañaValida = this.fecha_fin;
+    const fechaFinActivacion = this.fecha_hora_cierre;
   
-    if (fechaFinCammpañaValida) {
+    if (fechaFinActivacion) {
       // Calcula la diferencia en milisegundos
-      const diferenciaMs = fechaFinCammpañaValida.getTime() - fechaActual.getTime();
+      const diferenciaMs = fechaFinActivacion.getTime() - fechaActual.getTime();
 
       // Verifica si el tiempo restante es menor o igual a cero
       if (diferenciaMs <= 0) {
-        this.mostrarCampana = false; // Oculta la campaña
-        return ''; // Retorna una cadena vacía para no mostrar el tiempo restante
+        window.location.reload(); // Recarga la página
       }
   
       // Calcula las horas, minutos y segundos
@@ -89,7 +93,7 @@ export class CampanaDocenteComponent implements OnInit {
     return valor < 10 ? `0${valor}` : `${valor}`;
   }
     
-  activar() {
+  cerrar() {
 
     /*
     // pasar los parametros necesarios a la vista de la encuesta
