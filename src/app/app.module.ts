@@ -33,6 +33,7 @@ import { Encuesta1Component } from './components/shared/encuestas/encuesta1/encu
 import { CampanasDocenteComponent } from './components/docentes/campanas-docente/campanas-docente.component';
 import { CampanaDocenteComponent } from './components/shared/campañas/campana-docente/campana-docente.component';
 import { CampanaDocenteAbiertaComponent } from './components/shared/campañas/campana-docente-abierta/campana-docente-abierta.component';
+import { PopupFechaHoraComponent } from './components/shared/popups/popup-fecha-hora/popup-fecha-hora.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { CampanaDocenteAbiertaComponent } from './components/shared/campañas/ca
     Encuesta1Component,
     CampanasDocenteComponent,
     CampanaDocenteComponent,
-    CampanaDocenteAbiertaComponent
+    CampanaDocenteAbiertaComponent,
+    PopupFechaHoraComponent
   ],
   imports: [
     BrowserModule,

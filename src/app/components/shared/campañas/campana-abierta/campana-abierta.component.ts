@@ -20,7 +20,7 @@ export class CampanaAbiertaComponent implements OnInit {
   cod_campana: string = '';
   nombre_campana: string = '';
   fecha_fin: Date | null = null;
-  abierta_antes: number | null = null;
+  veces_activada: number | null = null;
   cod_encuesta: string = '';
   cod_situacion_docente: string = '';
   cod_asignatura: string = '';

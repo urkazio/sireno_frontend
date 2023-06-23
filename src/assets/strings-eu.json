@@ -51,6 +51,16 @@
   "cerrar.encuesta": "Inkesta itxi",
   "alumnos.encuestados" : "Inkestatutako ikasleak",
   "tiempo.restante3": "Inkesta itxi arte geratzen den denbora",
-  "encuesta.abierta": "Inkesta irekia"
+  "encuesta.abierta": "Inkesta irekia",
+  "popup.activacion.head": "Inkestaren aktibazioa",
+  "popup.activacion.body": "Aukeratu inkesta ixteko eguna eta ordua.",
+  "popup.activacionERR.head": "Aktibazioa huts egin du",
+  "popup.activacionERR.body": "Hautatutako datak uneko dataren eta kanpainaren iraungitze dataren artean egon behar du.",
+  "popup.activacionOK.head": "Inkesta aktibatuta",
+  "popup.activacionOK.body": "La encuesta se ha activado correctamente hasta el plazo indicado.",
+  "popup.activacionERR2.head": "Aktibazioa huts egin du",
+  "popup.activacionERR3.body": "Ezusteko errore bat gertatu da kanpainaren aktibazioan",
+  "popup.cerrada.head": "Inkesta itxia",
+  "popup.cerrada.body": "Inkesta irakasleak edo administrazioak irekitzen duenean erantzun daiteke."
 
 }

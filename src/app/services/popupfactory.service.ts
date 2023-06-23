@@ -4,6 +4,9 @@ import { PopupRolesComponent } from '../components/shared/popups/popup-roles-do-
 import { PopupRolesDoAdComponent } from '../components/shared/popups/popup-roles-do-ad/popup-roles-do-ad.component';
 import { PopupRolesDoAlAdComponent } from '../components/shared/popups/popup-roles-do-al-ad/popup-roles-do-al-ad.component';
 import { PopupOkComponent } from '../components/shared/popups/popup-ok/popup-ok.component';
+import { PopupFechaHoraComponent } from '../components/shared/popups/popup-fecha-hora/popup-fecha-hora.component';
+
+
 
 
 
@@ -58,6 +61,28 @@ export class PopupfactoryService {
       });
     });
   }
+
+  openFechaHoraPopup(title: string, mensaje: string): Promise<string> {
+    const modalRef = this.modalService.open(PopupOkComponent);
+    modalRef.componentInstance.title = title;
+    modalRef.componentInstance.mensaje = mensaje;
+  
+    const dateTimeInput = document.createElement('input');
+    dateTimeInput.type = 'datetime-local';
+    dateTimeInput.className = 'form-control';
+  
+    const modalBody = document.querySelector('.modal-body');
+    modalBody?.appendChild(dateTimeInput);
+  
+    return new Promise<string>((resolve) => {
+      const acceptButton = document.querySelector('.modal-footer button.btn-primary');
+      acceptButton?.addEventListener('click', () => {
+        const selectedDateTime = dateTimeInput.value;
+        resolve(selectedDateTime);
+      });
+    });
+  }
+  
   
 
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LanguageService } from '../../../../services/languaje.service';
+import { PopupfactoryService } from '../../../../services/popupfactory.service'
 
 @Component({
   selector: 'app-campana-cerrada',
@@ -13,7 +14,7 @@ export class CampanaCerradaComponent implements OnInit {
   cod_campana: string = '';
   nombre_campana: string = '';
   fecha_fin: Date | null = null;
-  abierta_antes: number | null = null;
+  veces_activada: number | null = null;
   cod_encuesta: string = '';
   cod_situacion_docente: string = '';
   cod_asignatura: string = '';
@@ -28,6 +29,7 @@ export class CampanaCerradaComponent implements OnInit {
 
   constructor(
     private languageService: LanguageService, // Servicio de idioma
+    private popupfactoryService: PopupfactoryService
   ) {}
 
   ngOnInit() {
@@ -46,22 +48,7 @@ export class CampanaCerradaComponent implements OnInit {
   }
   
 
-  mostrarObjeto() {
-    console.log({
-      cod_campana: this.cod_campana,
-      nombre_campana: this.nombre_campana,
-      fecha_fin: this.fecha_fin,
-      abierta_antes: this.abierta_antes,
-      cod_encuesta: this.cod_encuesta,
-      cod_situacion_docente: this.cod_situacion_docente,
-      cod_asignatura: this.cod_asignatura,
-      nombre_asignatura: this.nombre_asignatura,
-      cod_docente: this.cod_docente,
-      nombre_docente: this.nombre_docente,
-      num_curso: this.num_curso,
-      anno_curso: this.anno_curso,
-      fecha_fin_activacion: this.fecha_fin_activacion
-      // Agrega más propiedades según necesites
-    });
+  click() {
+    this.popupfactoryService.openOkPoup(this.strings["popup.cerrada.head"], this.strings["popup.cerrada.body"]);
   }
 }

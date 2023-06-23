@@ -93,6 +93,7 @@ export class CampanasDocenteComponent implements OnInit{
         instance.num_curso = campana.num_curso;
         instance.anno_curso = campana.año_curso;
         instance.veces_abierta = campana.activada;
+        instance.agrupado_con = campana.agrupado_con;
         instance.fecha_hora_cierre = new Date(campana.fecha_hora_cierre);
   
         // Agregar el componente al contenedor

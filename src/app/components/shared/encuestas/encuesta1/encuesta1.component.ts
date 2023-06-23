@@ -113,7 +113,7 @@ export class Encuesta1Component implements OnInit {
       
       // Verifica si el tiempo restante es menor o igual a cero
       if (diferenciaMs <= 0) {
-        this.cancelar();
+        this.router.navigate(['indexAlumnos']);
       }
   
       // Calcula las horas, minutos y segundos

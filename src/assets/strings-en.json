@@ -51,6 +51,15 @@
   "alumnos.encuestados" : "Students surveyed",
   "cerrar.encuesta": "Close Survey",
   "tiempo.restante3": "Time remaining until the survey closes",
-  "encuesta.abierta": "Survey open"
-
+  "encuesta.abierta": "Survey open",
+  "popup.activacion.head": "Survey Activation",
+  "popup.activacion.body": "Choose the survey closure date and time.",
+  "popup.activacionERR.head": "Activation Error",
+  "popup.activacionERR.body": "The selected date must be between the current date and the expiration date of the campaign.",
+  "popup.activacionOK.head": "Survey Activated",
+  "popup.activacionOK.body": "The survey has been successfully activated until the specified deadline.",
+  "popup.activacionERR2.head": "Activation Error",
+  "popup.activacionERR3.body": "An unexpected error has occurred in the activation of the campaign.",
+  "popup.cerrada.head": "Closed survey",
+  "popup.cerrada.body": "The survey can be answered when the teacher or the administration open it."
 }

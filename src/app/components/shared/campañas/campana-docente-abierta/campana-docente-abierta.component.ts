@@ -25,6 +25,7 @@ export class CampanaDocenteAbiertaComponent implements OnInit {
   num_curso: number | null = null;
   anno_curso: string = '';
   veces_abierta: number | null = null;
+  agrupado_con: any;
   strings: any; // Variable para almacenar los textos
   tiempoRestante: Observable<string> = new Observable<string>();
   
@@ -70,6 +71,7 @@ export class CampanaDocenteAbiertaComponent implements OnInit {
 
       // Verifica si el tiempo restante es menor o igual a cero
       if (diferenciaMs <= 0) {
+        
         window.location.reload(); // Recarga la página
       }
   

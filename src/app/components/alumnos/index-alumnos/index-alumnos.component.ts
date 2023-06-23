@@ -53,7 +53,8 @@ export class IndexAlumnosComponent implements OnInit{
       let instance;
       this.noHayEncuestasDisponibles=false;
 
-      if (campana.abierta_antes == 1) {
+
+      if (campana.veces_activada >= 1) {
         factory = this.resolver.resolveComponentFactory(CampanaAbiertaComponent);
         componentRef = this.viewContainerRef.createComponent(factory);
         instance = componentRef.instance as CampanaAbiertaComponent;
@@ -69,7 +70,7 @@ export class IndexAlumnosComponent implements OnInit{
       instance.cod_campana = campana.cod_campana;
       instance.nombre_campana = campana.nombre_campana;
       instance.fecha_fin = new Date(campana.fecha_fin);
-      instance.abierta_antes = campana.abierta_antes;
+      instance.veces_activada = campana.veces_abierta;
       instance.cod_encuesta = campana.cod_encuesta;
       instance.cod_situacion_docente = campana.cod_situacion_docente;
       instance.cod_asignatura = campana.cod_asignatura;

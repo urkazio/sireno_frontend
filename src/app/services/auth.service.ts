@@ -85,4 +85,21 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getCampannas`, {});
   }
 
+
+  abrirCampanna(situaciones:any, fechaHoraFinActivacion:any){
+
+    console.log(situaciones +" -- "+ fechaHoraFinActivacion);
+
+    const datos_activacion = {
+      situaciones : situaciones,
+      fechaHoraFinActivacion : fechaHoraFinActivacion
+    };
+
+    return this.http.post(`${this.URL}/docente/abrirCampanna`, datos_activacion);
+  }
+
+  prueba(){
+    this.http.post(`${this.URL}/docente/prueba`, {});
+  }
+
 }

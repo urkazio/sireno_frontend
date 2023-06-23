@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{ title }}</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onCancel()"></button>
+  </div>
+  <div class="modal-body">
+    <p>{{ mensaje }}</p>
+    <input type="datetime-local" class="form-control">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="onCancel()">{{ strings['popup.aceptar'] }}</button>
+  </div>
+  

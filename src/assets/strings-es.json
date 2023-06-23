@@ -51,7 +51,18 @@
   "alumnos.encuestados" : "Alumnos encuestados",
   "cerrar.encuesta": "Cerrar Encuesta",
   "tiempo.restante3": "Tiempo restante hasta el cierre de la encuesta",
-  "encuesta.abierta": "Encuesta abierta"
+  "encuesta.abierta": "Encuesta abierta",
+  "popup.activacion.head": "Activación de la encuesta",
+  "popup.activacion.body": "Elija la fecha y hora del cierre de la encuesta.",
+  "popup.activacionERR.head": "Error en la activación",
+  "popup.activacionERR.body": "La fecha seleccionada debe estar entre la fecha actual y la fecha de expiración de la campaña.",
+  "popup.activacionOK.head": "Encuesta activada",
+  "popup.activacionOK.body": "La encuesta se ha activado correctamente hasta el plazo indicado.",
+  "popup.activacionERR2.head": "Error en la activación",
+  "popup.activacionERR3.body": "Ha ocurrido un error inesperado en la activacion de la campaña.",
+  "popup.cerrada.head": "Encuesta cerrada",
+  "popup.cerrada.body": "La encuesta podrá ser respondida cuando el docente o la administración la abran."
+
 
 
 

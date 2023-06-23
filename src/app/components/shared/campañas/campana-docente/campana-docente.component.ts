@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { LanguageService } from '../../../../services/languaje.service';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../../../../services/data.service';
+import { PopupfactoryService } from '../../../../services/popupfactory.service'
+import { AuthService } from '../../../../services/auth.service'
 
 @Component({
   selector: 'app-campana-docente',
@@ -22,6 +24,7 @@ export class CampanaDocenteComponent implements OnInit {
   num_curso: number | null = null;
   anno_curso: string = '';
   veces_abierta: number | null = null;
+  agrupado_con: any;
   strings: any; // Variable para almacenar los textos
   tiempoRestante: Observable<string> = new Observable<string>();
   
@@ -29,7 +32,9 @@ export class CampanaDocenteComponent implements OnInit {
   constructor(
     private languageService: LanguageService, // Servicio de idioma
     private router: Router, // Router para redirigir al usuario
-    private dataSharingService: DataSharingService // servicio de datos para pasar al componente 2
+    private dataSharingService: DataSharingService, // servicio de datos para pasar al componente 2
+    private popupfactoryService: PopupfactoryService,
+    private authService : AuthService
   ) {}
 
 
@@ -90,21 +95,47 @@ export class CampanaDocenteComponent implements OnInit {
   }
     
   activar() {
+    var fecha_hora_fin_activacion: string;
+  
+    this.popupfactoryService.openFechaHoraPopup(this.strings["popup.activacion.head"], this.strings["popup.activacion.body"])
+      .then((selectedDateTime: string) => {
+        fecha_hora_fin_activacion = selectedDateTime;
+        console.log(selectedDateTime);
+  
+        // Comparar la fecha y hora seleccionadas con fecha_fin
+        const fechaHoraFinActivacion = new Date(fecha_hora_fin_activacion);
+        if (this.fecha_fin){
+          const fechaActual = new Date();
 
-    /*
-    // pasar los parametros necesarios a la vista de la encuesta
-    const parametros = {
-      cod_encuesta: this.cod_encuesta,
-      fecha_fin_activacion : this.fecha_fin_activacion,
-      cod_situacion_docente : this.cod_situacion_docente,
-      nombreAsignatura: this.nombreAsignatura,
-      nombre_docente: this.nombre_docente
-    };
+          // La fecha y hora seleccionadas son posteriores a fecha_fin --> abrir campaña
+          if (fechaHoraFinActivacion < this.fecha_fin && fechaHoraFinActivacion >= fechaActual ) {
 
-    this.dataSharingService.setData('parametrosEncuesta', parametros);
+            //agrupar el conjunto de situaciones de la campaña en un array:
+            const situaciones = [this.cod_situacion_docente];
+            if (this.agrupado_con !== null) {
+              this.agrupado_con.forEach((agrupado:any) => {
+                situaciones.push(agrupado.cod_situacion_docente);
+              });
+            }
 
-    this.router.navigate(['encuesta']);
-    */
+            this.authService.abrirCampanna(situaciones, fecha_hora_fin_activacion).subscribe((res: any) => {
 
+              if(res){
+                window.location.reload();
+                this.popupfactoryService.openOkPoup(this.strings["popup.activacionOK.head"], this.strings["popup.activacionOK.body"])
+              }else{
+                this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR2.head"], this.strings["popup.activacionERR2.body"])
+              }
+            });
+
+
+          } else {
+            // La fecha y hora seleccionadas son anteriores a fecha_fin --> NO abrir campaña
+            this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR.head"], this.strings["popup.activacionERR.body"])
+          }
+        }
+
+      });
   }
+  
 }
