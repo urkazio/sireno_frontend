@@ -15,3 +15,20 @@
 .encuesta-abierta{
     color: #F7A237;
 }
+
+.parpadeo {
+    animation: parpadeo 1s infinite;
+  }
+  
+  @keyframes parpadeo {
+    0% {
+      background-color: inherit;
+    }
+    50% {
+      background-color: #F7A237;
+    }
+    100% {
+      background-color: inherit;
+    }
+  }
+  

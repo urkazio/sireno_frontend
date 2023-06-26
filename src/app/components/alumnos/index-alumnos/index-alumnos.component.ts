@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { LanguageService } from '../../../services/languaje.service';
 import { CampanaAbiertaComponent } from '../../shared/campañas/campana-abierta/campana-abierta.component';
 import { CampanaCerradaComponent } from '../../shared/campañas/campana-cerrada/campana-cerrada.component';
+import { PopupfactoryService } from '../../../services/popupfactory.service';
+
 
 @Component({
   selector: 'app-index-alumnos',
@@ -21,6 +23,7 @@ export class IndexAlumnosComponent implements OnInit{
     private languageService: LanguageService, // Servicio de idioma
     private resolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
+    private popupfactoryService: PopupfactoryService
   ) {}
 
   ngOnInit() {
@@ -37,6 +40,14 @@ export class IndexAlumnosComponent implements OnInit{
     });
 
     this.obtenerCampanas();
+
+    // Verifica si se debe mostrar el diálogo de encuesta bierta satisfactoriamente
+    const encuestaInactiva = localStorage.getItem('encuestaInactiva');
+    if (encuestaInactiva === 'true') {
+      // Limpia el indicador almacenado después de mostrar el diálogo
+      localStorage.removeItem('encuestaInactiva');
+      this.mostrarDialogo('inactiva');
+    } 
 
   }
 
@@ -90,6 +101,14 @@ export class IndexAlumnosComponent implements OnInit{
       this.viewContainerRef.element.nativeElement.appendChild(container);
     });
   });
+}
+
+mostrarDialogo(tipo:string){
+  setTimeout(() => {
+    if (tipo == 'inactiva'){
+      this.popupfactoryService.openOkPoup(this.strings["popup.inactiva.head"], this.strings["popup.inactiva.body"]);
+    }
+  }, 1500); 
 }
 
 }

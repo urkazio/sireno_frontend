@@ -65,7 +65,10 @@ export class AuthService {
   }
 
   isActiva(cod_situacion_docente:string){
-    return this.http.post(`${this.URL}/alumno/isActiva`, cod_situacion_docente);
+    const datos_respuesta = {
+      cod_situacion_docente : cod_situacion_docente
+    };
+    return this.http.post(`${this.URL}/alumno/isActiva`, datos_respuesta);
   }
 
   enviarRespuestasAlumno(respuestas:any, cod_situacion_docente:string){
@@ -74,7 +77,6 @@ export class AuthService {
       respuestas : respuestas,
       cod_situacion_docente : cod_situacion_docente
     };
-    
     const exitoso = this.http.post(`${this.URL}/alumno/setRespuestas`, datos_respuesta);
     return exitoso;
   }
@@ -88,18 +90,27 @@ export class AuthService {
 
   abrirCampanna(situaciones:any, fechaHoraFinActivacion:any){
 
-    console.log(situaciones +" -- "+ fechaHoraFinActivacion);
-
     const datos_activacion = {
       situaciones : situaciones,
       fechaHoraFinActivacion : fechaHoraFinActivacion
     };
-
     return this.http.post(`${this.URL}/docente/abrirCampanna`, datos_activacion);
   }
 
-  prueba(){
-    this.http.post(`${this.URL}/docente/prueba`, {});
+  desactivarCampana(situaciones: any){
+
+    const datos_desactivacion = {
+      situaciones : situaciones,
+    };
+    return this.http.post(`${this.URL}/docente/desactivarCampana`, datos_desactivacion);
+  }
+
+  getRespondidos(situaciones: any){
+
+    const datos_sd = {
+      situaciones : situaciones,
+    };
+    return this.http.post(`${this.URL}/docente/getRespondidos`, datos_sd);
   }
 
 }

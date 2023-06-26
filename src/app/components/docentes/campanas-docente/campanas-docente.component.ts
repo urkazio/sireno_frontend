@@ -3,6 +3,7 @@ import { LanguageService } from '../../../services/languaje.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CampanaDocenteComponent } from '../../shared/campañas/campana-docente/campana-docente.component';
 import { CampanaDocenteAbiertaComponent } from '../../shared/campañas/campana-docente-abierta/campana-docente-abierta.component';
+import { PopupfactoryService } from 'src/app/services/popupfactory.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class CampanasDocenteComponent implements OnInit{
     private languageService: LanguageService, // Servicio de idioma
     private viewContainerRef: ViewContainerRef,
     private resolver: ComponentFactoryResolver,
+    private popupfactoryService: PopupfactoryService
 
   ) {}
 
@@ -39,6 +41,21 @@ export class CampanasDocenteComponent implements OnInit{
       );
     });
 
+    // Verifica si se debe mostrar el diálogo de encuesta bierta satisfactoriamente
+    const mostrarDialogoAbierta = localStorage.getItem('encuestaAbiertaOK');
+    if (mostrarDialogoAbierta === 'true') {
+      // Limpia el indicador almacenado después de mostrar el diálogo
+      localStorage.removeItem('encuestaAbiertaOK');
+      this.mostrarDialogo('abierta');
+    }  
+
+    // Verifica si se debe mostrar el diálogo de encuesta bierta satisfactoriamente
+    const mostrarDialogoCerrada = localStorage.getItem('encuestaCerradaOK');
+    if (mostrarDialogoCerrada === 'true') {
+      // Limpia el indicador almacenado después de mostrar el diálogo
+      localStorage.removeItem('encuestaCerradaOK');
+      this.mostrarDialogo('cerrada');
+    }  
   }
 
   getCampannasDocente() {
@@ -52,9 +69,7 @@ export class CampanasDocenteComponent implements OnInit{
         let componentRef;
         let instance;
         this.noHayCampanasValidas = false;
-  
-        console.log(campana);
-  
+   
         // generar un tipo de componente distinto para campaña con encuesta abierta o no
         if (campana.fecha_hora_cierre !== null) {
           // Crear el componente CampanaDocenteActivadaComponent
@@ -106,5 +121,16 @@ export class CampanasDocenteComponent implements OnInit{
       });
     });
   }
+  
+  mostrarDialogo(tipo:string){
+    setTimeout(() => {
+      if (tipo == 'abierta'){
+        this.popupfactoryService.openOkPoup(this.strings["popup.activacionOK.head"], this.strings["popup.activacionOK.body"]);
+      }else if(tipo == 'cerrada'){
+        this.popupfactoryService.openOkPoup(this.strings["popup.cerradaOK.head"], this.strings["popup.cerradaOK.body"]);
+      }
+    }, 500); 
+  }
+
   
 }  

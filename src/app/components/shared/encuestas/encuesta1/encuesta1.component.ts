@@ -7,8 +7,6 @@ import { Router } from '@angular/router';
 import { DataSharingService } from '../../../../services/data.service';
 import { PopupfactoryService } from '../../../../services/popupfactory.service';
 
-
-
 @Component({
   selector: 'app-encuesta1',
   templateUrl: './encuesta1.component.html',
@@ -26,6 +24,7 @@ export class Encuesta1Component implements OnInit {
   numerica : number | null = null;
   strings: any; // Variable para almacenar los textos
   tiempoRestante: Observable<string> = new Observable<string>();
+  isActiva: boolean = false; // Variable para almacenar el estado de la activación
 
   constructor(
     private authService: AuthService, 
@@ -60,6 +59,9 @@ export class Encuesta1Component implements OnInit {
     this.tiempoRestante = interval(1000).pipe(
       map(() => this.getTiempoCierre())
     );
+
+    // Obtener el estado de activación cada segundo
+    this.isActivaLoop();
 
     //gestion de idiomas
     const lang = 'es'; // Idioma predeterminado
@@ -185,6 +187,23 @@ export class Encuesta1Component implements OnInit {
     }
   }
   
+
+  isActivaLoop() {
+    interval(1000).subscribe(() => {
+      if (this.cod_situacion_docente) {
+        this.authService.isActiva(this.cod_situacion_docente).subscribe((res: any) => {
+          // Comprobar si todas las respuestas son true
+          if (res === false) {
+            localStorage.setItem('encuestaInactiva', 'true');
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000); 
+            this.router.navigate(['indexAlumnos']);    
+          }
+        });
+      }
+    });
+  }
   
 
 

@@ -4,6 +4,9 @@ import { map } from 'rxjs/operators';
 import { LanguageService } from '../../../../services/languaje.service';
 import { Router } from '@angular/router';
 import { DataSharingService } from '../../../../services/data.service';
+import { AuthService } from '../../../../services/auth.service';
+
+
 
 
 @Component({
@@ -39,7 +42,8 @@ export class CampanaAbiertaComponent implements OnInit {
   constructor(
     private languageService: LanguageService, // Servicio de idioma
     private router: Router, // Router para redirigir al usuario
-    private dataSharingService: DataSharingService // servicio de datos para pasar al componente 2
+    private dataSharingService: DataSharingService,  // servicio de datos para pasar al componente 2
+    private authService: AuthService,
   ) {}
 
 
@@ -100,18 +104,33 @@ export class CampanaAbiertaComponent implements OnInit {
     
   responder() {
 
-    // pasar los parametros necesarios a la vista de la encuesta
-    const parametros = {
-      cod_encuesta: this.cod_encuesta,
-      fecha_fin_activacion : this.fecha_fin_activacion,
-      cod_situacion_docente : this.cod_situacion_docente,
-      nombreAsignatura: this.nombreAsignatura,
-      nombre_docente: this.nombre_docente
-    };
+    this.authService.isActiva(this.cod_situacion_docente).subscribe((res: any) => {
 
-    this.dataSharingService.setData('parametrosEncuesta', parametros);
+      // Comprobar si todas las respuestas son true
+      if (res === true) {
+        // Si la encuesta es activa, pasar los parametros necesarios a la vista de la encuesta
+        const parametros = {
+          cod_encuesta: this.cod_encuesta,
+          fecha_fin_activacion : this.fecha_fin_activacion,
+          cod_situacion_docente : this.cod_situacion_docente,
+          nombreAsignatura: this.nombreAsignatura,
+          nombre_docente: this.nombre_docente
+        };
 
-    this.router.navigate(['encuesta']);
+        this.dataSharingService.setData('parametrosEncuesta', parametros);
+
+        this.router.navigate(['encuesta']);
+
+      } else {
+        // Almacena un indicador en el almacenamiento local del navegador
+        localStorage.setItem('encuestaInactiva', 'true');
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
+    });
+
+   
 
   }
 }

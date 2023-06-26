@@ -95,15 +95,12 @@ export class CampanaDocenteComponent implements OnInit {
   }
     
   activar() {
-    var fecha_hora_fin_activacion: string;
   
     this.popupfactoryService.openFechaHoraPopup(this.strings["popup.activacion.head"], this.strings["popup.activacion.body"])
       .then((selectedDateTime: string) => {
-        fecha_hora_fin_activacion = selectedDateTime;
-        console.log(selectedDateTime);
-  
+
         // Comparar la fecha y hora seleccionadas con fecha_fin
-        const fechaHoraFinActivacion = new Date(fecha_hora_fin_activacion);
+        const fechaHoraFinActivacion = new Date(selectedDateTime);
         if (this.fecha_fin){
           const fechaActual = new Date();
 
@@ -118,12 +115,14 @@ export class CampanaDocenteComponent implements OnInit {
               });
             }
 
-            this.authService.abrirCampanna(situaciones, fecha_hora_fin_activacion).subscribe((res: any) => {
+            this.authService.abrirCampanna(situaciones, selectedDateTime).subscribe((res: any) => {
 
-              if(res){
+              // Comprobar si todas las respuestas son true
+              if (Array.isArray(res) && res.every((respuesta) => respuesta === true)) {
+                // Almacena un indicador en el almacenamiento local del navegador
+                localStorage.setItem('encuestaAbiertaOK', 'true');
                 window.location.reload();
-                this.popupfactoryService.openOkPoup(this.strings["popup.activacionOK.head"], this.strings["popup.activacionOK.body"])
-              }else{
+              } else {
                 this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR2.head"], this.strings["popup.activacionERR2.body"])
               }
             });

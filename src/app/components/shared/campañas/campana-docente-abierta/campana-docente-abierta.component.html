@@ -4,8 +4,8 @@
     </div>
     <div class="card-body">
         <h5 class="encuesta-abierta">{{ strings['encuesta.abierta'] }}</h5>
-        <p>{{ strings['alumnos.encuestados'] }}: {{ n_alum_respondido }}/{{ n_alum_total }}</p>
-      <button class="btn btn-primary custom-btn-color" (click)="cerrar()">{{ strings['cerrar.encuesta'] }}</button>
+        <p [ngClass]="{ 'parpadeo': parpadeo }">{{ strings['alumnos.encuestados'] }}: {{ n_alum_respondido }}/{{ n_alum_total }}</p>
+        <button class="btn btn-primary custom-btn-color" (click)="cerrar()">{{ strings['cerrar.encuesta'] }}</button>
     </div>
     <div class="card-footer text-muted">
       <small>{{ strings['tiempo.restante3'] }}</small> <br />

@@ -59,15 +59,18 @@
   "popup.activacionOK.head": "Encuesta activada",
   "popup.activacionOK.body": "La encuesta se ha activado correctamente hasta el plazo indicado.",
   "popup.activacionERR2.head": "Error en la activación",
-  "popup.activacionERR3.body": "Ha ocurrido un error inesperado en la activacion de la campaña.",
+  "popup.activacionERR2.body": "Ha ocurrido un error inesperado en la activacion de la campaña.",
+  "popup.activacionERR3.head": "Error en el cierre",
+  "popup.activacionERR3.body": "Ha ocurrido un error inesperado durante el cierre de la campaña.",
   "popup.cerrada.head": "Encuesta cerrada",
-  "popup.cerrada.body": "La encuesta podrá ser respondida cuando el docente o la administración la abran."
+  "popup.cerrada.body": "La encuesta podrá ser respondida cuando el docente o la administración la abran.",
+  "popup.cerrar.head": "Cerrar encuesta",
+  "popup.cerrar.body": "¿Está seguro de que desea cerrar la encuesta?",
+  "popup.cerradaOK.head": "Encuesta cerrada",
+  "popup.cerradaOK.body": "La encuesta ha sido cerrada satisfactoriamente.",
+  "popup.inactiva.head": "Encuesta Cerrada",
+  "popup.inactiva.body": "Lo sentimos. El plazo para responder a la encuesta ya ha finalizado."
 
-
-
-
-
-
-  
+ 
   }
   
