@@ -59,8 +59,16 @@
   "popup.activacionOK.head": "Inkesta aktibatuta",
   "popup.activacionOK.body": "La encuesta se ha activado correctamente hasta el plazo indicado.",
   "popup.activacionERR2.head": "Aktibazioa huts egin du",
-  "popup.activacionERR3.body": "Ezusteko errore bat gertatu da kanpainaren aktibazioan",
+  "popup.activacionERR2.body": "Ezusteko errore bat gertatu da kanpainaren aktibazioan",
   "popup.cerrada.head": "Inkesta itxia",
-  "popup.cerrada.body": "Inkesta irakasleak edo administrazioak irekitzen duenean erantzun daiteke."
+  "popup.cerrada.body": "Inkesta irakasleak edo administrazioak irekitzen duenean erantzun daiteke.",
+  "popup.activacionERR3.head": "Ezin izan da itxi",
+  "popup.activacionERR3.body": "Kanpaina ixtean ustekabeko errore bat gertatu da.",
+  "popup.cerrar.head": "Inkesta itxi",
+  "popup.cerrar.body": "Ziur inkesta itxi nahi duzula?",
+  "popup.cerradaOK.head": "Inkesta itxita",
+  "popup.cerradaOK.body": "Inkesta arrakastaz itxi da.",
+  "popup.inactiva.head": "Inkesta itxia",
+  "popup.inactiva.body": "Sentitzen dugu. Inkesta erantzuteko epea amaitu da dagoeneko."
 
 }

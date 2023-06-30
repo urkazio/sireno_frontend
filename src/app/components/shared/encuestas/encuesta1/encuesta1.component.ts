@@ -197,7 +197,7 @@ export class Encuesta1Component implements OnInit {
             localStorage.setItem('encuestaInactiva', 'true');
             setTimeout(() => {
               window.location.reload();
-            }, 1000); 
+            }, 1200); 
             this.router.navigate(['indexAlumnos']);    
           }
         });

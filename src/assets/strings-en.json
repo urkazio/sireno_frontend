@@ -59,7 +59,15 @@
   "popup.activacionOK.head": "Survey Activated",
   "popup.activacionOK.body": "The survey has been successfully activated until the specified deadline.",
   "popup.activacionERR2.head": "Activation Error",
-  "popup.activacionERR3.body": "An unexpected error has occurred in the activation of the campaign.",
+  "popup.activacionERR2.body": "An unexpected error has occurred in the activation of the campaign.",
   "popup.cerrada.head": "Closed survey",
-  "popup.cerrada.body": "The survey can be answered when the teacher or the administration open it."
+  "popup.cerrada.body": "The survey can be answered when the teacher or the administration open it.",
+  "popup.activacionERR3.head": "Error on closing",
+  "popup.activacionERR3.body": "An unexpected error occurred during the campaign closure.",
+  "popup.cerrar.head": "Close survey",
+  "popup.cerrar.body": "Are you sure you want to close the survey?",
+  "popup.cerradaOK.head": "Survey closed",
+  "popup.cerradaOK.body": "The survey has been successfully closed.",
+  "popup.inactiva.head": "Survey closed",
+  "popup.inactiva.body": "We're sorry. The deadline to respond to the survey has already passed."
 }
