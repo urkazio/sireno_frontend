@@ -1,0 +1,85 @@
+
+  
+  .orange-bar {
+    background-color: #F7A237;
+    padding: 10px;
+  }
+  
+  .orange-bar h3 {
+    margin-bottom: 10px;
+    padding: 0;
+    color: white;
+  }
+
+  .custom-dropdown-toggle {
+    border-color: #F7A237 !important;
+    font-weight: bold;
+    background-color: #FFFFFF;
+    color: #F7A237;
+}
+
+.dropdown-toggle {
+    border-color: #F7A237 !important;
+    font-weight: bold;
+    background-color: #FFFFFF;
+    color: #F7A237;
+}
+
+.btn-custom:hover,
+.btn-custom:focus {
+    border-color: #F7A237 !important;
+    font-weight: bold;
+    background-color: #F7A237;
+    color: #FFFFFF;
+}
+
+.custom-container {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.custom-background {
+    background-color: #F5F5F5;
+    margin-top: 15px;
+}
+
+.container-naranja {
+    background-color: #F7A237;
+}
+
+.container h5{
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+}
+
+  .dropdown-item.active,
+  .dropdown-item:active {
+    background-color: #F7A237;
+  }
+
+  .col-md-2,
+  .col-md-6 {
+    margin: 0 20px;
+  }
+
+  .btn-orange {
+    color: #fff;
+    background-color: #F7A237;
+    border-color: #F7A237;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15); /* Agrega sombra */
+  }
+  
+  .btn-orange:hover {
+    color: #fff;
+    background-color: #e69129;
+    border-color: #e69129;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15); /* Agrega sombra */
+  }
+
+  
+
+
+
+

@@ -69,8 +69,11 @@
   "popup.cerradaOK.head": "Encuesta cerrada",
   "popup.cerradaOK.body": "La encuesta ha sido cerrada satisfactoriamente.",
   "popup.inactiva.head": "Encuesta cerrada",
-  "popup.inactiva.body": "Lo sentimos. El plazo para responder a la encuesta ya ha finalizado."
+  "popup.inactiva.body": "Lo sentimos. El plazo para responder a la encuesta ya ha finalizado.",
+  "informes.personales": "Consultar informes personales",
+  "comparativa.resultados": "Comparativa de resultados",
+  "navbar.informes": "Consulta de informes para docentes",
+  "navbar.informes.pers": "Consulta de informes personales"
 
- 
   }
   

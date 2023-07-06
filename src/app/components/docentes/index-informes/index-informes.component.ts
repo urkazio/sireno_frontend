@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../../../services/languaje.service';
 import { Router } from '@angular/router';
 
-
 @Component({
-  selector: 'app-index-docentes',
-  templateUrl: './index-docentes.component.html',
-  styleUrls: ['./index-docentes.component.css']
+  selector: 'app-index-informes',
+  templateUrl: './index-informes.component.html',
+  styleUrls: ['./index-informes.component.css']
 })
-export class IndexDocentesComponent implements OnInit{
+export class IndexInformesComponent implements OnInit{
   strings: any; // Variable para almacenar los textos
 
   constructor(
@@ -31,12 +30,13 @@ export class IndexDocentesComponent implements OnInit{
 
   }
 
-  navigateCampanasDocente(){
-    this.router.navigate(['campanasDocente']);
+
+  informesPersonales(){
+    this.router.navigate(['informesPersonales']);
   }
 
-  navigateInformesDocente(){
-    this.router.navigate(['indexInformes']);
+  comparativaResultados(){
+    this.router.navigate(['comparativaResultados']);
   }
 
 }

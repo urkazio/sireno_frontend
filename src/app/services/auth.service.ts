@@ -113,4 +113,8 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getRespondidos`, datos_sd);
   }
 
+  getAsignaturasPublicadas(){
+    return this.http.post(`${this.URL}/docente/getAsignaturasPublicadas`, {});
+  }
+
 }

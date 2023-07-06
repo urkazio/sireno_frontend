@@ -1,0 +1,59 @@
+<!-- insercion del navbar -->
+<app-navbar-docentes></app-navbar-docentes>
+
+<div class="orange-bar pt-3 pb-2">
+    <h3 class="text-center">{{ strings['navbar.informes.pers'] }}</h3>
+</div>
+
+<div class="container custom-background">
+    <div class="row justify-content-center container-naranja "> <!-- Agregamos una fila y centramos su contenido -->
+        <h5> Encuesta de opinion al alumnado sobre la docencia de su profesorado </h5>
+    </div>
+</div>
+
+<div class="container custom-background">
+    <div class="row justify-content-center "> <!-- Agregamos una fila y centramos su contenido -->   
+        Centro <br />
+        Titulacion <br />
+        Departamento <br />
+        Profesor <br />
+        Asignatura <br />
+        Curso <br />
+        Plazas matriculadas NºCuestionarios
+    </div>
+</div>
+
+
+<div class="container custom-background">
+    <div class="row justify-content-center">
+
+      <div class="mt-2 col-md-6">
+        <div class="dropdown">
+          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 600px;">
+            {{ selectedAsignatura ? selectedAsignatura.nombre_asignatura : 'Asignatura' }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" *ngFor="let asignatura of asignaturas" (click)="selectAsignatura(asignatura)">{{ asignatura.nombre_asignatura }}</a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="mt-2 col-md-2" *ngIf="selectedAsignatura">
+        <div class="dropdown">
+          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
+            {{ selectedYear ? selectedYear : 'Año del curso' }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" *ngFor="let year of getAsignaturaYears(selectedAsignatura)" (click)="selectedYear = year">
+              {{ year }}
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-2 col-md-2" *ngIf="selectedYearDrop">
+        <button class="btn btn-primary btn-orange" type="button"(click)="mostrarInforme()"> Consultar Informe </button>
+      </div>
+        
+    </div>
+  </div>
