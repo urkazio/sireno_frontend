@@ -11,16 +11,29 @@
     </div>
 </div>
 
-<div class="container custom-background">
-    <div class="row justify-content-center "> <!-- Agregamos una fila y centramos su contenido -->   
-        Centro <br />
-        Titulacion <br />
-        Departamento <br />
-        Profesor <br />
-        Asignatura <br />
-        Curso <br />
-        Plazas matriculadas NºCuestionarios
+<div class="container-info container custom-background">
+  <div class="centrado" *ngIf="datos_informe">
+    <div class="column-left">
+      <p><strong>Centro:</strong></p>
+      <p><strong>Titulación:</strong></p>
+      <p><strong>Departamento:</strong></p>
+      <p><strong>Docente:</strong> </p>
+      <p><strong>Asignatura:</strong> </p>
+      <p><strong>Grupo:</strong> </p>
+      <p><strong>Curso:</strong> </p>
+      <p><strong>Plazas Matriculadas:</strong> </p>
     </div>
+    <div class="column-right">
+      <p> {{ situacion_docente["centro"]["codigo"] }} - {{ situacion_docente["centro"]["nombre"] }}</p>
+      <p> {{ situacion_docente["titulacion"]["codigo"] }} - {{ situacion_docente["titulacion"]["nombre"] }}</p>
+      <p> {{ situacion_docente["departamento"]["codigo"] }} - {{ situacion_docente["departamento"]["nombre"] }}</p>
+      <p> {{ situacion_docente["profesor"]["codigo"] }} - {{ situacion_docente["profesor"]["nombre"] }}</p>
+      <p> {{ situacion_docente["asignatura"]["codigo"] }} - {{ situacion_docente["asignatura"]["nombre"] }}</p>
+      <p> {{ situacion_docente["grupo"]["codigo"] }} - {{ situacion_docente["grupo"]["nombre"] }}</p>
+      <p> {{ situacion_docente["curso"]["codigo"] }} <strong class="separation"> Año Curso:</strong> {{ situacion_docente["curso"]["año_curso"] }}  </p>
+      <p> {{ situacion_docente["plazasMatriculadas"] }} <strong class="separation2"> Número de Cuestionarios:</strong> {{ situacion_docente["numCuestionarios"] }}</p>
+    </div>
+  </div>
 </div>
 
 
@@ -30,13 +43,15 @@
       <div class="mt-2 col-md-6">
         <div class="dropdown">
           <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 600px;">
-            {{ selectedAsignatura ? selectedAsignatura.nombre_asignatura : 'Asignatura' }}
+            {{ selectedAsignatura ? selectedAsignatura['nombre_asignatura'] : 'Asignatura' }}
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" *ngFor="let asignatura of asignaturas" (click)="selectAsignatura(asignatura)">{{ asignatura.nombre_asignatura }}</a>
+            <a class="dropdown-item" *ngFor="let asignatura of asignaturas" (click)="selectAsignatura(asignatura)">
+              {{ asignatura['nombre_asignatura'] }}
+            </a>
           </div>
         </div>
-      </div>
+      </div> 
   
       <div class="mt-2 col-md-2" *ngIf="selectedAsignatura">
         <div class="dropdown">
@@ -57,3 +72,27 @@
         
     </div>
   </div>
+
+  <div class="encuesta" *ngIf="encuestaCargada">
+    <div class="mt-5 col-md-8 mx-auto">
+      <div class="card shadow">
+        <ng-container *ngFor="let pregunta of encuesta; let i = index">
+          <div class="card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}" *ngIf="pregunta.numerica === 1">
+            <div class="column-left-preguntas">
+              <div class="pregunta"> {{ pregunta.texto_pregunta }} </div>
+            </div>
+            <div class="column-mid-preguntas">
+              medio
+            </div>
+            <div class="column-right-preguntas">
+              <div class="media"> {{ pregunta.media }} </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  

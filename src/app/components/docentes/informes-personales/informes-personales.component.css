@@ -78,6 +78,92 @@
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15); /* Agrega sombra */
   }
 
+  p {
+
+    line-height: 0.4em;
+}
+
+p strong.separation {
+  margin-left: 50px;
+}
+p strong.separation2 {
+  margin-left: 40px;
+}
+
+.container-info {
+  display: flex;
+}
+
+.centrado {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+.column-left {
+  text-align: right;
+  flex: 1;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.column-right {
+  text-align: left;
+  flex: 1;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.logo-upvhu {
+  height: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/**********  encuesta  *********/
+
+.encuesta {
+  margin-bottom: 40px;
+}
+
+.fila-gris-oscuro {
+  background-color: #e0e0e0;
+}
+
+.fila-gris-claro {
+  background-color: #eeeeee;
+}
+
+.card-body {
+  display: grid;
+  grid-template-columns: 60% 30% 8%;
+  gap: 10px;
+}
+
+
+.column-left-preguntas {
+  text-align: left;
+  align-items: center;
+  background-color: yellow;
+
+
+}
+
+.column-mid-preguntas {
+  text-align: center;
+  background-color: red;
+
+}
+
+.column-right-preguntas {
+  text-align: center;
+  background-color: aqua;
+}
+
+
+
   
 
 

@@ -117,4 +117,22 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getAsignaturasPublicadas`, {});
   }
 
+  getDatosSD(situaciones: any){
+
+    const datos_sd = {
+      situaciones : situaciones,
+    };
+    return this.http.post(`${this.URL}/docente/getDatosSD`, datos_sd);
+  }
+
+  getResultadosInformePersonal(cod_encuesta:string, idioma:string){
+
+    const datos_encuesta = {
+      cod_encuesta : cod_encuesta,
+      idioma : idioma
+    };
+
+    return this.http.post(`${this.URL}/docente/getResultadosInformePersonal`, datos_encuesta);
+  }
+
 }
