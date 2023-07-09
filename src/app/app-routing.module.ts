@@ -13,6 +13,7 @@ import { CampanasDocenteComponent } from './components/docentes/campanas-docente
 import { IndexInformesComponent } from './components/docentes/index-informes/index-informes.component';
 import { ComparativaResultadosComponent } from './components/docentes/comparativa-resultados/comparativa-resultados.component';
 import { InformesPersonalesComponent } from './components/docentes/informes-personales/informes-personales.component';
+import { BarraPorcentajeRespuestasComponent } from './components/shared//graficas/barra-porcentaje-respuestas/barra-porcentaje-respuestas.component'
 
 
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path:'indexInformes', component: IndexInformesComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'comparativaResultados', component: ComparativaResultadosComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'informesPersonales', component: InformesPersonalesComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
+  { path:'barraRespuestas', component: BarraPorcentajeRespuestasComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'**', pathMatch: 'full', redirectTo: 'login'} // por defecto redirige al home
 ];
 

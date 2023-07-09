@@ -125,12 +125,15 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getDatosSD`, datos_sd);
   }
 
-  getResultadosInformePersonal(cod_encuesta:string, idioma:string){
+  getResultadosInformePersonal(situaciones:string, cod_encuesta:string, idioma:string){
 
     const datos_encuesta = {
+      situaciones : situaciones,
       cod_encuesta : cod_encuesta,
       idioma : idioma
     };
+
+    console.log(datos_encuesta)
 
     return this.http.post(`${this.URL}/docente/getResultadosInformePersonal`, datos_encuesta);
   }

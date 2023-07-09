@@ -10,6 +10,15 @@ interface Asignatura {
   };
 }
 
+interface Pregunta {
+  cod_pregunta: string;
+  media: string;
+  numerica: number;
+  respuestas: any[];
+  texto_pregunta: string;
+}
+
+
 @Component({
   selector: 'app-informes-personales',
   templateUrl: './informes-personales.component.html',
@@ -79,24 +88,32 @@ export class InformesPersonalesComponent implements OnInit{
   mostrarInforme() {
     if (this.selectedAsignatura && this.selectedYear) {
       const situacionesDocentes = this.selectedAsignatura[this.selectedYear]?.situaciones_docentes;
-
+      
       this.authService.getDatosSD(situacionesDocentes).subscribe((res: any) => {
+        console.log(res)
+
         if(res!='No se encontraron datos.'){
           this.datos_informe=true;
           this.situacion_docente=res;
-          console.log("situacion "+ JSON.stringify(this.situacion_docente))
           this.cargarEncuesta();
         }
       });
     }
   }
 
-  cargarEncuesta(){
+  cargarEncuesta() {
 
-    this.authService.getResultadosInformePersonal(this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe(
-      (encuesta: any) => {
-        this.encuesta = encuesta;
-        console.log(encuesta)
+    this.authService.getResultadosInformePersonal(this.situacion_docente["situaciones"], this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe(
+      (encuesta: Object) => {
+        console.log(encuesta);
+
+        
+        // Realizar conversión de tipo a Pregunta[]
+        this.encuesta = encuesta as Pregunta[];
+  
+        // Filtrar las preguntas numéricas
+        this.encuesta = this.encuesta.filter(pregunta => pregunta.numerica === 1);
+  
         this.encuestaCargada = true;
       },
       (error) => {
@@ -104,6 +121,9 @@ export class InformesPersonalesComponent implements OnInit{
       }
     );
   }
+  
+  
+  
   
 
 }

@@ -77,12 +77,12 @@
     <div class="mt-5 col-md-8 mx-auto">
       <div class="card shadow">
         <ng-container *ngFor="let pregunta of encuesta; let i = index">
-          <div class="card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}" *ngIf="pregunta.numerica === 1">
+          <div class="card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
             <div class="column-left-preguntas">
-              <div class="pregunta"> {{ pregunta.texto_pregunta }} </div>
+              <div class="pregunta"> {{ pregunta.texto_pregunta }}</div>
             </div>
             <div class="column-mid-preguntas">
-              medio
+              <app-barra-porcentaje-respuestas></app-barra-porcentaje-respuestas>
             </div>
             <div class="column-right-preguntas">
               <div class="media"> {{ pregunta.media }} </div>
@@ -92,7 +92,6 @@
       </div>
     </div>
   </div>
-  
   
   
   

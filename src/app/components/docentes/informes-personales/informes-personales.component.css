@@ -145,27 +145,23 @@ p strong.separation2 {
 
 .column-left-preguntas {
   text-align: left;
+  flex: 1;
+  display: flex;
   align-items: center;
-  background-color: yellow;
-
-
 }
 
 .column-mid-preguntas {
   text-align: center;
-  background-color: red;
-
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .column-right-preguntas {
   text-align: center;
-  background-color: aqua;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-
-
-  
-
-
-
-
