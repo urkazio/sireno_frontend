@@ -132,9 +132,6 @@ export class AuthService {
       cod_encuesta : cod_encuesta,
       idioma : idioma
     };
-
-    console.log(datos_encuesta)
-
     return this.http.post(`${this.URL}/docente/getResultadosInformePersonal`, datos_encuesta);
   }
 

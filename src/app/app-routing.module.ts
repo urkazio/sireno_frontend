@@ -13,8 +13,9 @@ import { CampanasDocenteComponent } from './components/docentes/campanas-docente
 import { IndexInformesComponent } from './components/docentes/index-informes/index-informes.component';
 import { ComparativaResultadosComponent } from './components/docentes/comparativa-resultados/comparativa-resultados.component';
 import { InformesPersonalesComponent } from './components/docentes/informes-personales/informes-personales.component';
-import { BarraPorcentajeRespuestasComponent } from './components/shared//graficas/barra-porcentaje-respuestas/barra-porcentaje-respuestas.component'
-
+import { BarraPorcentajeRespuestasComponent } from './components/shared/graficas/barra-porcentaje-respuestas/barra-porcentaje-respuestas.component'
+import { GraficaLinearComponent } from './components/shared/graficas/grafica-linear/grafica-linear.component'
+import { InformeHistoricoPreguntaComponent } from './components/docentes/informe-historico-pregunta/informe-historico-pregunta.component'
 
 
 
@@ -30,6 +31,8 @@ const routes: Routes = [
   { path:'comparativaResultados', component: ComparativaResultadosComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'informesPersonales', component: InformesPersonalesComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'barraRespuestas', component: BarraPorcentajeRespuestasComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
+  { path:'graficaLinear', component: GraficaLinearComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
+  { path:'informePregunta', component: InformeHistoricoPreguntaComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'**', pathMatch: 'full', redirectTo: 'login'} // por defecto redirige al home
 ];
 

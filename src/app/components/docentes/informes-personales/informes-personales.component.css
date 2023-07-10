@@ -33,14 +33,15 @@
     color: #FFFFFF;
 }
 
-.custom-container {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
 .custom-background {
     background-color: #F5F5F5;
     margin-top: 15px;
+}
+
+.custom-background-2 {
+  background-color: #F5F5F5;
+  margin-top: 15px;
+  padding-bottom: 8px;
 }
 
 .container-naranja {
@@ -138,10 +139,9 @@ p strong.separation2 {
 
 .card-body {
   display: grid;
-  grid-template-columns: 60% 30% 8%;
+  grid-template-columns: 55% 30% 13%;
   gap: 10px;
 }
-
 
 .column-left-preguntas {
   text-align: left;
@@ -165,3 +165,109 @@ p strong.separation2 {
   align-items: center;
   justify-content: center;
 }
+
+
+.card-header {
+  display: grid;
+  grid-template-columns: 55% 30% 12%;
+  gap: 10px;
+  padding-top: 16px;
+}
+
+.cabecera-left {
+  text-align: left;
+  flex: 1;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+}
+
+.cabecera-mid {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.cabecera-right {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.color-squares-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orange-square1 {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background-color: rgba(255, 177, 77, 0.7);
+}
+.orange-square2 {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background-color: rgba(255, 152, 54, 0.7);
+}
+.orange-square3 {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background-color: rgba(255, 126, 31, 0.7);
+}
+.orange-square4 {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background-color: rgba(255, 101, 9, 0.7);
+}
+.orange-square5 {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  background-color: rgba(255, 76, 0, 0.7);
+}
+
+/*++++++++++++++++++++++*/
+
+.card-header {
+  display: grid;
+  grid-template-columns: 55% 30% 12%;
+  gap: 10px;
+}
+ 
+.cabecera-left {
+  text-align: left;
+  flex: 1;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+}
+
+.cabecera-mid {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.cabecera-right {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+}
+

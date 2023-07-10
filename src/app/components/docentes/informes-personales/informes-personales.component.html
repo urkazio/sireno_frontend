@@ -37,7 +37,7 @@
 </div>
 
 
-<div class="container custom-background">
+<div class="container custom-background-2">
     <div class="row justify-content-center">
 
       <div class="mt-2 col-md-6">
@@ -76,19 +76,42 @@
   <div class="encuesta" *ngIf="encuestaCargada">
     <div class="mt-5 col-md-8 mx-auto">
       <div class="card shadow">
+        <div class="card-header text-center float-right">
+          <div class="cabecera-left card-title d-inline">
+            Pregunta
+          </div>
+          <div class="cabecera-mid d-inline">
+            <div class="color-squares-container d-flex justify-content-center align-items-center">
+              1: <div class="orange-square1"></div>
+              2: <div class="orange-square2"></div>
+              3: <div class="orange-square3"></div>
+              4: <div class="orange-square4"></div>
+              5: <div class="orange-square5"></div>
+            </div>
+          </div>
+          <div class="cabecera-right card-title d-inline">
+            Respuesta media
+          </div>
+        </div>           
         <ng-container *ngFor="let pregunta of encuesta; let i = index">
           <div class="card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
             <div class="column-left-preguntas">
-              <div class="pregunta"> {{ pregunta.texto_pregunta }}</div>
+              <div class="pregunta" (click)="mostrarCodigoPregunta(pregunta.cod_pregunta, pregunta.texto_pregunta)">{{ pregunta.texto_pregunta }}</div>
             </div>
             <div class="column-mid-preguntas">
-              <app-barra-porcentaje-respuestas></app-barra-porcentaje-respuestas>
+              <ng-container *ngIf="pregunta.total_respuestas === 0">
+                <div class="no-respuestas">No hay respuestas</div>
+              </ng-container>
+              <ng-container *ngIf="pregunta.total_respuestas !== 0">
+                <app-barra-porcentaje-respuestas [cuantos]="pregunta.cuantos"></app-barra-porcentaje-respuestas>
+              </ng-container>
             </div>
             <div class="column-right-preguntas">
-              <div class="media"> {{ pregunta.media }} </div>
+              <div class="media">{{ pregunta.media }}</div>
             </div>
           </div>
         </ng-container>
+        
       </div>
     </div>
   </div>

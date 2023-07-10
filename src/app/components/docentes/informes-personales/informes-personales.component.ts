@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../../../services/languaje.service';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
-
+import { DataSharingService } from '../../../services/data.service';
 
 interface Asignatura {
   [key: string]: {
@@ -16,6 +15,7 @@ interface Pregunta {
   numerica: number;
   respuestas: any[];
   texto_pregunta: string;
+  cuantos: number[][] // Variable auxiliar para almacenar los valores del array 'cuantos'
 }
 
 
@@ -26,7 +26,8 @@ interface Pregunta {
 })
 
 export class InformesPersonalesComponent implements OnInit{
-
+  
+  colors: string[] = ['red', 'blue', 'green', 'yellow', 'orange'];
   encuesta: any[] = [];
   strings: any; // Variable para almacenar los textos
   asignaturas: any[]  = [];
@@ -39,8 +40,8 @@ export class InformesPersonalesComponent implements OnInit{
 
   constructor(
     private languageService: LanguageService, // Servicio de idioma
-    private router: Router, // Router para redirigir al usuario
-    private authService: AuthService
+    private authService: AuthService,
+    private dataSharingService: DataSharingService
   ) {}
 
   
@@ -69,7 +70,6 @@ export class InformesPersonalesComponent implements OnInit{
     this.selectedAsignatura = asignatura;
     this.selectedYear = null;  
     this.selectedYearDrop = false;
-
   }
 
   getAsignaturaYears(asignatura: any): string[] {
@@ -90,7 +90,6 @@ export class InformesPersonalesComponent implements OnInit{
       const situacionesDocentes = this.selectedAsignatura[this.selectedYear]?.situaciones_docentes;
       
       this.authService.getDatosSD(situacionesDocentes).subscribe((res: any) => {
-        console.log(res)
 
         if(res!='No se encontraron datos.'){
           this.datos_informe=true;
@@ -102,28 +101,44 @@ export class InformesPersonalesComponent implements OnInit{
   }
 
   cargarEncuesta() {
-
     this.authService.getResultadosInformePersonal(this.situacion_docente["situaciones"], this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe(
       (encuesta: Object) => {
-        console.log(encuesta);
-
-        
         // Realizar conversión de tipo a Pregunta[]
-        this.encuesta = encuesta as Pregunta[];
-  
+        this.encuesta = Object.values(encuesta) as Pregunta[];
+        this.encuestaCargada = true;
+
         // Filtrar las preguntas numéricas
         this.encuesta = this.encuesta.filter(pregunta => pregunta.numerica === 1);
-  
-        this.encuestaCargada = true;
+
+        // Obtener los valores del array 'cuantos' de cada pregunta y almacenarlos en 'cuantos'
+        this.encuesta.forEach(pregunta => {
+          pregunta.cuantos = pregunta.respuestas.map((respuesta: any) => respuesta.cuantos);
+        });
+
       },
       (error) => {
         console.error(error);
       }
     );
   }
-  
-  
-  
+
+
+  mostrarCodigoPregunta(cod_pregunta: string, texto_pregunta: string) {
+    const parametros = {
+      cod_pregunta: cod_pregunta,
+      cod_situacion_docente: this.situacion_docente["situaciones"],
+      texto_pregunta: texto_pregunta,
+    };
+    
+    localStorage.setItem('cod_pregunta', cod_pregunta);
+    localStorage.setItem('cod_situacion_docente', this.situacion_docente["situaciones"]);
+    localStorage.setItem('texto_pregunta', texto_pregunta);
+
+    const newTab = window.open('informePregunta', '_blank');
+    newTab?.focus();
+  }
   
 
+  
+  
 }

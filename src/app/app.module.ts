@@ -38,6 +38,8 @@ import { IndexInformesComponent } from './components/docentes/index-informes/ind
 import { InformesPersonalesComponent } from './components/docentes/informes-personales/informes-personales.component';
 import { ComparativaResultadosComponent } from './components/docentes/comparativa-resultados/comparativa-resultados.component';
 import { BarraPorcentajeRespuestasComponent } from './components/shared/graficas/barra-porcentaje-respuestas/barra-porcentaje-respuestas.component';
+import { GraficaLinearComponent } from './components/shared/graficas/grafica-linear/grafica-linear.component';
+import { InformeHistoricoPreguntaComponent } from './components/docentes/informe-historico-pregunta/informe-historico-pregunta.component';
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import { BarraPorcentajeRespuestasComponent } from './components/shared/graficas
     IndexInformesComponent,
     InformesPersonalesComponent,
     ComparativaResultadosComponent,
-    BarraPorcentajeRespuestasComponent
+    BarraPorcentajeRespuestasComponent,
+    GraficaLinearComponent,
+    InformeHistoricoPreguntaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,3 @@
-#barChartCanvas {
-    border: 1px gray; /* Borde exterior */
-  }
+.canvas-container {
+  border: 1px solid gray; /* Borde exterior del contenedor */
+}
