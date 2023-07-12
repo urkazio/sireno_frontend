@@ -69,6 +69,28 @@
   "popup.cerradaOK.head": "Inkesta itxita",
   "popup.cerradaOK.body": "Inkesta arrakastaz itxi da.",
   "popup.inactiva.head": "Inkesta itxia",
-  "popup.inactiva.body": "Sentitzen dugu. Inkesta erantzuteko epea amaitu da dagoeneko."
+  "popup.inactiva.body": "Sentitzen dugu. Inkesta erantzuteko epea amaitu da dagoeneko.",
+  "informes.personales": "Norbere informeak kontsultatu",
+  "comparativa.resultados": "Emaitzen konparaketa",
+  "navbar.informes": "Ikasleentzako informeak kontsultatu",
+  "navbar.informes.pers": "Norbere informeak kontsultatu",
+  "informes.pers.head": "Ikasleen iritzi-inkesta beren irakasleen irakaskuntzari buruz",
+  "centro": "Zentroa",
+  "titulacion": "Titulazioa",
+  "departamento": "Departamentua",
+  "docente": "Irakaslea",
+  "asignatura": "Gaia",
+  "grupo": "Taldea",
+  "curso": "Ikasturtea",
+  "plazas": "Matrikulatutako plaza kopurua",
+  "año.curso": "Ikasturtearen urtea",
+  "num.cuestionarios": "Erantzundako galdetegiak",
+  "año.del.curso": "Ikasturtea",
+  "consultar.informe": "Informeak kontsultatu",
+  "pregunta": "Galdera",
+  "respuesta.media": "Batez besteko erantzuna",
+  "no.respuestas": "Erantzunik ez",
+  "promedio.obtenido" : "Galdera baten denboran zehar lortutako batez besteko balorazioa."
+
 
 }

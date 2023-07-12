@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, Input, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
-import { Chart, registerables } from 'chart.js';
-import type { ChartOptions } from 'chart.js';
+import { Chart, registerables, ChartOptions } from 'chart.js';
 
 Chart.register(...registerables);
 
@@ -10,38 +9,48 @@ Chart.register(...registerables);
   styleUrls: ['./grafica-linear.component.css']
 })
 export class GraficaLinearComponent implements AfterViewInit {
-  @Input() cuantos: number[] = []; // Entrada para recibir los datos del array 'cuantos'
-  @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
   @Input() parametros: any;
-  cod_pregunta: String = "";
-  cod_situacion_docente: String = ""; 
-  texto_pregunta: String = ""; 
-
+  @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
+  cod_pregunta: any;
+  cod_situacion_docente: any;
+  texto_pregunta: any;
+  cod_asignatura: any;
+  info_respuestas: any;
+  año_curso: any;
+  media: any;
 
   ngAfterViewInit() {
-    this.renderChart();
-  }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['parametros'] && changes['parametros'].currentValue) {
-      const newParametros = changes['parametros'].currentValue;
+    if (this.parametros) {
+      const newParametros = this.parametros;
       this.parametros = newParametros;
-      this.cod_pregunta = this.parametros["cod_pregunta"];
-      this.cod_situacion_docente = this.parametros["cod_situacion_docente"];
-      this.texto_pregunta = this.parametros["texto_pregunta"];
+
+      this.cod_pregunta = this.parametros['cod_pregunta'];
+      this.cod_situacion_docente = this.parametros['cod_situacion_docente'];
+      this.texto_pregunta = this.parametros['texto_pregunta'];
+      this.cod_asignatura = this.parametros['cod_asignatura'];
+      this.info_respuestas = JSON.parse(this.parametros['info_respuestas']);
+
+      console.log(this.info_respuestas)
+
+      this.año_curso = this.info_respuestas.map((item:any) => item.año_curso);
+      this.media = this.info_respuestas.map((item:any) => item.media);
+
+      this.renderChart();
+      this.addBeforeUnloadListener();
     }
   }
 
+
+
   renderChart() {
-    const total = this.cuantos.reduce((a, b) => a + b, 0);
-    const normalizedData = this.cuantos.map(value => value*100 / total);
 
     const data = {
-      labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6'],
+      labels: this.año_curso,
       datasets: [
         {
-          label: this.cod_pregunta  +" - "+this.texto_pregunta,
-          data: [2,3,4,1,5,3],
+          label: this.cod_pregunta + ' - ' + this.texto_pregunta,
+          data: this.media,
           borderColor: 'rgba(255, 177, 77, 0.7)',
           backgroundColor: 'rgba(255, 177, 77, 0.7)',
           pointStyle: 'circle',
@@ -51,60 +60,19 @@ export class GraficaLinearComponent implements AfterViewInit {
       ]
     };
 
-    /*
-    const data = {
-      labels: ['valoración'],
-      datasets: [
-        {
-          label: '1',
-          data: [normalizedData[0]],
-          backgroundColor: 'rgba(255, 177, 77, 0.7)',
-          borderColor: 'black',
-          borderWidth: 1
-        },
-        {
-          label: '2',
-          data: [normalizedData[1]],
-          backgroundColor: 'rgba(255, 152, 54, 0.7)',
-          borderColor: 'black',
-          borderWidth: 1
-        },
-        {
-          label: '3',
-          data: [normalizedData[2]],
-          backgroundColor: 'rgba(255, 126, 31, 0.7)',
-          borderColor: 'black',
-          borderWidth: 1
-        },
-        {
-          label: '4',
-          data: [normalizedData[3]],
-          backgroundColor: 'rgba(255, 101, 9, 0.7)',
-          borderColor: 'black',
-          borderWidth: 1
-        },
-        {
-          label: '5',
-          data: [normalizedData[4]],
-          backgroundColor: 'rgba(255, 76, 0, 0.7)',
-          borderColor: 'black',
-          borderWidth: 1
-        }
-      ]
-    };
-    */
-
     new Chart(this.canvasRef.nativeElement, {
-
       type: 'line',
       data: data,
       options: {
         responsive: true,
       }
-      
     });
+  }
 
-
-    
+  addBeforeUnloadListener() {
+    window.addEventListener('beforeunload', (event) => {
+      event.preventDefault();
+      event.returnValue = 'Se perderán los resultados. ¿Estás seguro de recargar la página?';
+    });
   }
 }

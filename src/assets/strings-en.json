@@ -69,5 +69,27 @@
   "popup.cerradaOK.head": "Survey closed",
   "popup.cerradaOK.body": "The survey has been successfully closed.",
   "popup.inactiva.head": "Survey closed",
-  "popup.inactiva.body": "We're sorry. The deadline to respond to the survey has already passed."
+  "popup.inactiva.body": "We're sorry. The deadline to respond to the survey has already passed.",
+  "informes.personales": "Consult personal reports",
+  "comparativa.resultados": "Comparison of results",
+  "navbar.informes": "Reports consultation for teachers",
+  "navbar.informes.pers": "Consult personal reports",
+  "informes.pers.head": "Student opinion survey on the teaching of their teachers",
+  "centro": "Center",
+  "titulacion": "Degree",
+  "departamento": "Department",
+  "docente": "Teacher",
+  "asignatura": "Subject",
+  "grupo": "Group",
+  "curso": "Course",
+  "plazas": "Enrolled Seats",
+  "año.curso": "Academic Year",
+  "num.cuestionarios": "Number of Questionnaires",
+  "año.del.curso": "Year of Course",
+  "consultar.informe": "Consult Report",
+  "pregunta": "Question",
+  "respuesta.media": "Average Response",
+  "no.respuestas": "No responses",
+  "promedio.obtenido" : "Average rating obtained for a question over time."
+
 }

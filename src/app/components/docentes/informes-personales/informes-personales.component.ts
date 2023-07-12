@@ -3,6 +3,7 @@ import { LanguageService } from '../../../services/languaje.service';
 import { AuthService } from '../../../services/auth.service';
 import { DataSharingService } from '../../../services/data.service';
 
+
 interface Asignatura {
   [key: string]: {
     situaciones_docentes: string[];
@@ -18,6 +19,19 @@ interface Pregunta {
   cuantos: number[][] // Variable auxiliar para almacenar los valores del array 'cuantos'
 }
 
+
+interface Respuesta {
+  cod_situacion_docente: string[];
+  año_curso: string;
+  cod_pregunta: string;
+  texto_pregunta: string;
+  numerica: number;
+  respuestas: {
+    cod_respuesta: string;
+    cuantos: number;
+  }[];
+  media: string;
+}
 
 @Component({
   selector: 'app-informes-personales',
@@ -37,6 +51,7 @@ export class InformesPersonalesComponent implements OnInit{
   situacion_docente: any;
   datos_informe: boolean = false;
   encuestaCargada: boolean = false;
+  historicoPregunta: Respuesta[] = [];
 
   constructor(
     private languageService: LanguageService, // Servicio de idioma
@@ -50,6 +65,7 @@ export class InformesPersonalesComponent implements OnInit{
     this.languageService.currentLanguage$.subscribe(lang => { // Suscripción a cambios en el idioma actual
       this.languageService.loadStrings(lang).subscribe( // Carga los strings correspondientes al idioma actual
         data => {
+          this.mostrarInforme()
           this.strings = data; // Almacena los textos cargados en la variable 'strings'
         },
         error => {
@@ -94,13 +110,13 @@ export class InformesPersonalesComponent implements OnInit{
         if(res!='No se encontraron datos.'){
           this.datos_informe=true;
           this.situacion_docente=res;
-          this.cargarEncuesta();
+          this.cargarInforme();
         }
       });
     }
   }
 
-  cargarEncuesta() {
+  cargarInforme() {
     this.authService.getResultadosInformePersonal(this.situacion_docente["situaciones"], this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe(
       (encuesta: Object) => {
         // Realizar conversión de tipo a Pregunta[]
@@ -123,22 +139,26 @@ export class InformesPersonalesComponent implements OnInit{
   }
 
 
-  mostrarCodigoPregunta(cod_pregunta: string, texto_pregunta: string) {
-    const parametros = {
-      cod_pregunta: cod_pregunta,
-      cod_situacion_docente: this.situacion_docente["situaciones"],
-      texto_pregunta: texto_pregunta,
-    };
+  mostrarGraficoPregunta(cod_pregunta: string, texto_pregunta: string) {
     
-    localStorage.setItem('cod_pregunta', cod_pregunta);
-    localStorage.setItem('cod_situacion_docente', this.situacion_docente["situaciones"]);
-    localStorage.setItem('texto_pregunta', texto_pregunta);
+    this.authService.getHistoricoPregunta(this.situacion_docente["asignatura"]["codigo"], cod_pregunta, this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
 
-    const newTab = window.open('informePregunta', '_blank');
-    newTab?.focus();
+      this.historicoPregunta = res;
+
+      localStorage.setItem('cod_pregunta', cod_pregunta);
+      localStorage.setItem('cod_situacion_docente', this.situacion_docente["situaciones"]);
+      localStorage.setItem('texto_pregunta', texto_pregunta);
+      localStorage.setItem('cod_asignatura', this.situacion_docente["asignatura"]["codigo"]);
+      localStorage.setItem('info_respuestas', res);
+      localStorage.setItem('info_respuestas', JSON.stringify(this.historicoPregunta));
+
+      const newTab = window.open('informePregunta', '_blank');
+      newTab?.focus();
+
+    });
+
+    
+    
   }
-  
-
-  
-  
+    
 }

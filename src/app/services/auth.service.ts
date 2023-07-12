@@ -135,4 +135,14 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getResultadosInformePersonal`, datos_encuesta);
   }
 
+  getHistoricoPregunta(cod_asignatura:string, cod_pregunta:string, idioma:string){
+
+    const datos_encuesta = {
+      cod_asignatura : cod_asignatura,
+      cod_pregunta : cod_pregunta,
+      idioma : idioma
+    };
+    return this.http.post(`${this.URL}/docente/getHistoricoPregunta`, datos_encuesta);
+  }
+
 }

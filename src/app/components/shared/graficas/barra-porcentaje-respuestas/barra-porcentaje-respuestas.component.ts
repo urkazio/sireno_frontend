@@ -20,6 +20,7 @@ export class BarraPorcentajeRespuestasComponent implements AfterViewInit {
   renderChart() {
     const total = this.cuantos.reduce((a, b) => a + b, 0);
     const normalizedData = this.cuantos.map(value => value*100 / total);
+    console.log(this.cuantos)
 
 
     const data = {
@@ -80,7 +81,11 @@ export class BarraPorcentajeRespuestasComponent implements AfterViewInit {
               label: (context) => {
                 const value = context.dataset.data[context.dataIndex];
                 if (typeof value === 'number') {
-                  return value.toFixed(2) + '%';
+                  if(context.dataset.label){
+                    const i: number = parseInt(context.dataset.label[context.dataIndex]);
+                    return i+": "+ value.toFixed(2) + '% ' +"("+this.cuantos[i-1] +")";
+                  }
+
                 }
                 return '';
               }

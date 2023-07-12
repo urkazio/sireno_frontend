@@ -69,7 +69,7 @@ import { InformeHistoricoPreguntaComponent } from './components/docentes/informe
     ComparativaResultadosComponent,
     BarraPorcentajeRespuestasComponent,
     GraficaLinearComponent,
-    InformeHistoricoPreguntaComponent
+    InformeHistoricoPreguntaComponent,
   ],
   imports: [
     BrowserModule,

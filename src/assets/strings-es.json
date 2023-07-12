@@ -73,7 +73,26 @@
   "informes.personales": "Consultar informes personales",
   "comparativa.resultados": "Comparativa de resultados",
   "navbar.informes": "Consulta de informes para docentes",
-  "navbar.informes.pers": "Consulta de informes personales"
+  "navbar.informes.pers": "Consulta de informes personales",
+  "informes.pers.head": "Encuesta de opinion al alumnado sobre la docencia de su profesorado",
+  "centro":"Centro",
+  "titulacion":"Titulación",
+  "departamento":"Departamento",
+  "docente":"Docente",
+  "asignatura":"Asignatura",
+  "grupo":"Grupo",
+  "curso":"Curso",
+  "plazas":"Plazas Matriculadas",
+  "año.curso":"Año Curso",
+  "num.cuestionarios":"Número de Cuestionarios",
+  "año.del.curso":"Año del Curso",
+  "consultar.informe":"Consultar Informe",
+  "pregunta":"Pregunta",
+  "respuesta.media":"Respuesta media",
+  "no.respuestas":"No hay respuestas",
+  "promedio.obtenido" : "Promedio de la valoración obtenida para una pregunta a lo largo del tiempo."
+
+
 
   }
   

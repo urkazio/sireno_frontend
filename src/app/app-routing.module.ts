@@ -19,6 +19,7 @@ import { InformeHistoricoPreguntaComponent } from './components/docentes/informe
 
 
 
+
 //rutas que mapean el nombre del path de la url con el componente al que acceden
 const routes: Routes = [
   { path:'login', component: LoginComponent, canActivate:[AuthGuard]},

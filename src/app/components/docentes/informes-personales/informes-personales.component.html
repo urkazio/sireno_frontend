@@ -7,21 +7,21 @@
 
 <div class="container custom-background">
     <div class="row justify-content-center container-naranja "> <!-- Agregamos una fila y centramos su contenido -->
-        <h5> Encuesta de opinion al alumnado sobre la docencia de su profesorado </h5>
+        <h5> {{ strings['informes.pers.head']}} </h5>
     </div>
 </div>
 
 <div class="container-info container custom-background">
   <div class="centrado" *ngIf="datos_informe">
     <div class="column-left">
-      <p><strong>Centro:</strong></p>
-      <p><strong>Titulación:</strong></p>
-      <p><strong>Departamento:</strong></p>
-      <p><strong>Docente:</strong> </p>
-      <p><strong>Asignatura:</strong> </p>
-      <p><strong>Grupo:</strong> </p>
-      <p><strong>Curso:</strong> </p>
-      <p><strong>Plazas Matriculadas:</strong> </p>
+      <p><strong>{{ strings['centro']}}:</strong></p>
+      <p><strong>{{ strings['titulacion']}}:</strong></p>
+      <p><strong>{{ strings['departamento']}}:</strong></p>
+      <p><strong>{{ strings['docente']}}:</strong> </p>
+      <p><strong>{{ strings['asignatura']}}:</strong> </p>
+      <p><strong>{{ strings['grupo']}}:</strong> </p>
+      <p><strong>{{ strings['curso']}}:</strong> </p>
+      <p><strong>{{ strings['plazas']}}:</strong> </p>
     </div>
     <div class="column-right">
       <p> {{ situacion_docente["centro"]["codigo"] }} - {{ situacion_docente["centro"]["nombre"] }}</p>
@@ -30,8 +30,8 @@
       <p> {{ situacion_docente["profesor"]["codigo"] }} - {{ situacion_docente["profesor"]["nombre"] }}</p>
       <p> {{ situacion_docente["asignatura"]["codigo"] }} - {{ situacion_docente["asignatura"]["nombre"] }}</p>
       <p> {{ situacion_docente["grupo"]["codigo"] }} - {{ situacion_docente["grupo"]["nombre"] }}</p>
-      <p> {{ situacion_docente["curso"]["codigo"] }} <strong class="separation"> Año Curso:</strong> {{ situacion_docente["curso"]["año_curso"] }}  </p>
-      <p> {{ situacion_docente["plazasMatriculadas"] }} <strong class="separation2"> Número de Cuestionarios:</strong> {{ situacion_docente["numCuestionarios"] }}</p>
+      <p> {{ situacion_docente["curso"]["codigo"] }} <strong class="separation"> {{ strings['año.curso']}}:</strong> {{ situacion_docente["curso"]["año_curso"] }}  </p>
+      <p> {{ situacion_docente["plazasMatriculadas"] }} <strong class="separation2"> {{ strings['num.cuestionarios']}}:</strong> {{ situacion_docente["numCuestionarios"] }}</p>
     </div>
   </div>
 </div>
@@ -43,7 +43,7 @@
       <div class="mt-2 col-md-6">
         <div class="dropdown">
           <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 600px;">
-            {{ selectedAsignatura ? selectedAsignatura['nombre_asignatura'] : 'Asignatura' }}
+            {{ selectedAsignatura ? selectedAsignatura['nombre_asignatura'] :  strings['asignatura'] }}
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" *ngFor="let asignatura of asignaturas" (click)="selectAsignatura(asignatura)">
@@ -56,7 +56,7 @@
       <div class="mt-2 col-md-2" *ngIf="selectedAsignatura">
         <div class="dropdown">
           <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
-            {{ selectedYear ? selectedYear : 'Año del curso' }}
+            {{ selectedYear ? selectedYear :  strings['año.del.curso'] }}
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" *ngFor="let year of getAsignaturaYears(selectedAsignatura)" (click)="selectedYear = year">
@@ -67,7 +67,7 @@
       </div>
       
       <div class="mt-2 col-md-2" *ngIf="selectedYearDrop">
-        <button class="btn btn-primary btn-orange" type="button"(click)="mostrarInforme()"> Consultar Informe </button>
+        <button class="btn btn-primary btn-orange" type="button"(click)="mostrarInforme()"> {{strings['consultar.informe']}} </button>
       </div>
         
     </div>
@@ -78,7 +78,7 @@
       <div class="card shadow">
         <div class="card-header text-center float-right">
           <div class="cabecera-left card-title d-inline">
-            Pregunta
+            {{strings['pregunta']}}
           </div>
           <div class="cabecera-mid d-inline">
             <div class="color-squares-container d-flex justify-content-center align-items-center">
@@ -90,17 +90,17 @@
             </div>
           </div>
           <div class="cabecera-right card-title d-inline">
-            Respuesta media
+            {{strings['respuesta.media']}}
           </div>
         </div>           
         <ng-container *ngFor="let pregunta of encuesta; let i = index">
           <div class="card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
             <div class="column-left-preguntas">
-              <div class="pregunta" (click)="mostrarCodigoPregunta(pregunta.cod_pregunta, pregunta.texto_pregunta)">{{ pregunta.texto_pregunta }}</div>
+              <div class="pregunta" (click)="mostrarGraficoPregunta(pregunta.cod_pregunta, pregunta.texto_pregunta)">{{ pregunta.texto_pregunta }}</div>
             </div>
             <div class="column-mid-preguntas">
               <ng-container *ngIf="pregunta.total_respuestas === 0">
-                <div class="no-respuestas">No hay respuestas</div>
+                <div class="no-respuestas">{{strings['no.respuestas']}}</div>
               </ng-container>
               <ng-container *ngIf="pregunta.total_respuestas !== 0">
                 <app-barra-porcentaje-respuestas [cuantos]="pregunta.cuantos"></app-barra-porcentaje-respuestas>
