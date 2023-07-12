@@ -2,7 +2,7 @@
 <app-navbar-docentes></app-navbar-docentes>
 
 <div class="orange-bar pt-3 pb-2">
-    <h3 class="text-center">{{ strings['navbar.informes.pers'] }}</h3>
+    <h3 class="text-center">{{ strings['informe.comparativa'] }}</h3>
 </div>
 
 <div class="container custom-background">
@@ -65,15 +65,26 @@
           </div>
         </div>
       </div>
-      
+
       <div class="mt-2 col-md-2" *ngIf="selectedYearDrop">
+        <div class="dropdown">
+          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
+            {{ selectedComparacion ? strings[selectedComparacion] : strings['comparativa'] }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" *ngFor="let comparacion of comparaciones" (click)="selectComparacion(comparacion)">
+              {{ strings[comparacion] }}
+            </a>
+          </div>
+        </div>
+      </div>      
+      
+      <div class="mt-2 col-md-2" *ngIf="selectedComparacionDrop">
         <button class="btn btn-primary btn-orange" type="button"(click)="mostrarInforme()"> {{strings['consultar.informe']}} </button>
       </div>
         
     </div>
   </div>
-
-
 
   <div class="encuesta" *ngIf="encuestaCargada">
     <div class="mt-5 col-md-8 mx-auto">
@@ -81,38 +92,33 @@
         <div class="card-header text-center float-right">
           <div class="cabecera-left card-title d-inline">
             {{strings['pregunta']}}
-            <div class="nota" *ngIf="encuestaCargada">
-              {{strings['click.pregunta']}}
-            </div>
           </div>
-          <div class="cabecera-mid d-inline">
-            <div class="color-squares-container d-flex justify-content-center align-items-center">
-              1: <div class="orange-square1"></div>
-              2: <div class="orange-square2"></div>
-              3: <div class="orange-square3"></div>
-              4: <div class="orange-square4"></div>
-              5: <div class="orange-square5"></div>
-            </div>
+          <div class="cabecera-mid1 d-inline">
+            {{strings['respuesta.media']}}
+          </div>
+          <div class="cabecera-mid2 d-inline">
+            {{strings['respuesta.media']}}
           </div>
           <div class="cabecera-right card-title d-inline">
-            {{strings['respuesta.media']}}
+            <div class="color-squares-container d-flex justify-content-center align-items-center">
+            {{strings["personal"]}}: <div class="orange-square"></div>
+            {{strings["comparación"]}}: <div class="gray-square"></div>
+            </div>
           </div>
         </div>           
         <ng-container *ngFor="let pregunta of encuesta; let i = index">
           <div class="card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
             <div class="column-left-preguntas">
-              <div class="pregunta" (click)="mostrarGraficoPregunta(pregunta.cod_pregunta, pregunta.texto_pregunta)">{{ pregunta.texto_pregunta }}</div>
+              <div class="pregunta">{{ pregunta.texto_pregunta }}</div>
             </div>
-            <div class="column-mid-preguntas">
-              <ng-container *ngIf="pregunta.total_respuestas === 0">
-                <div class="no-respuestas">{{strings['no.respuestas']}}</div>
-              </ng-container>
-              <ng-container *ngIf="pregunta.total_respuestas !== 0">
-                <app-barra-porcentaje-respuestas [cuantos]="pregunta.cuantos"></app-barra-porcentaje-respuestas>
-              </ng-container>
+            <div class="column-mid1-preguntas">
+              <div class="media">{{ pregunta.media_respuestas }}</div>
+            </div>
+            <div class="column-mid2-preguntas">
+              <div class="media">{{ pregunta.media_respuestas }}</div>
             </div>
             <div class="column-right-preguntas">
-              <div class="media">{{ pregunta.media_respuestas }}</div>
+              <app-grafica-medias></app-grafica-medias>
             </div>
           </div>
         </ng-container>

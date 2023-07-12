@@ -75,7 +75,7 @@
   "navbar.informes": "Consulta de informes para docentes",
   "navbar.informes.pers": "Consulta de informes personales",
   "informes.pers.head": "Encuesta de opinion al alumnado sobre la docencia de su profesorado",
-  "centro":"Centro",
+  "Centro":"Centro",
   "titulacion":"Titulación",
   "departamento":"Departamento",
   "docente":"Docente",
@@ -90,8 +90,13 @@
   "pregunta":"Pregunta",
   "respuesta.media":"Respuesta media",
   "no.respuestas":"No hay respuestas",
-  "promedio.obtenido" : "Promedio de la valoración obtenida para una pregunta a lo largo del tiempo."
+  "promedio.obtenido" : "Promedio de la valoración obtenida para una pregunta a lo largo del tiempo.",
+  "comparativa" : "Comparar con",
+  "informe.comparativa" : "Consulta comparativa de informes",
+  "click.pregunta" : "(*) Al pulsar en una pregunta, se muestra su valoración promedia a lo largo del tiempo.",
 
+  "personal":"Personal",
+  "comparación":"Comparativa"
 
 
   }

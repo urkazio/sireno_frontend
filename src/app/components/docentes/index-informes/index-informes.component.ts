@@ -36,7 +36,7 @@ export class IndexInformesComponent implements OnInit{
   }
 
   comparativaResultados(){
-    this.router.navigate(['graficaLinear']);
+    this.router.navigate(['informeComparativo']);
   }
 
 }

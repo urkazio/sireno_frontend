@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../../../services/languaje.service';
 import { AuthService } from '../../../services/auth.service';
 import { DataSharingService } from '../../../services/data.service';
+import { Router } from '@angular/router';
+
 
 interface Asignatura {
   [key: string]: {
@@ -16,8 +18,8 @@ interface Pregunta {
   respuestas: any[];
   texto_pregunta: string;
   cuantos: number[][] // Variable auxiliar para almacenar los valores del array 'cuantos'
-  media_respuestas?: number; // Nuevo campo para almacenar la media de las respuestas
 }
+
 
 interface Respuesta {
   cod_situacion_docente: string[];
@@ -29,23 +31,27 @@ interface Respuesta {
     cod_respuesta: string;
     cuantos: number;
   }[];
-  media_respuestas?: number; // Nuevo campo para almacenar la media de las respuestas
+  media: string;
 }
 
+
 @Component({
-  selector: 'app-informes-personales',
-  templateUrl: './informes-personales.component.html',
-  styleUrls: ['./informes-personales.component.css']
+  selector: 'app-informes-comparativa',
+  templateUrl: './informes-comparativa.component.html',
+  styleUrls: ['./informes-comparativa.component.css']
 })
-export class InformesPersonalesComponent implements OnInit {
+export class InformesComparativaComponent implements OnInit{
   
   colors: string[] = ['red', 'blue', 'green', 'yellow', 'orange'];
   encuesta: any[] = [];
   strings: any; // Variable para almacenar los textos
   asignaturas: any[]  = [];
+  comparaciones: string[] = ['asignatura', 'grupo', 'departamento', 'curso', 'titulacion', 'centro'];
   selectedAsignatura: Asignatura | null = null;
   selectedYear: any;
   selectedYearDrop: boolean = false;
+  selectedComparacion: any;
+  selectedComparacionDrop: boolean = false;
   situacion_docente: any;
   datos_informe: boolean = false;
   encuestaCargada: boolean = false;
@@ -54,7 +60,7 @@ export class InformesPersonalesComponent implements OnInit {
   constructor(
     private languageService: LanguageService, // Servicio de idioma
     private authService: AuthService,
-    private dataSharingService: DataSharingService
+    private router: Router
   ) {}
 
   
@@ -71,6 +77,8 @@ export class InformesPersonalesComponent implements OnInit {
         }
       );
     });
+
+
     this.getAsignaturasAñoDocente();
   }
 
@@ -94,10 +102,14 @@ export class InformesPersonalesComponent implements OnInit {
         years.push(key);
       }
     }
-  
     this.selectedYearDrop = true;
     return years;
   }
+
+  selectComparacion(comparacion: any) {
+    this.selectedComparacion = comparacion;
+    this.selectedComparacionDrop = true;
+  } 
 
   mostrarInforme() {
     if (this.selectedAsignatura && this.selectedYear) {
@@ -115,15 +127,16 @@ export class InformesPersonalesComponent implements OnInit {
   }
 
   cargarInforme() {
+
     this.authService.getResultadosInformePersonal(this.situacion_docente["situaciones"], this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe(
       (encuesta: Object) => {
         // Realizar conversión de tipo a Pregunta[]
         this.encuesta = Object.values(encuesta) as Pregunta[];
         this.encuestaCargada = true;
-  
+
         // Filtrar las preguntas numéricas
         this.encuesta = this.encuesta.filter(pregunta => pregunta.numerica === 1);
-  
+
         // Obtener los valores del array 'cuantos' de cada pregunta y almacenarlos en 'cuantos'
         this.encuesta.forEach(pregunta => {
           pregunta.cuantos = pregunta.respuestas.map((respuesta: any) => respuesta.cuantos);
@@ -135,37 +148,13 @@ export class InformesPersonalesComponent implements OnInit {
           pregunta.media_respuestas = media !== 0 ? media.toFixed(2) : '-';
   
         });
-  
+
       },
       (error) => {
         console.error(error);
       }
     );
   }
-  
 
-  mostrarGraficoPregunta(cod_pregunta: string, texto_pregunta: string) {
-    this.authService.getHistoricoPregunta(this.situacion_docente["asignatura"]["codigo"], cod_pregunta, this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
-      this.historicoPregunta = res;
-  
-      this.historicoPregunta.forEach((pregunta: any) => {
-        const numerador = pregunta.respuestas.reduce((sum: number, respuesta: any) => sum + Number(respuesta.cod_respuesta) * respuesta.cuantos, 0);
-        const denominador = pregunta.respuestas.reduce((sum: number, respuesta: any) => sum + respuesta.cuantos, 0);
-        const media = denominador !== 0 ? numerador / denominador : 0;
-        pregunta.media_respuestas = media !== 0 ? media.toFixed(2) : '-';
-      });
-  
-      // Almacenar los datos en el localStorage después de calcular la media
-      localStorage.setItem('cod_pregunta', cod_pregunta);
-      localStorage.setItem('cod_situacion_docente', this.situacion_docente["situaciones"]);
-      localStorage.setItem('texto_pregunta', texto_pregunta);
-      localStorage.setItem('cod_asignatura', this.situacion_docente["asignatura"]["codigo"]);
-      localStorage.setItem('info_respuestas', JSON.stringify(this.historicoPregunta));
-  
-      const newTab = window.open('informePregunta', '_blank');
-      newTab?.focus();
-    });
-  }
-  
     
 }

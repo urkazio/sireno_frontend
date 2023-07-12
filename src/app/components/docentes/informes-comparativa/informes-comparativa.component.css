@@ -62,7 +62,7 @@
 
   .col-md-2,
   .col-md-6 {
-    margin: 0 20px;
+    margin: 0px;
   }
 
   .btn-orange {
@@ -139,7 +139,7 @@ p strong.separation2 {
 
 .card-body {
   display: grid;
-  grid-template-columns: 55% 30% 13%;
+  grid-template-columns: 50% 13% 13% 22%;
   gap: 10px;
 }
 
@@ -150,7 +150,15 @@ p strong.separation2 {
   align-items: center;
 }
 
-.column-mid-preguntas {
+.column-mid1-preguntas {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.column-mid2-preguntas {
   text-align: center;
   flex: 1;
   display: flex;
@@ -167,58 +175,15 @@ p strong.separation2 {
 }
 
 
-
-.color-squares-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.orange-square1 {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  background-color: rgba(255, 177, 77, 0.7);
-}
-.orange-square2 {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  background-color: rgba(255, 152, 54, 0.7);
-}
-.orange-square3 {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  background-color: rgba(255, 126, 31, 0.7);
-}
-.orange-square4 {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  background-color: rgba(255, 101, 9, 0.7);
-}
-.orange-square5 {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
-  background-color: rgba(255, 76, 0, 0.7);
-}
-
-.nota{
-  font-style: italic;
-  font-size: small;
-  font-weight: 400;
-}
-
 /*++++++++++++++++++++++*/
 
 .card-header {
   display: grid;
-  grid-template-columns: 55% 30% 12%;
+  grid-template-columns: 50% 13% 13% 22%;
   gap: 10px;
+  padding-top: 16px;
 }
- 
+
 .cabecera-left {
   text-align: left;
   flex: 1;
@@ -227,7 +192,16 @@ p strong.separation2 {
   align-items: center;
 }
 
-.cabecera-mid {
+.cabecera-mid1 {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  justify-content: center;
+}
+
+.cabecera-mid2 {
   text-align: center;
   flex: 1;
   display: flex;
@@ -245,3 +219,14 @@ p strong.separation2 {
   justify-content: center;
 }
 
+.gray-square {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(176, 176, 176);
+}
+.orange-square {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+  background-color: rgba(255, 188, 102);
+}

@@ -90,6 +90,11 @@
   "pregunta": "Question",
   "respuesta.media": "Average Response",
   "no.respuestas": "No responses",
-  "promedio.obtenido" : "Average rating obtained for a question over time."
+  "promedio.obtenido" : "Average rating obtained for a question over time.",
+  "comparativa" : "Compare with",
+  "informe.comparativa" : "Comparative consultation of reports",
+  "click.pregunta" : "(*) Clicking on a question shows its average rating over time."
+
+
 
 }

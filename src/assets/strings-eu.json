@@ -90,7 +90,13 @@
   "pregunta": "Galdera",
   "respuesta.media": "Batez besteko erantzuna",
   "no.respuestas": "Erantzunik ez",
-  "promedio.obtenido" : "Galdera baten denboran zehar lortutako batez besteko balorazioa."
+  "promedio.obtenido" : "Galdera baten denboran zehar lortutako batez besteko balorazioa.",
+  "comparativa" : "Alderatu",
+  "informe.comparativa" : "Txostenen kontsulta konparatiboa",
+  "click.pregunta" : "(*) Galdera batean klik egiteak denboran zehar duen batez besteko balorazioa erakusten du."
+
+
+
 
 
 }
