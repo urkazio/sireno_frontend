@@ -93,8 +93,11 @@
   "promedio.obtenido" : "Average rating obtained for a question over time.",
   "comparativa" : "Compare with",
   "informe.comparativa" : "Comparative consultation of reports",
-  "click.pregunta" : "(*) Clicking on a question shows its average rating over time."
-
+  "click.pregunta" : "(*) Clicking on a question shows its average rating over time.",
+  "personal":"Personal",
+  "comparación":"Comparative",
+  "media.pers" :"Personal average",
+  "media" :"average"
 
 
 }

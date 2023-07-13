@@ -20,8 +20,6 @@ export class BarraPorcentajeRespuestasComponent implements AfterViewInit {
   renderChart() {
     const total = this.cuantos.reduce((a, b) => a + b, 0);
     const normalizedData = this.cuantos.map(value => value*100 / total);
-    console.log(this.cuantos)
-
 
     const data = {
       labels: ['valoración'],

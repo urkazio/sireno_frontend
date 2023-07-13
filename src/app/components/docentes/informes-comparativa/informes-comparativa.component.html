@@ -94,10 +94,18 @@
             {{strings['pregunta']}}
           </div>
           <div class="cabecera-mid1 d-inline">
-            {{strings['respuesta.media']}}
+            {{strings['media.pers']}}
           </div>
           <div class="cabecera-mid2 d-inline">
-            {{strings['respuesta.media']}}
+            <ng-container *ngIf="languageService.getCurrentLanguageValue() === 'es'">
+              {{ strings['media'] }}&nbsp;{{ strings[selectedComparacion] }}
+            </ng-container>
+            <ng-container *ngIf="languageService.getCurrentLanguageValue() === 'en'">
+             {{ strings[selectedComparacion] }} &nbsp;{{ strings['media'] }}
+            </ng-container>
+            <ng-container *ngIf="languageService.getCurrentLanguageValue() === 'eu'">
+              {{ strings[selectedComparacion] }} &nbsp;{{ strings['media'] }}
+             </ng-container>
           </div>
           <div class="cabecera-right card-title d-inline">
             <div class="color-squares-container d-flex justify-content-center align-items-center">
@@ -115,10 +123,10 @@
               <div class="media">{{ pregunta.media_respuestas }}</div>
             </div>
             <div class="column-mid2-preguntas">
-              <div class="media">{{ pregunta.media_respuestas }}</div>
+              <div class="media">{{ comparativa[i]?.media_respuestas }}</div>
             </div>
             <div class="column-right-preguntas">
-              <app-grafica-medias></app-grafica-medias>
+              <app-grafica-medias [parametros]="{ rdo_personales: [rdo_personales[i]], rdo_media: [rdo_media[i]]  }"></app-grafica-medias>
             </div>
           </div>
         </ng-container>

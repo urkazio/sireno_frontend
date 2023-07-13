@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../../../services/languaje.service';
 import { AuthService } from '../../../services/auth.service';
-import { DataSharingService } from '../../../services/data.service';
-import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
+
 
 
 interface Asignatura {
@@ -41,9 +41,9 @@ interface Respuesta {
   styleUrls: ['./informes-comparativa.component.css']
 })
 export class InformesComparativaComponent implements OnInit{
-  
   colors: string[] = ['red', 'blue', 'green', 'yellow', 'orange'];
   encuesta: any[] = [];
+  comparativa: any[] = [];
   strings: any; // Variable para almacenar los textos
   asignaturas: any[]  = [];
   comparaciones: string[] = ['asignatura', 'grupo', 'departamento', 'curso', 'titulacion', 'centro'];
@@ -56,11 +56,14 @@ export class InformesComparativaComponent implements OnInit{
   datos_informe: boolean = false;
   encuestaCargada: boolean = false;
   historicoPregunta: Respuesta[] = [];
+  parametrosGrafica: any;
+  rdo_personales: any[] = [];
+  rdo_media: any[] = [];
+
 
   constructor(
-    private languageService: LanguageService, // Servicio de idioma
+    public languageService: LanguageService, // Servicio de idioma
     private authService: AuthService,
-    private router: Router
   ) {}
 
   
@@ -77,7 +80,6 @@ export class InformesComparativaComponent implements OnInit{
         }
       );
     });
-
 
     this.getAsignaturasAñoDocente();
   }
@@ -149,6 +151,8 @@ export class InformesComparativaComponent implements OnInit{
   
         });
 
+        this.cargarComparativas();
+
       },
       (error) => {
         console.error(error);
@@ -156,5 +160,95 @@ export class InformesComparativaComponent implements OnInit{
     );
   }
 
-    
+  cargarComparativas(){
+
+    switch (this.selectedComparacion) {
+      case 'asignatura':
+        this.getMediaAsignatura();
+      break;
+      case 'grupo':
+        this.getMediaGrupo();
+      break;
+      case 'departamento':
+        this.getMediaDepartamento();
+      break;
+      case 'curso':
+        this.getMediaCurso();
+      break;
+      case 'titulacion':
+        this.getMediaTitulacion();
+      break;
+      case 'centro':
+        this.getMediaCentro();
+      break;
+    }
+  }
+
+
+  // --------------- calculo de las diferenets medias comparativas del informe ----------------
+
+  getMediaAsignatura(){
+    this.authService.getMediaAsignatura(this.situacion_docente["asignatura"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+      this.getMediaGeneral(res);
+    });
+  }
+
+  getMediaGrupo(){
+    this.authService.getMediaGrupo(this.situacion_docente["grupo"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+      this.getMediaGeneral(res);
+    });
+  }
+
+  getMediaDepartamento(){
+    this.authService.getMediaDepartamento(this.situacion_docente["departamento"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+      this.getMediaGeneral(res);
+    });
+  }
+
+  getMediaCurso(){
+    this.authService.getMediaCurso(this.situacion_docente["curso"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+      this.getMediaGeneral(res);
+    });
+  }
+
+  getMediaTitulacion(){
+    this.authService.getMediaTitulacion(this.situacion_docente["titulacion"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+      this.getMediaGeneral(res);
+    });
+  }
+
+  getMediaCentro(){
+    this.authService.getMediaCentro(this.situacion_docente["centro"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+      this.getMediaGeneral(res);
+    });
+  }
+
+  getMediaGeneral(res:any){
+    this.comparativa=res;
+
+    // Realizar conversión de tipo a Pregunta[]
+    this.comparativa = Object.values(res) as Pregunta[];
+    this.encuestaCargada = true;
+
+    // Filtrar las preguntas numéricas
+    this.comparativa = this.comparativa.filter(pregunta => pregunta.numerica === 1);
+
+    // Obtener los valores del array 'cuantos' de cada pregunta y almacenarlos en 'cuantos'
+    this.comparativa.forEach(pregunta => {
+      pregunta.cuantos = pregunta.respuestas.map((respuesta: any) => respuesta.cuantos);
+
+      // Calcular la media de las respuestas
+      const numerador = pregunta.respuestas.reduce((sum: number, respuesta: any) => sum + respuesta.cod_respuesta * respuesta.cuantos, 0);
+      const denominador = pregunta.respuestas.reduce((sum: number, respuesta: any) => sum + respuesta.cuantos, 0);
+      const media = denominador !== 0 ? numerador / denominador : 0;
+      pregunta.media_respuestas = media !== 0 ? media.toFixed(2) : '-';
+
+    });
+    this.cargarGrafica();
+  }
+  
+  cargarGrafica(){
+    this.rdo_personales = this.encuesta.map(pregunta => pregunta.media_respuestas);
+    this.rdo_media = this.comparativa.map(pregunta => pregunta.media_respuestas);
+  }
 }

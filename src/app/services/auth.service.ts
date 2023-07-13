@@ -145,4 +145,66 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getHistoricoPregunta`, datos_encuesta);
   }
 
+// ---------- getters de la media de un conjunto de situaciones docnetyes para la comparativa de informes ----------
+
+ getMediaAsignatura(cod_asignatura:string, cod_encuesta:string, idioma:string){
+
+    const datos_encuesta = {
+      cod_asignatura : cod_asignatura,
+      cod_encuesta : cod_encuesta,
+      idioma : idioma
+    };
+    return this.http.post(`${this.URL}/docente/getMediaAsignatura`, datos_encuesta);
+  }
+
+  getMediaGrupo(cod_grupo:string, cod_encuesta:string, idioma:string){
+    
+    const datos_encuesta = {
+      cod_grupo : cod_grupo,
+      cod_encuesta : cod_encuesta,
+      idioma : idioma
+    };
+    return this.http.post(`${this.URL}/docente/getMediaGrupo`, datos_encuesta);
+  }
+
+  getMediaDepartamento(cod_departamento:string, cod_encuesta:string, idioma:string){
+
+    const datos_encuesta = {
+      cod_departamento : cod_departamento,
+      cod_encuesta : cod_encuesta,
+      idioma : idioma
+    };
+    return this.http.post(`${this.URL}/docente/getMediaDepartamento`, datos_encuesta);
+  }
+
+  getMediaCurso(cod_curso:string, cod_encuesta:string, idioma:string){
+
+    const datos_encuesta = {
+      cod_curso : cod_curso,
+      cod_encuesta : cod_encuesta,
+      idioma : idioma
+    };
+    return this.http.post(`${this.URL}/docente/getMediaCurso`, datos_encuesta);
+  }
+
+  getMediaTitulacion(cod_titulacion:string, cod_encuesta:string, idioma:string){
+
+    const datos_encuesta = {
+      cod_titulacion : cod_titulacion,
+      cod_encuesta : cod_encuesta,
+      idioma : idioma
+    };
+    return this.http.post(`${this.URL}/docente/getMediaTitulacion`, datos_encuesta);
+  }
+
+  getMediaCentro(cod_centro:string, cod_encuesta:string, idioma:string){
+
+    const datos_encuesta = {
+      cod_centro : cod_centro,
+      cod_encuesta : cod_encuesta,
+      idioma : idioma
+    };
+    return this.http.post(`${this.URL}/docente/getMediaCentro`, datos_encuesta);
+  }
+
 }

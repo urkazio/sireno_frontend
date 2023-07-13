@@ -93,8 +93,11 @@
   "promedio.obtenido" : "Galdera baten denboran zehar lortutako batez besteko balorazioa.",
   "comparativa" : "Alderatu",
   "informe.comparativa" : "Txostenen kontsulta konparatiboa",
-  "click.pregunta" : "(*) Galdera batean klik egiteak denboran zehar duen batez besteko balorazioa erakusten du."
-
+  "click.pregunta" : "(*) Galdera batean klik egiteak denboran zehar duen batez besteko balorazioa erakusten du.",
+  "personal":"Perotsonala",
+  "comparación":"Konparatiboa",
+  "media.pers" :"Bataz besteko pertsonala",
+  "media" :"bataz besteko"
 
 
 

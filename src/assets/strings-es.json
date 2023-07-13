@@ -75,7 +75,7 @@
   "navbar.informes": "Consulta de informes para docentes",
   "navbar.informes.pers": "Consulta de informes personales",
   "informes.pers.head": "Encuesta de opinion al alumnado sobre la docencia de su profesorado",
-  "Centro":"Centro",
+  "centro":"Centro",
   "titulacion":"Titulación",
   "departamento":"Departamento",
   "docente":"Docente",
@@ -94,9 +94,11 @@
   "comparativa" : "Comparar con",
   "informe.comparativa" : "Consulta comparativa de informes",
   "click.pregunta" : "(*) Al pulsar en una pregunta, se muestra su valoración promedia a lo largo del tiempo.",
-
   "personal":"Personal",
-  "comparación":"Comparativa"
+  "comparación":"Comparativa",
+  "media.pers" :"Media personal",
+  "media" :"Media"
+
 
 
   }
