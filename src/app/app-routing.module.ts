@@ -18,17 +18,17 @@ import { GraficaLinearComponent } from './components/shared/graficas/grafica-lin
 import { InformeHistoricoPreguntaComponent } from './components/docentes/informe-historico-pregunta/informe-historico-pregunta.component'
 import { InformesComparativaComponent } from './components/docentes/informes-comparativa/informes-comparativa.component'
 import { GraficaMediasComponent } from './components/shared/graficas/grafica-medias/grafica-medias.component'
-
-
-
-
+import { EncuestasAdminComponent } from './components/admins/encuestas-admin/encuestas-admin.component'
+import { ListadoEncuestasAdminComponent } from './components/admins/listado-encuestas-admin/listado-encuestas-admin.component'
 
 //rutas que mapean el nombre del path de la url con el componente al que acceden
 const routes: Routes = [
   { path:'login', component: LoginComponent, canActivate:[AuthGuard]},
-  { path:'indexAlumnos', component: IndexAlumnosComponent, canActivate:[RoleGuard], data:{ expectedRole: '1' }},
-  { path:'indexDocentes', component: IndexDocentesComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'indexAdmins', component: IndexAdminsComponent, canActivate:[RoleGuard], data:{ expectedRole: '2' }},
+  { path:'encuestasAdmins', component: EncuestasAdminComponent, canActivate:[RoleGuard], data:{ expectedRole: '2' }},
+  { path:'encuestasAdmins', component: EncuestasAdminComponent, canActivate:[RoleGuard], data:{ expectedRole: '2' }},
+  { path:'listadoEncuestas', component: ListadoEncuestasAdminComponent, canActivate:[RoleGuard], data:{ expectedRole: '2' }},
+  { path:'indexAlumnos', component: IndexAlumnosComponent, canActivate:[RoleGuard], data:{ expectedRole: '1' }},
   {path: 'encuesta', component: Encuesta1Component, canActivate: [RoleGuard, EncuestaGuard], data: { expectedRole: '1' }},
   { path:'campanasDocente', component: CampanasDocenteComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},
   { path:'indexInformes', component: IndexInformesComponent, canActivate:[RoleGuard], data:{ expectedRole: '0' }},

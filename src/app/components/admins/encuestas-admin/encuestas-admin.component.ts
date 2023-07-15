@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LanguageService } from '../../../services/languaje.service';
 import { Router } from '@angular/router';
-
 @Component({
-  selector: 'app-index-admins',
-  templateUrl: './index-admins.component.html',
-  styleUrls: ['./index-admins.component.css']
+  selector: 'app-encuestas-admin',
+  templateUrl: './encuestas-admin.component.html',
+  styleUrls: ['./encuestas-admin.component.css']
 })
-export class IndexAdminsComponent implements OnInit{
+export class EncuestasAdminComponent implements OnInit{
   strings: any; // Variable para almacenar los textos
 
   constructor(
@@ -31,8 +30,6 @@ export class IndexAdminsComponent implements OnInit{
   }
 
   navigateEncuestasAdmin(){
-    this.router.navigate(['encuestasAdmins']);
+    this.router.navigate(['listadoEncuestas']);
   }
-
-
 }

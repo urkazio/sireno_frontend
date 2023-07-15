@@ -42,6 +42,8 @@ import { GraficaLinearComponent } from './components/shared/graficas/grafica-lin
 import { InformeHistoricoPreguntaComponent } from './components/docentes/informe-historico-pregunta/informe-historico-pregunta.component';
 import { InformesComparativaComponent } from './components/docentes/informes-comparativa/informes-comparativa.component';
 import { GraficaMediasComponent } from './components/shared/graficas/grafica-medias/grafica-medias.component';
+import { EncuestasAdminComponent } from './components/admins/encuestas-admin/encuestas-admin.component';
+import { ListadoEncuestasAdminComponent } from './components/admins/listado-encuestas-admin/listado-encuestas-admin.component';
 
 
 @NgModule({
@@ -74,6 +76,8 @@ import { GraficaMediasComponent } from './components/shared/graficas/grafica-med
     InformeHistoricoPreguntaComponent,
     InformesComparativaComponent,
     GraficaMediasComponent,
+    EncuestasAdminComponent,
+    ListadoEncuestasAdminComponent,
   ],
   imports: [
     BrowserModule,

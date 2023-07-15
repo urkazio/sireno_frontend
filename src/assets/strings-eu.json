@@ -43,6 +43,7 @@
   "campanas.curso": "Aurtenko Kanpainak",
   "navbar.doc.head": "SiREnO Menu Nagusia",
   "navbar.doc.body": "UPV/EHU Irakasleak",
+  "navbar.adm.body": "UPV/EHUko Administrazioa",
   "activar.encuesta": "Inkesta aktibatu",
   "tiempo.restante2": "Inkesta aktibatzeko geratzen den denbora",
   "no.encuestas": "Une honetan ez dituzu inkestarik eskuragarri",
@@ -97,7 +98,14 @@
   "personal":"Perotsonala",
   "comparación":"Konparatiboa",
   "media.pers" :"Bataz besteko pertsonala",
-  "media" :"bataz besteko"
+  "media" :"bataz besteko",
+  "gestion.campanas": "Kanpaien kudeaketa",
+  "gestion.encuestas": "Inkesten kudeaketa",
+  "gestion.usuarios": "Erabiltzaileen kudeaketa",
+  "gestion.informes": "Txostenen kontsulta",
+  "gestion.preguntas": "Inkesten galderen kudeaketa",
+  "gestion.encuestas2": "Abian dauden edo amaitutako inkesten kudeaketa",
+  "listado.encuestas": "Abian dauden edo amaitutako inkesten zerrenda"
 
 
 

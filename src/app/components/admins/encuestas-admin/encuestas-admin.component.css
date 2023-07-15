@@ -8,7 +8,7 @@
   .btn-black:hover {
     color: #fff;
     background-color: rgba(23, 23, 23);
-    border-color: rgba(56, 56, 56);
+    border-color: rgba(23, 23, 23);
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15); /* Agrega sombra */
   }
   
@@ -21,10 +21,6 @@
     margin: 0;
     padding: 0;
     color: white;
+    margin-bottom: 10px;
   }
   
-  .black-bar h6 {
-    margin-top: 10px;
-    padding: 0;
-    color: white;
-  }

@@ -43,6 +43,7 @@
   "campanas.curso": "Campañas en  Curso",
   "navbar.doc.head": "Menú Principal SiREnO",
   "navbar.doc.body": "Profesorado UPV/EHU",
+  "navbar.adm.body": "Administración UPV/EHU",
   "activar.encuesta": "Activar Encuesta",
   "tiempo.restante2": "Tiempo restante para activar la encuesta",
   "no.encuestas": "No tienes encuestas disponibles en este momento.",
@@ -97,9 +98,14 @@
   "personal":"Personal",
   "comparación":"Comparativa",
   "media.pers" :"Media personal",
-  "media" :"Media"
-
-
+  "media" :"Media",
+  "gestion.campanas": "Administración de campañas",
+  "gestion.encuestas": "Administración de encuestas",
+  "gestion.usuarios": "Administración de usuarios",
+  "gestion.informes": "Consulta de informes",
+  "gestion.preguntas": "Administración de preguntas de encuesta",
+  "gestion.encuestas2": "Administración de encuestas en curso o finalizadas",
+  "listado.encuestas": "Listado de encuestas en curso o finalizadas"
 
   }
   

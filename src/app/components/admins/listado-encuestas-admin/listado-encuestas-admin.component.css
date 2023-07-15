@@ -1,0 +1,79 @@
+.black-bar {
+    background-color: rgba(56, 56, 56);
+    padding: 10px;
+  }
+  
+  .black-bar h3 {
+    margin: 0;
+    padding: 0;
+    color: white;
+    margin-bottom: 10px;
+  }
+  
+
+  .fixed-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que las barras estén por encima del contenido */
+}
+
+.second-bar {
+    margin-top: 56px; /* Ajusta este valor según sea necesario para el margen deseado */
+}
+
+
+.mensaje {
+    margin-top: 40px;
+    text-align: center;
+ }
+ 
+ .encuestas {
+  margin-top: 40px;
+}
+
+
+ .pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.pagination-list {
+  list-style-type: none;
+  padding: 0;
+  display: inline-block;
+}
+
+.pagination-list li {
+  display: inline-block;
+}
+
+.pagination-button {
+  font-size: 16px;
+  padding: 8px 12px;
+  margin: 2px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+}
+
+.pagination-button:hover {
+  font-size: 16px;
+  padding: 8px 12px;
+  margin: 2px;
+  border: none;
+  background-color: #d6d6d6;
+  color: #333;
+  cursor: pointer;
+}
+
+.pagination-button.active-button {
+  background-color: #888;
+  color: #fff;
+}

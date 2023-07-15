@@ -1,2 +1,20 @@
 <!-- insercion del navbar -->
 <app-navbar-admins></app-navbar-admins>
+
+
+<div class="black-bar pt-3 pb-2">
+    <h3 class="text-center">{{ strings['navbar.doc.head'] }}</h3>
+    <h6 class="text-center">{{ strings['navbar.adm.body'] }}</h6>
+</div>
+
+
+
+
+<div class="boton-docente d-grid gap-4 col-6 mx-auto mt-5">
+  <button class="btn btn-primary btn-black" type="button">{{ strings['gestion.campanas'] }}</button>
+  <button class="btn btn-primary btn-black" type="button"(click)="navigateEncuestasAdmin()"> {{ strings['gestion.encuestas'] }}</button>
+  <button class="btn btn-primary btn-black" type="button"> {{ strings['gestion.usuarios'] }}</button>
+  <button class="btn btn-primary btn-black" type="button"> {{ strings['gestion.informes'] }}</button>
+</div>
+
+

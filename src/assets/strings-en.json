@@ -43,6 +43,7 @@
   "campanas.curso": "Ongoing Campaigns",
   "navbar.doc.head": "SiREnO Main Menu",
   "navbar.doc.body": "UPV/EHU Faculty",
+  "navbar.adm.body": "UPV/EHU Administration",
   "activar.encuesta": "Activate Survey",
   "tiempo.restante2": "Remaining time to activate the survey",
   "no.encuestas": "You don't have any surveys available at the moment.",
@@ -97,7 +98,14 @@
   "personal":"Personal",
   "comparación":"Comparative",
   "media.pers" :"Personal average",
-  "media" :"average"
+  "media" :"average",
+  "gestion.campanas": "Campaign management",
+  "gestion.encuestas": "Survey management",
+  "gestion.usuarios": "User management",
+  "gestion.informes": "Teacher report consultation",
+  "gestion.preguntas": "Survey question management",
+  "gestion.encuestas2": "Ongoing or completed survey management",
+  "listado.encuestas": "List of ongoing or completed surveys"
 
 
 }

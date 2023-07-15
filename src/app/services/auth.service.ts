@@ -207,4 +207,13 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getMediaCentro`, datos_encuesta);
   }
 
+
+
+
+  //---------------------------------- admins  ----------------------------------------------
+
+  getCampanasAdmin(){
+    return this.http.post(`${this.URL}/admin/getCampannas`, {});
+  }
+  
 }

@@ -1,0 +1,26 @@
+<app-navbar-admins class="fixed-bar"></app-navbar-admins>
+
+<div class="black-bar pt-3 pb-2 second-bar" >
+  <h3 class="text-center">{{ strings['listado.encuestas'] }}</h3>
+</div>
+
+<div *ngIf="noHayCampanasValidas" class="mensaje">
+  <p>{{ strings['no.campanas'] }}</p>
+</div>
+
+
+<!-- Insertar los componentes de las campañas aquí -->
+<div class="encuestas container mt-5 col-12 col-md-5"></div>
+
+<!-- insercion de la paginacion al final de la pagina -->
+<div class="pagination-container text-center">
+  <div *ngIf="paginas.length > 1" class="pagination">
+    <ul class="pagination-list">
+      <li *ngFor="let pagina of paginas">
+        <button class="pagination-button" (click)="cambiarPagina(pagina)" [ngClass]="{'active-button': isPaginaActual(pagina)}">
+          {{ pagina }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
