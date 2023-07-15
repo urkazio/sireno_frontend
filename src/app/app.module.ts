@@ -44,6 +44,9 @@ import { InformesComparativaComponent } from './components/docentes/informes-com
 import { GraficaMediasComponent } from './components/shared/graficas/grafica-medias/grafica-medias.component';
 import { EncuestasAdminComponent } from './components/admins/encuestas-admin/encuestas-admin.component';
 import { ListadoEncuestasAdminComponent } from './components/admins/listado-encuestas-admin/listado-encuestas-admin.component';
+import { CampanaAdminComponent } from './components/shared/campañas/campana-admin/campana-admin.component';
+import { CampanaAdminAbiertaComponent } from './components/shared/campañas/campana-admin-abierta/campana-admin-abierta.component';
+import { PopupMensajeComponent } from './components/shared/popups/popup-mensaje/popup-mensaje.component';
 
 
 @NgModule({
@@ -78,6 +81,9 @@ import { ListadoEncuestasAdminComponent } from './components/admins/listado-encu
     GraficaMediasComponent,
     EncuestasAdminComponent,
     ListadoEncuestasAdminComponent,
+    CampanaAdminComponent,
+    CampanaAdminAbiertaComponent,
+    PopupMensajeComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,16 +22,71 @@
     margin-top: 56px; /* Ajusta este valor según sea necesario para el margen deseado */
 }
 
+.opciones {
+  height: 60px;
+  background-color: #dcdcdc;
+  margin-top: 30px;
+  padding-bottom: 5px;
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.custom-btn-color {
+  background-color: rgba(56, 56, 56);
+  border-color: rgba(56, 56, 56);
+}
+
+.custom-btn-color:hover,
+.custom-btn-color:focus {
+  background-color: rgba(23, 23, 23);
+  border-color: rgba(23, 23, 23);
+}
+
+
+.opciones {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.opciones-left {
+  flex: 1;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.opciones-right {
+  flex: 1;
+  gap: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+}
+
+
+.custom-dropdown-toggle {
+  border-color: #636363 !important;
+  font-weight: bold;
+  background-color: #ebebeb;
+  color: #636363;
+}
+
+.dropdown-toggle {
+  border-color: #636363 !important;
+  font-weight: bold;
+  background-color: #ebebeb;
+  color: #636363;
+}
+
 
 .mensaje {
     margin-top: 40px;
     text-align: center;
  }
  
- .encuestas {
-  margin-top: 40px;
-}
-
 
  .pagination-container {
   display: flex;
@@ -57,23 +112,24 @@
   font-size: 16px;
   padding: 8px 12px;
   margin: 2px;
-  border: none;
+  border-radius: 5px;
   background-color: #f0f0f0;
+  border-width: 0px;
   color: #333;
   cursor: pointer;
 }
 
-.pagination-button:hover {
-  font-size: 16px;
-  padding: 8px 12px;
-  margin: 2px;
-  border: none;
-  background-color: #d6d6d6;
-  color: #333;
-  cursor: pointer;
+.pagination-button:hover,
+.pagination-button.active-button:hover {
+border-width: 2px;
+border-color: #333;
+text-decoration: underline;
+
 }
 
 .pagination-button.active-button {
   background-color: #888;
   color: #fff;
 }
+
+

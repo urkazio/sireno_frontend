@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{ strings["mensaje.abrir.encuesta.head"] }}</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onCancel()"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="message-text" class="col-form-label">{{ strings["mensaje.abrir.encuesta.body"] }}:</label>
+        <textarea class="mensaje form-control" id="message-text" rows="11">{{ strings["mensaje.abrir.encuesta.email"] }}</textarea>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="boton-aceptar btn btn-primary" (click)="onSaveChanges()">{{ strings['popup.aceptar'] }}</button>
+  </div>
+  

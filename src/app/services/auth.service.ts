@@ -207,13 +207,23 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getMediaCentro`, datos_encuesta);
   }
 
-
-
-
   //---------------------------------- admins  ----------------------------------------------
 
   getCampanasAdmin(){
     return this.http.post(`${this.URL}/admin/getCampannas`, {});
   }
+
+  getAnnosCampañas(){
+    return this.http.post(`${this.URL}/admin/getAnnosCursos`, {});
+  }
   
+
+  abrirCampannaAdminMensaje(mensaje:string, situaciones:any, fechaHoraFinActivacion:any){
+    const datos_activacion = {
+      mensaje : mensaje,
+      situaciones : situaciones,
+      fechaHoraFinActivacion : fechaHoraFinActivacion
+    };
+    return this.http.post(`${this.URL}/admin/abrirCampannaConMensaje`, datos_activacion);
+  }
 }

@@ -1,0 +1,37 @@
+.custom-btn-color {
+    background-color: rgba(56, 56, 56);
+    border-color: rgba(56, 56, 56);
+}
+
+.custom-btn-color:hover,
+.custom-btn-color:focus {
+    background-color: rgba(23, 23, 23);
+    border-color: rgba(23, 23, 23);
+}
+.card.shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+.encuesta-abierta{
+    color: rgb(0, 116, 248);
+}
+
+.parpadeo {
+    animation: parpadeo 1s infinite;
+  }
+  
+  @keyframes parpadeo {
+    0% {
+      background-color: inherit;
+    }
+    50% {
+      background-color: rgb(159, 204, 255);
+    }
+    100% {
+      background-color: inherit;
+    }
+}
+  
+.campaña{
+  margin-bottom: 50px;
+}

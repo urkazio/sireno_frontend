@@ -1,0 +1,28 @@
+.custom-btn-color {
+    background-color: rgba(56, 56, 56);
+    border-color: rgba(56, 56, 56);
+}
+
+.custom-btn-color:hover,
+.custom-btn-color:focus {
+    background-color: rgba(23, 23, 23);
+    border-color: rgba(23, 23, 23);
+}
+
+.campaña {
+    margin-bottom: 50px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.seleccionado {
+    border: 5px solid rgb(173, 216, 230);
+    box-shadow: 0 8px 16px rgb(173, 216, 230);
+}
+
+  
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+

@@ -5,8 +5,49 @@
 </div>
 
 <div *ngIf="noHayCampanasValidas" class="mensaje">
-  <p>{{ strings['no.campanas'] }}</p>
+  <p>{{ strings['no.campannas.admin'] }}</p>
 </div>
+
+<div class="opciones" *ngIf="!noHayCampanasValidas">
+
+  <div class="opciones-left">
+    <div class="dropdown">
+      <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 200px;">
+        {{ selectedPorcentaje ? selectedPorcentaje : strings['porcentaje.resp'] }}
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" *ngFor="let porcentaje of porcentajeResp" (click)="selectPorcentaje(porcentaje)">
+          {{ porcentaje }}
+        </a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 200px;">
+        {{ selectedAnno ? selectedAnno : strings['año.curso'] }}
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" *ngFor="let anno of annosCampannas" (click)="selectAnno(anno)">
+          {{ anno }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+    
+  <div class="opciones-right">
+    <button class="btn btn-primary custom-btn-color" *ngIf="selectedEncuestasService.obtenerEncuestas().length > 0" (click)="activarEncuestasSeleccionadas()">
+      Activar Seleccionadas
+    </button>
+    <button class="btn btn-primary custom-btn-color" *ngIf="mostrarBotonSelect" (click)="activarEncuestasSeleccionadas()">
+      Mostrar Encuestas
+    </button>
+  </div>
+  
+
+</div>
+
 
 
 <!-- Insertar los componentes de las campañas aquí -->

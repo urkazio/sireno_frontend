@@ -4,9 +4,7 @@ import { PopupRolesComponent } from '../components/shared/popups/popup-roles-do-
 import { PopupRolesDoAdComponent } from '../components/shared/popups/popup-roles-do-ad/popup-roles-do-ad.component';
 import { PopupRolesDoAlAdComponent } from '../components/shared/popups/popup-roles-do-al-ad/popup-roles-do-al-ad.component';
 import { PopupOkComponent } from '../components/shared/popups/popup-ok/popup-ok.component';
-import { PopupFechaHoraComponent } from '../components/shared/popups/popup-fecha-hora/popup-fecha-hora.component';
-
-
+import { PopupMensajeComponent } from '../components/shared/popups/popup-mensaje/popup-mensaje.component';
 
 
 
@@ -83,6 +81,22 @@ export class PopupfactoryService {
     });
   }
   
+
+  openMensajePopup(): Promise<string> {
+    this.modalService.open(PopupMensajeComponent);
+    
+    return new Promise<string>((resolve) => {
+      const acceptButton = document.querySelector('.boton-aceptar');
+      acceptButton?.addEventListener('click', () => {
+        const inputBox = document.querySelector('.mensaje') as HTMLTextAreaElement;
+        if (inputBox) {
+          const mensaje = inputBox.value;
+          resolve(mensaje);
+        }
+      });
+    });
+  }
   
+
 
 }

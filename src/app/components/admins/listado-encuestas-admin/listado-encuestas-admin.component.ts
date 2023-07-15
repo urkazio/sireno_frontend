@@ -2,8 +2,11 @@ import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef } from '@
 import { AuthService } from 'src/app/services/auth.service';
 import { LanguageService } from '../../../services/languaje.service';
 import { Router } from '@angular/router';
-import { CampanaDocenteComponent } from '../../shared/campañas/campana-docente/campana-docente.component';
-import { CampanaDocenteAbiertaComponent } from '../../shared/campañas/campana-docente-abierta/campana-docente-abierta.component';
+import { CampanaAdminComponent } from '../../shared/campañas/campana-admin/campana-admin.component';
+import { CampanaAdminAbiertaComponent } from '../../shared/campañas/campana-admin-abierta/campana-admin-abierta.component';
+import { SelectedEncuestasService } from '../../../services/selected-encuestas-service.service';
+import { PopupfactoryService } from '../../../services/popupfactory.service'
+
 
 @Component({
   selector: 'app-listado-encuestas-admin',
@@ -13,6 +16,12 @@ import { CampanaDocenteAbiertaComponent } from '../../shared/campañas/campana-d
 export class ListadoEncuestasAdminComponent implements OnInit {
   strings: any; // Variable para almacenar los textos
   noHayCampanasValidas: boolean = true;
+  porcentajeResp: string[] = ['0%', '<10%', '<20%', '<30%', '<40%', '<50%', '<60%', '<70%', '<80%', '<90%'];
+  selectedPorcentaje: any;
+  selectedAnno: any;
+  annosCampannas: any;
+  mostrarBotonSelect : boolean = false;
+  mensajeEmail : String = "";
 
   // ---- atributos para la paginacion ----
   totalCampanas!: number;
@@ -26,6 +35,8 @@ export class ListadoEncuestasAdminComponent implements OnInit {
     private languageService: LanguageService, // Servicio de idioma
     private viewContainerRef: ViewContainerRef,
     private resolver: ComponentFactoryResolver,
+    public selectedEncuestasService: SelectedEncuestasService,
+    private popupfactoryService: PopupfactoryService
   ) {}
 
   ngOnInit() {
@@ -36,15 +47,14 @@ export class ListadoEncuestasAdminComponent implements OnInit {
         // Carga los strings correspondientes al idioma actual
         (data) => {
           this.strings = data; // Almacena los textos cargados en la variable 'strings'
+          this.getAnnosCampañas()
+          this.getCampannasAdmin();
         },
         (error) => {
           console.error(`Error loading strings for ${lang}:`, error); // Muestra un mensaje de error si falla la carga de los textos
         }
       );
     });
-
-    this.getCampannasAdmin();
-
   }
 
   getCampannasAdmin() {
@@ -83,15 +93,15 @@ export class ListadoEncuestasAdminComponent implements OnInit {
 
         // generar un tipo de componente distinto para campaña con encuesta abierta o no
         if (campana.fecha_hora_cierre !== null) {
-          // Crear el componente CampanaDocenteActivadaComponent
-          factory = this.resolver.resolveComponentFactory(CampanaDocenteAbiertaComponent);
+          // Crear el componente campaña abierta
+          factory = this.resolver.resolveComponentFactory(CampanaAdminAbiertaComponent);
           componentRef = this.viewContainerRef.createComponent(factory);
-          instance = componentRef.instance as CampanaDocenteAbiertaComponent;
+          instance = componentRef.instance as CampanaAdminAbiertaComponent;
         } else {
-          // Crear el componente CampanaDocenteComponent
-          factory = this.resolver.resolveComponentFactory(CampanaDocenteComponent);
+          // Crear el componente campaña cerrada
+          factory = this.resolver.resolveComponentFactory(CampanaAdminComponent);
           componentRef = this.viewContainerRef.createComponent(factory);
-          instance = componentRef.instance as CampanaDocenteComponent;
+          instance = componentRef.instance as CampanaAdminComponent;
         }
 
         // Verificar si hay situaciones docentes agrupadas
@@ -126,7 +136,6 @@ export class ListadoEncuestasAdminComponent implements OnInit {
         const encuestasContainer = document.querySelector('.encuestas');
         if (encuestasContainer) {
           const childElement = componentRef.location.nativeElement;
-          childElement.style.marginBottom = '10px';
           encuestasContainer.appendChild(childElement);
         }
       });
@@ -136,9 +145,49 @@ export class ListadoEncuestasAdminComponent implements OnInit {
   cambiarPagina(pagina: number) {
     this.paginaActual = pagina;
     this.getCampannasAdmin();
+    this.selectedEncuestasService.vaciarEncuestas();
   }
 
   isPaginaActual(pagina: number): boolean {
     return pagina === this.paginaActual;
   }
+
+  activarEncuestasSeleccionadas() {
+    
+    const encuestasSeleccionadas = this.selectedEncuestasService.obtenerEncuestas();
+    if (encuestasSeleccionadas.length > 0) {
+      this.popupfactoryService.openFechaHoraPopup(this.strings["popup.activacion.head"], this.strings["popup.activacion.body"])
+      .then((selectedDateTime: string) => {
+
+        this.popupfactoryService.openMensajePopup().then((res: any) => {
+          if(res){ // si el segundo modal devuelve true:
+            this.mensajeEmail=res;
+            for (let index = 0; index < encuestasSeleccionadas.length; index++) {
+              const element = encuestasSeleccionadas[index];
+              element.activarConMensaje(this.mensajeEmail, selectedDateTime)
+            }
+          }
+        
+        });
+      });
+    }
+    
+  }
+
+  getAnnosCampañas() {
+    this.authService.getAnnosCampañas().subscribe((res: any) => {
+      this.annosCampannas = [this.strings["todos.años"], ...res];
+    });
+  }
+
+  selectPorcentaje(porcentaje: any) {
+    this.selectedPorcentaje = porcentaje;
+  }
+
+  selectAnno(anno: any) {
+    this.selectedAnno = anno;
+    this.mostrarBotonSelect = true;
+  }
+  
+
 }
