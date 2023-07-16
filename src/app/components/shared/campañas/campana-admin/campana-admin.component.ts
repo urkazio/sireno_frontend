@@ -5,6 +5,7 @@ import { LanguageService } from '../../../../services/languaje.service';
 import { PopupfactoryService } from '../../../../services/popupfactory.service'
 import { AuthService } from '../../../../services/auth.service';
 import { SelectedEncuestasService } from '../../../../services/selected-encuestas-service.service';
+import { ListadoEncuestasService } from '../../../../services/listado-encuestas-service.service'
 
 @Component({
   selector: 'app-campana-admin',
@@ -13,7 +14,6 @@ import { SelectedEncuestasService } from '../../../../services/selected-encuesta
 })
 export class CampanaAdminComponent implements OnInit {
 
-  mostrarCampana: boolean = true;
   cod_situacion_docente: string = '';
   n_alum_total: number | null = null;
   n_alum_respondido: number | null = null;
@@ -27,12 +27,14 @@ export class CampanaAdminComponent implements OnInit {
   strings: any; // Variable para almacenar los textos
   tiempoRestante: Observable<string> = new Observable<string>();
   seleccionado: boolean = false;
+  expirada: boolean = false;
 
   constructor(
     private languageService: LanguageService, // Servicio de idioma
     private popupfactoryService: PopupfactoryService,
     private authService: AuthService,
-    private selectedEncuestasService: SelectedEncuestasService
+    private selectedEncuestasService: SelectedEncuestasService,
+    private listadoEncuestasService: ListadoEncuestasService
   ) {}
 
   ngOnInit() {
@@ -62,10 +64,10 @@ export class CampanaAdminComponent implements OnInit {
     if (fechaFinCammpañaValida) {
       // Calcula la diferencia en milisegundos
       const diferenciaMs = fechaFinCammpañaValida.getTime() - fechaActual.getTime();
-
+      
       // Verifica si el tiempo restante es menor o igual a cero
       if (diferenciaMs <= 0) {
-        this.mostrarCampana = false; // Oculta la campaña
+        this.expirada = true;
         return ''; // Retorna una cadena vacía para no mostrar el tiempo restante
       }
 
@@ -103,37 +105,37 @@ export class CampanaAdminComponent implements OnInit {
 
   activarConMensaje(mensaje:string, selectedDateTime:string) {
 
-        // Comparar la fecha y hora seleccionadas con fecha_fin
-        const fechaHoraFinActivacion = new Date(selectedDateTime);
-        if (this.fecha_fin){
-          const fechaActual = new Date();
+    // Comparar la fecha y hora seleccionadas con fecha_fin
+    const fechaHoraFinActivacion = new Date(selectedDateTime);
+    if (this.fecha_fin){
+      const fechaActual = new Date();
 
-          if (fechaHoraFinActivacion >= fechaActual ) {
+      if (fechaHoraFinActivacion >= fechaActual ) {
 
-            //agrupar el conjunto de situaciones de la campaña en un array:
-            const situaciones = [this.cod_situacion_docente];
-            if (this.agrupado_con !== null) {
-              this.agrupado_con.forEach((agrupado:any) => {
-                situaciones.push(agrupado.cod_situacion_docente);
-              });
-            }
-
-            this.authService.abrirCampannaAdminMensaje(mensaje, situaciones, selectedDateTime).subscribe((res: any) => {
-
-              // Comprobar si todas las respuestas son true
-              if (Array.isArray(res) && res.every((respuesta) => respuesta === true)) {
-                // Almacena un indicador en el almacenamiento local del navegador
-                localStorage.setItem('encuestaAbiertaOK', 'true');
-                window.location.reload();
-              } else {
-                this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR2.head"], this.strings["popup.activacionERR2.body"])
-              }
-            });
-          } else {
-            // La fecha y hora seleccionadas son anteriores a fecha_fin --> NO abrir campaña
-            this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR.head"], this.strings["popup.activacionERR.body"])
-          }
+        //agrupar el conjunto de situaciones de la campaña en un array:
+        const situaciones = [this.cod_situacion_docente];
+        if (this.agrupado_con !== null) {
+          this.agrupado_con.forEach((agrupado:any) => {
+            situaciones.push(agrupado.cod_situacion_docente);
+          });
         }
+
+        this.authService.abrirCampannaAdminMensaje(mensaje, situaciones, selectedDateTime).subscribe((res: any) => {
+
+          // Comprobar si todas las respuestas son true
+          if (Array.isArray(res) && res.every((respuesta) => respuesta === true)) {
+            // Almacena un indicador en el almacenamiento local del navegador
+            localStorage.setItem('encuestaAbiertaOK', 'true');
+            this.listadoEncuestasService.mostrarEncuestasFiltros(); // Llamar al método a través del servicio
+          } else {
+            this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR2.head"], this.strings["popup.activacionERR2.body"])
+          }
+        });
+      } else {
+        // La fecha y hora seleccionadas son anteriores a fecha_fin --> NO abrir campaña
+        this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR.head"], this.strings["popup.activacionERR.body"])
+      }
+    }
       
   }
 

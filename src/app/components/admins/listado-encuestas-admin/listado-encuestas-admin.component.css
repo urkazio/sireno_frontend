@@ -94,18 +94,20 @@
 }
 
 .pagination {
-  display: inline-block;
-  margin-top: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .pagination-list {
   list-style-type: none;
   padding: 0;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 .pagination-list li {
   display: inline-block;
+  margin-right: 5px;
 }
 
 .pagination-button {
@@ -119,12 +121,17 @@
   cursor: pointer;
 }
 
+.dropdown-pagina {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
 .pagination-button:hover,
 .pagination-button.active-button:hover {
 border-width: 2px;
 border-color: #333;
 text-decoration: underline;
-
 }
 
 .pagination-button.active-button {

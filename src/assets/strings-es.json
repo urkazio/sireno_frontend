@@ -106,13 +106,18 @@
   "gestion.preguntas": "Administración de preguntas de encuesta",
   "gestion.encuestas2": "Administración de encuestas en curso o finalizadas",
   "listado.encuestas": "Listado de encuestas en curso o finalizadas",
-
   "porcentaje.resp": "% Respuestas",
-  "no.campannas.admin": "Vaya... Parece que no hay encuestas aun.",
+  "no.campannas.admin": "Vaya... Parece que no hay encuestas que cumplan estos filtros.",
   "todos.años": "Todos los años",
   "mensaje.abrir.encuesta.head": "Notifiación de apertura extraordinaria",
   "mensaje.abrir.encuesta.body": "Ingrese un mensaje para notificar la apertura extraordinaria de las encuestas a los alumnos correspondientes",
-  "mensaje.abrir.encuesta.email": "Estimado alumno:\n\nSe ha realizado una apertura extraordinaria de una encuesta de evaluación de una asignatura a la que perteneces.\nTe invitamos a participar y brindar tu valiosa retroalimentación sobre la calidad del curso y la enseñanza recibida.\n\nUn cordial saludo.\n\nUniversidad del País Vasco/Euskal Herriko Unibertsitatea"
+  "mensaje.abrir.encuesta.email": "Estimado alumno:\n\nSe ha realizado una apertura extraordinaria de una encuesta de evaluación de una asignatura a la que perteneces.\nTe invitamos a participar y brindar tu valiosa retroalimentación sobre la calidad del curso y la enseñanza recibida.\n\nUn cordial saludo.\n\nUniversidad del País Vasco/Euskal Herriko Unibertsitatea",
+  "activar.seleccionadas": "Activar Seleccionadas",
+  "mostrar.encuestas": "Mostrar Encuestas",
+  "mas" : "Más",
+  "expirada": "Encuesta Expirada",
+  "filtros.campaña": "Por favor, seleccione las opciones de filtrado disponibles en los menús desplegables para visualizar las encuestas correspondientes."
+
 
   
 

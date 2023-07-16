@@ -36,7 +36,6 @@ import { CampanaDocenteAbiertaComponent } from './components/shared/campañas/ca
 import { PopupFechaHoraComponent } from './components/shared/popups/popup-fecha-hora/popup-fecha-hora.component';
 import { IndexInformesComponent } from './components/docentes/index-informes/index-informes.component';
 import { InformesPersonalesComponent } from './components/docentes/informes-personales/informes-personales.component';
-import { ComparativaResultadosComponent } from './components/docentes/comparativa-resultados/comparativa-resultados.component';
 import { BarraPorcentajeRespuestasComponent } from './components/shared/graficas/barra-porcentaje-respuestas/barra-porcentaje-respuestas.component';
 import { GraficaLinearComponent } from './components/shared/graficas/grafica-linear/grafica-linear.component';
 import { InformeHistoricoPreguntaComponent } from './components/docentes/informe-historico-pregunta/informe-historico-pregunta.component';
@@ -73,7 +72,6 @@ import { PopupMensajeComponent } from './components/shared/popups/popup-mensaje/
     PopupFechaHoraComponent,
     IndexInformesComponent,
     InformesPersonalesComponent,
-    ComparativaResultadosComponent,
     BarraPorcentajeRespuestasComponent,
     GraficaLinearComponent,
     InformeHistoricoPreguntaComponent,

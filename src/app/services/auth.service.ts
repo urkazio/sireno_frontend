@@ -209,15 +209,34 @@ export class AuthService {
 
   //---------------------------------- admins  ----------------------------------------------
 
-  getCampanasAdmin(){
-    return this.http.post(`${this.URL}/admin/getCampannas`, {});
+  getCampanasAdmin(año_curso:string, ratio_respuestas:any,){
+    const datos_activacion = {
+      año_curso : año_curso,
+      ratio_respuestas : ratio_respuestas,
+    };
+    return this.http.post(`${this.URL}/admin/getCampannas`, datos_activacion);
   }
 
   getAnnosCampañas(){
     return this.http.post(`${this.URL}/admin/getAnnosCursos`, {});
   }
-  
 
+  getRespondidosAdmin(situaciones: any){
+
+    const datos_sd = {
+      situaciones : situaciones,
+    };
+    return this.http.post(`${this.URL}/admin/getRespondidos`, datos_sd);
+  }
+
+  desactivarCampanaAdmin(situaciones: any){
+
+    const datos_desactivacion = {
+      situaciones : situaciones,
+    };
+    return this.http.post(`${this.URL}/admin/desactivarCampana`, datos_desactivacion);
+  }
+  
   abrirCampannaAdminMensaje(mensaje:string, situaciones:any, fechaHoraFinActivacion:any){
     const datos_activacion = {
       mensaje : mensaje,

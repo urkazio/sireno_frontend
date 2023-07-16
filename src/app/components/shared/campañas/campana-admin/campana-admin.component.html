@@ -1,4 +1,4 @@
-<div class="campaña card text-center" [ngClass]="{'seleccionado': seleccionado}" *ngIf="mostrarCampana">
+<div class="campaña card text-center" [ngClass]="{'seleccionado': seleccionado}">
   <div class="card-header">
     <div class="checkbox-container">
       <input type="checkbox" [(ngModel)]="seleccionado" (click)="toggleSeleccionado()" />
@@ -10,8 +10,13 @@
     <p>{{ strings['alumnos.encuestados'] }}: {{ n_alum_respondido }}/{{ n_alum_total }}</p>
     <button class="btn btn-primary custom-btn-color" (click)="selectActivacion()">{{ strings['activar.encuesta'] }}</button>
   </div>
-  <div class="card-footer text-muted">
-    <small>{{ strings['tiempo.restante2'] }}</small> <br />
-    {{ tiempoRestante | async }}
+  <div class="card-footer text-muted" >
+    <div class="expirada" *ngIf="expirada">
+      {{ strings['expirada'] }}
+    </div>
+    <div *ngIf="!expirada">
+      <small>{{ strings['tiempo.restante2'] }}</small> <br />
+      {{ tiempoRestante | async }}
+    </div>
   </div>
 </div>

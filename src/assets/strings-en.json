@@ -105,7 +105,19 @@
   "gestion.informes": "Teacher report consultation",
   "gestion.preguntas": "Survey question management",
   "gestion.encuestas2": "Ongoing or completed survey management",
-  "listado.encuestas": "List of ongoing or completed surveys"
+  "listado.encuestas": "List of ongoing or completed surveys",
+  "porcentaje.resp": "% Responses",
+  "no.campannas.admin": "Oops... It looks like there are no surveys that match these filters.",
+  "todos.años": "All Years",
+  "mensaje.abrir.encuesta.head": "Extraordinary Opening Notification",
+  "mensaje.abrir.encuesta.body": "Enter a message to notify the extraordinary opening of surveys to the corresponding students",
+  "mensaje.abrir.encuesta.email": "Dear student,\n\nAn extraordinary opening of a course evaluation survey to which you belong has been made.\nWe invite you to participate and provide your valuable feedback on the quality of the course and the teaching received.\n\nBest regards,\n\nUniversity of the Basque Country/Euskal Herriko Unibertsitatea",
+  "activar.seleccionadas": "Activate Selected",
+  "mostrar.encuestas": "Show Surveys",
+  "mas" : "More",
+  "expirada": "Expired Survey",
+  "filtros.campaña": "Please select the available filter options from the dropdown menus to view the corresponding surveys."
+
 
 
 }

@@ -5,6 +5,7 @@ import { LanguageService } from '../../../../services/languaje.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { PopupfactoryService } from 'src/app/services/popupfactory.service';
 import { Router } from '@angular/router';
+import { ListadoEncuestasService } from '../../../../services/listado-encuestas-service.service'
 
 @Component({
   selector: 'app-campana-admin-abierta',
@@ -32,7 +33,8 @@ export class CampanaAdminAbiertaComponent implements OnInit {
     private authService: AuthService, // Servicio de autenticación
     private languageService: LanguageService, // Servicio de idioma
     private router: Router,
-    private popupfactoryService: PopupfactoryService
+    private popupfactoryService: PopupfactoryService,
+    private listadoEncuestasService: ListadoEncuestasService
   ) {}
 
 
@@ -70,8 +72,7 @@ export class CampanaAdminAbiertaComponent implements OnInit {
 
       // Verifica si el tiempo restante es menor o igual a cero
       if (diferenciaMs <= 0) {
-        
-        window.location.reload(); // Recarga la página
+        this.listadoEncuestasService.mostrarEncuestasFiltros(); // Llamar al método a través del servicio
       }
   
       // Calcula las horas, minutos y segundos
@@ -108,14 +109,14 @@ export class CampanaAdminAbiertaComponent implements OnInit {
         });
       }
 
-      this.authService.desactivarCampana(situaciones).subscribe((res: any) => {
+      this.authService.desactivarCampanaAdmin(situaciones).subscribe((res: any) => {
 
          // Comprobar si todas las respuestas son true
          if (Array.isArray(res) && res.every((respuesta) => respuesta === true)) {
           // Almacena un indicador en el almacenamiento local del navegador
           localStorage.setItem('encuestaCerradaOK', 'true');
           setTimeout(() => {
-            window.location.reload();
+            this.listadoEncuestasService.mostrarEncuestasFiltros(); // Llamar al método a través del servicio
           }, 1000); 
         
         } else {
@@ -137,7 +138,7 @@ export class CampanaAdminAbiertaComponent implements OnInit {
     // comprobar cada segundo si ha habido respuestas nuevas
     interval(1000).subscribe(() => {
       if (situaciones) {
-        this.authService.getRespondidos(situaciones).subscribe((total_respondidos: any) => {
+        this.authService.getRespondidosAdmin(situaciones).subscribe((total_respondidos: any) => {
           if(this.n_alum_respondido){
             if (total_respondidos['suma'] > this.n_alum_respondido){
 
@@ -153,6 +154,5 @@ export class CampanaAdminAbiertaComponent implements OnInit {
       }
     });
   }
-
 
 }

@@ -105,7 +105,18 @@
   "gestion.informes": "Txostenen kontsulta",
   "gestion.preguntas": "Inkesten galderen kudeaketa",
   "gestion.encuestas2": "Abian dauden edo amaitutako inkesten kudeaketa",
-  "listado.encuestas": "Abian dauden edo amaitutako inkesten zerrenda"
+  "listado.encuestas": "Abian dauden edo amaitutako inkesten zerrenda",
+  "porcentaje.resp": "Erantzun %",
+  "no.campannas.admin": "Badirudi ez dagoela iragazki hauekin bat datorren inkestarik.",
+  "todos.años": "Urte guztiak",
+  "mensaje.abrir.encuesta.head": "Ezohiko Irekitze Jakinarazpena",
+  "mensaje.abrir.encuesta.body": "Sartu mezu bat dagozkien ikasleei inkesten ezohiko irekiera jakinarazteko",
+  "mensaje.abrir.encuesta.email": "Ikasle agurgarria,\n\nPartaide zaren kurtsoaren ebaluazio-inkesta baten zabalketa apartekoa egin da.\nParte hartzera gonbidatzen zaitugu eta ikastaroaren kalitateari eta jasotako irakaskuntzari buruzko iritzi baliotsuak ematera gonbidatzen zaitugu.\n\nAgur bero bat, \n\nUniversidad del País Vasco/Euskal Herriko Unibertsitatea",
+  "activar.seleccionadas": "Hautatuak aktibatu",
+  "mostrar.encuestas": "Erakutsi inkestak",
+  "mas" : "Gehiago",
+  "expirada": "Iraungitako inkesta",
+  "filtros.campaña": "Mesedez, hautatu eskuragarri dauden iragazki-aukerak goitibeherako menuetan dagozkion inkestak ikusteko."
 
 
 

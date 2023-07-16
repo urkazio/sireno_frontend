@@ -4,11 +4,8 @@
   <h3 class="text-center">{{ strings['listado.encuestas'] }}</h3>
 </div>
 
-<div *ngIf="noHayCampanasValidas" class="mensaje">
-  <p>{{ strings['no.campannas.admin'] }}</p>
-</div>
 
-<div class="opciones" *ngIf="!noHayCampanasValidas">
+<div class="opciones">
 
   <div class="opciones-left">
     <div class="dropdown">
@@ -24,37 +21,46 @@
 
     <div class="dropdown">
       <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 200px;">
-        {{ selectedAnno ? selectedAnno : strings['año.curso'] }}
+        {{ getAnnoLabel(selectedAnno) }}
       </button>
       <div class="dropdown-menu">
         <a class="dropdown-item" *ngFor="let anno of annosCampannas" (click)="selectAnno(anno)">
-          {{ anno }}
+          <div *ngIf="anno === 'todos.años'">
+            {{strings['todos.años']}}
+          </div>
+          <div *ngIf="anno !== 'todos.años'">
+            {{ anno }}
+          </div> 
         </a>
       </div>
     </div>
   </div>
 
-
-    
   <div class="opciones-right">
     <button class="btn btn-primary custom-btn-color" *ngIf="selectedEncuestasService.obtenerEncuestas().length > 0" (click)="activarEncuestasSeleccionadas()">
-      Activar Seleccionadas
+      {{strings["activar.seleccionadas"]}}
     </button>
-    <button class="btn btn-primary custom-btn-color" *ngIf="mostrarBotonSelect" (click)="activarEncuestasSeleccionadas()">
-      Mostrar Encuestas
+    <button class="btn btn-primary custom-btn-color" *ngIf="selectedPorcentaje && selectedAnno" (click)="mostrarEncuestasFiltros()">
+      {{strings["mostrar.encuestas"]}}
     </button>
   </div>
-  
 
 </div>
 
+<div *ngIf="noHayCampanasValidas" class="mensaje no-hay-campanas-validas">
+  <p>{{ strings['no.campannas.admin'] }}</p>
+</div>
+
+<div *ngIf="noHayCampanasCargadas" class="mensaje no-hay-campanas-cargadas">
+  <p>{{ strings['filtros.campaña'] }}</p>
+</div>
 
 
 <!-- Insertar los componentes de las campañas aquí -->
 <div class="encuestas container mt-5 col-12 col-md-5"></div>
 
 <!-- insercion de la paginacion al final de la pagina -->
-<div class="pagination-container text-center">
+<div class="pagination-container text-center ">
   <div *ngIf="paginas.length > 1" class="pagination">
     <ul class="pagination-list">
       <li *ngFor="let pagina of paginas">
@@ -63,5 +69,18 @@
         </button>
       </li>
     </ul>
+    <ng-container *ngIf="mostrarDesplegable">
+      <div class="dropdown-pagina">
+        <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown">
+          {{strings["mas"]}}
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" *ngFor="let pagina of paginasRestantes" (click)="cambiarPagina(pagina)">
+            {{ pagina }}
+          </a>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>
+
