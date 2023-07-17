@@ -109,7 +109,7 @@ export class CampanaAdminAbiertaComponent implements OnInit {
         });
       }
 
-      this.authService.desactivarCampanaAdmin(situaciones).subscribe((res: any) => {
+      this.authService.desactivarCampanaAdmin(situaciones, this.fecha_hora_cierre).subscribe((res: any) => {
 
          // Comprobar si todas las respuestas son true
          if (Array.isArray(res) && res.every((respuesta) => respuesta === true)) {

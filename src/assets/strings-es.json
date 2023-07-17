@@ -116,8 +116,14 @@
   "mostrar.encuestas": "Mostrar Encuestas",
   "mas" : "Más",
   "expirada": "Encuesta Expirada",
-  "filtros.campaña": "Por favor, seleccione las opciones de filtrado disponibles en los menús desplegables para visualizar las encuestas correspondientes."
+  "filtros.campaña": "Por favor, seleccione las opciones de filtrado disponibles en los menús desplegables para visualizar las encuestas correspondientes.",
 
+  "popup.activaciones.head1": "Se van a abrir ",
+  "popup.activaciones.head2": " encuestas",
+  "popup.activaciones.body": "Elija la fecha y hora del cierre de las encuestas.",
+  "popup.activacionERRA.body": "La fecha seleccionada debe ser posterior a la fecha actual.",
+  "popup.ErrorAbiertaAdmin.head": "Encuesta abierta por administración.",
+  "popup.ErrorAbiertaAdmin.body": "No se puede cerrar la encuesta seleccionada ya que ha sido abierta de forma extraordinaria por administración."
 
   
 

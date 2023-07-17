@@ -109,8 +109,8 @@ export class CampanaDocenteAbiertaComponent implements OnInit {
         });
       }
 
-      this.authService.desactivarCampana(situaciones).subscribe((res: any) => {
-
+      this.authService.desactivarCampana(situaciones, this.fecha_hora_cierre).subscribe((res: any) => {
+        console.log("respuesta "+res)
          // Comprobar si todas las respuestas son true
          if (Array.isArray(res) && res.every((respuesta) => respuesta === true)) {
           // Almacena un indicador en el almacenamiento local del navegador
@@ -119,6 +119,8 @@ export class CampanaDocenteAbiertaComponent implements OnInit {
             window.location.reload();
           }, 1000); 
         
+        } else if (res=="Encuesta abierta por admin") {
+          this.popupfactoryService.openOkPoup(this.strings["popup.ErrorAbiertaAdmin.head"], this.strings["popup.ErrorAbiertaAdmin.body"])
         } else {
           this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR3.head"], this.strings["popup.activacionERR3.body"])
         }

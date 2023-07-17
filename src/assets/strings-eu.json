@@ -116,7 +116,11 @@
   "mostrar.encuestas": "Erakutsi inkestak",
   "mas" : "Gehiago",
   "expirada": "Iraungitako inkesta",
-  "filtros.campaña": "Mesedez, hautatu eskuragarri dauden iragazki-aukerak goitibeherako menuetan dagozkion inkestak ikusteko."
+  "filtros.campaña": "Mesedez, hautatu eskuragarri dauden iragazki-aukerak goitibeherako menuetan dagozkion inkestak ikusteko.",
+
+  "popup.activaciones.head1": "",
+  "popup.activaciones.head2": " inkesta irekiko dira",
+  "popup.activaciones.body": "Aukeratu inkestak ixteko eguna eta ordua."
 
 
 

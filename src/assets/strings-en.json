@@ -116,8 +116,10 @@
   "mostrar.encuestas": "Show Surveys",
   "mas" : "More",
   "expirada": "Expired Survey",
-  "filtros.campaña": "Please select the available filter options from the dropdown menus to view the corresponding surveys."
+  "filtros.campaña": "Please select the available filter options from the dropdown menus to view the corresponding surveys.",
 
-
+  "popup.activaciones.head1": "",
+  "popup.activaciones.head2": " surveys will be opened",
+  "popup.activaciones.body": "Choose the date and time the surveys close."
 
 }

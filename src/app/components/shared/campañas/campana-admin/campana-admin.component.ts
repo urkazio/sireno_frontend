@@ -120,20 +120,24 @@ export class CampanaAdminComponent implements OnInit {
           });
         }
 
-        this.authService.abrirCampannaAdminMensaje(mensaje, situaciones, selectedDateTime).subscribe((res: any) => {
+        this.authService.abrirCampannaAdmin(mensaje, situaciones, selectedDateTime).subscribe((res: any) => {
+
+          console.log("res "+res)
 
           // Comprobar si todas las respuestas son true
-          if (Array.isArray(res) && res.every((respuesta) => respuesta === true)) {
-            // Almacena un indicador en el almacenamiento local del navegador
-            localStorage.setItem('encuestaAbiertaOK', 'true');
-            this.listadoEncuestasService.mostrarEncuestasFiltros(); // Llamar al método a través del servicio
+          if (res==true || (Array.isArray(res) && res.every((respuesta) => respuesta === true))) {
+            this.authService.mandarMensajeApertura(mensaje, situaciones).subscribe((res: any) => {
+              localStorage.setItem('encuestaAbiertaOK', 'true'); // Almacena un indicador en el almacenamiento local del navegador
+              this.listadoEncuestasService.mostrarEncuestasFiltros(); // Llamar al método a través del servicio
+            });
+
           } else {
             this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR2.head"], this.strings["popup.activacionERR2.body"])
           }
         });
       } else {
         // La fecha y hora seleccionadas son anteriores a fecha_fin --> NO abrir campaña
-        this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR.head"], this.strings["popup.activacionERR.body"])
+        this.popupfactoryService.openOkPoup(this.strings["popup.activacionERR.head"], this.strings["popup.activacionERRA.body"])
       }
     }
       

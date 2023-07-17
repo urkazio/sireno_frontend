@@ -77,6 +77,11 @@ export class ListadoEncuestasAdminComponent implements OnInit {
 
       if (res.length==0){
         this.noHayCampanasValidas = true;
+        //limpiar el container de paginacion
+        const paginationContainer = document.querySelector('.pagination-container ');
+        if (paginationContainer) {
+          paginationContainer.innerHTML = '';
+        }
       }else{
         this.noHayCampanasValidas = false;
 
@@ -179,7 +184,8 @@ export class ListadoEncuestasAdminComponent implements OnInit {
   activarEncuestasSeleccionadas() {
     const encuestasSeleccionadas = this.selectedEncuestasService.obtenerEncuestas();
     if (encuestasSeleccionadas.length > 0) {
-      this.popupfactoryService.openFechaHoraPopup(this.strings["popup.activacion.head"], this.strings["popup.activacion.body"])
+      var num_enc = encuestasSeleccionadas.length.toString();
+      this.popupfactoryService.openFechaHoraPopup(this.strings["popup.activaciones.head1"]+num_enc+this.strings["popup.activaciones.head2"], this.strings["popup.activacion.body"])
       .then((selectedDateTime: string) => {
         this.popupfactoryService.openMensajePopup().then((res: any) => {
           if (res) { // si el segundo modal devuelve true:
@@ -227,7 +233,6 @@ export class ListadoEncuestasAdminComponent implements OnInit {
       const noHayCampanasValidasDiv = document.querySelector('.mensaje.no-hay-campanas-validas');
       const noHayCampanasCargadasDiv = document.querySelector('.mensaje.no-hay-campanas-cargadas');
       const encuestasContainer = document.querySelector('.encuestas');
-      const paginationContainer = document.querySelector('.pagination-container ');
       
       if (noHayCampanasValidasDiv) {
         noHayCampanasValidasDiv.innerHTML = '';
@@ -238,12 +243,9 @@ export class ListadoEncuestasAdminComponent implements OnInit {
       if (encuestasContainer) {
         encuestasContainer.innerHTML = '';
       }
-      if (paginationContainer) {
-        paginationContainer.innerHTML = '';
-      }
       
       this.getCampannasAdmin(año_curso, ratio_respuestas);
-      this.checkDialogo()
+      this.checkDialogo();
     }
   }
   
@@ -292,6 +294,7 @@ export class ListadoEncuestasAdminComponent implements OnInit {
       // Limpia el indicador almacenado después de mostrar el diálogo
       localStorage.removeItem('encuestaAbiertaOK');
       this.mostrarDialogo('abierta');
+      this.paginaActual=1;
     }  
 
     // Verifica si se debe mostrar el diálogo de encuesta bierta satisfactoriamente

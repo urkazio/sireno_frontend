@@ -97,10 +97,11 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/abrirCampanna`, datos_activacion);
   }
 
-  desactivarCampana(situaciones: any){
+  desactivarCampana(situaciones: any, fecha_hora_cierre: any){
 
     const datos_desactivacion = {
       situaciones : situaciones,
+      fecha_hora_cierre: fecha_hora_cierre
     };
     return this.http.post(`${this.URL}/docente/desactivarCampana`, datos_desactivacion);
   }
@@ -229,20 +230,28 @@ export class AuthService {
     return this.http.post(`${this.URL}/admin/getRespondidos`, datos_sd);
   }
 
-  desactivarCampanaAdmin(situaciones: any){
+  desactivarCampanaAdmin(situaciones: any, fecha_hora_cierre: any){
 
     const datos_desactivacion = {
       situaciones : situaciones,
+      fecha_hora_cierre: fecha_hora_cierre
     };
     return this.http.post(`${this.URL}/admin/desactivarCampana`, datos_desactivacion);
   }
   
-  abrirCampannaAdminMensaje(mensaje:string, situaciones:any, fechaHoraFinActivacion:any){
+  abrirCampannaAdmin(mensaje:string, situaciones:any, fechaHoraFinActivacion:any){
     const datos_activacion = {
-      mensaje : mensaje,
       situaciones : situaciones,
       fechaHoraFinActivacion : fechaHoraFinActivacion
     };
-    return this.http.post(`${this.URL}/admin/abrirCampannaConMensaje`, datos_activacion);
+    return this.http.post(`${this.URL}/admin/abrirCampannaAdmin`, datos_activacion);
+  }
+
+  mandarMensajeApertura(mensaje:string, situaciones:any){
+    const datos_activacion = {
+      mensaje : mensaje,
+      situaciones : situaciones
+    };
+    return this.http.post(`${this.URL}/admin/mandarMensajeApertura`, datos_activacion);
   }
 }
