@@ -74,19 +74,35 @@
   </div>
 
 
+  <div class="container container-contexto" *ngIf="datos_informe">
+    <h6> DATOS PARA LA CONTEXTUALIZACIÓN DEL GRUPO DE ESTUDIANTES </h6>
+  </div>
+
+  <div class="centrado-contexto container-info container custom-background">
+    <div *ngIf="datos_informe">
+      <ng-container *ngFor="let pregunta of contexto; let i = index">
+        <div class="contexto-cuerpo" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
+          {{ pregunta.texto_pregunta }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
 
   <div class="encuesta" *ngIf="encuestaCargada">
     <div class="mt-5 col-md-8 mx-auto">
       <div class="card shadow">
-        <div class="card-header text-center float-right">
+        <div class="cabecera-formulario card-header text-center float-right">
           <div class="cabecera-left card-title d-inline">
             {{strings['pregunta']}}
             <div class="nota" *ngIf="encuestaCargada">
               {{strings['click.pregunta']}}
             </div>
           </div>
-          <div class="cabecera-mid d-inline">
-            <div class="color-squares-container d-flex justify-content-center align-items-center">
+          <div class="cabecera-mid1 d-inline">
+            nº
+          </div>
+          <div class="cabecera-mid2 d-inline">
+            <div class="color-squares-container d-flex justify-content-left align-items-left">
               1: <div class="orange-square1"></div>
               2: <div class="orange-square2"></div>
               3: <div class="orange-square3"></div>
@@ -99,11 +115,14 @@
           </div>
         </div>           
         <ng-container *ngFor="let pregunta of encuesta; let i = index">
-          <div class="card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
+          <div class="cuerpo-formulario card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
             <div class="column-left-preguntas">
               <div class="pregunta" (click)="mostrarGraficoPregunta(pregunta.cod_pregunta, pregunta.texto_pregunta)">{{ pregunta.texto_pregunta }}</div>
             </div>
-            <div class="column-mid-preguntas">
+            <div class="column-mid1-preguntas">
+              {{pregunta.total_respuestas}}
+            </div>
+            <div class="column-mid2-preguntas">
               <ng-container *ngIf="pregunta.total_respuestas === 0">
                 <div class="no-respuestas">{{strings['no.respuestas']}}</div>
               </ng-container>

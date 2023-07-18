@@ -66,11 +66,17 @@ export class ListadoEncuestasAdminComponent implements OnInit {
     });
   }
 
-  getCampannasAdmin(año_curso:string, ratio_respuestas:any) {
+  getCampannasAdmin(año_curso:any, ratio_respuestas:any) {
 
-    this.authService.getCampanasAdmin(año_curso,ratio_respuestas).subscribe((res: any) => {
+    var cod_campana;
+    console.log(año_curso)
+    if (año_curso == "*"){
+      cod_campana=año_curso
+    }else{
+      cod_campana = año_curso["cod_campana"];
+    }
 
-      console.log(res)
+    this.authService.getCampanasAdmin(cod_campana,ratio_respuestas).subscribe((res: any) => {
 
       // Obtener el número total de campañas
       this.totalCampanas = res.length;
@@ -219,7 +225,7 @@ export class ListadoEncuestasAdminComponent implements OnInit {
 
   getAnnoLabel(anno: any): string {
     if (anno){
-      return anno === 'todos.años' ? this.strings['todos.años'] : anno;
+      return anno === 'todos.años' ? this.strings['todos.años'] : anno["nombre"]+" ("+anno["año_curso"]+")";
     }else{
       return this.strings['año.del.curso']
     }
@@ -290,8 +296,8 @@ export class ListadoEncuestasAdminComponent implements OnInit {
     }
   }
 
+  
   checkDialogo(){
-    console.log("checkDialogo")
     // Verifica si se debe mostrar el diálogo de encuesta bierta satisfactoriamente
     const mostrarDialogoAbierta = localStorage.getItem('encuestaAbiertaOK');
     if (mostrarDialogoAbierta === 'true') {
@@ -311,8 +317,6 @@ export class ListadoEncuestasAdminComponent implements OnInit {
   }
   
   mostrarDialogo(tipo:string){
-    console.log("mostrarDialogo")
-
     setTimeout(() => {
       if (tipo == 'abierta'){
         this.popupfactoryService.openOkPoup(this.strings["popup.activacionOK.head"], this.strings["popup.activacionOK.body"]);

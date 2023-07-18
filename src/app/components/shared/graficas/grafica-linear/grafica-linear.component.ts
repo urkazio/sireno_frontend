@@ -31,15 +31,14 @@ export class GraficaLinearComponent implements AfterViewInit {
       this.cod_asignatura = this.parametros['cod_asignatura'];
       this.info_respuestas = JSON.parse(this.parametros['info_respuestas']);
 
+      console.log(this.info_respuestas)
+
       this.año_curso = this.info_respuestas.map((item:any) => item.año_curso);
       this.media = this.info_respuestas.map((item:any) => item.media_respuestas);
 
       this.renderChart();
-      this.addBeforeUnloadListener();
     }
   }
-
-
 
   renderChart() {
 
@@ -67,10 +66,4 @@ export class GraficaLinearComponent implements AfterViewInit {
     });
   }
 
-  addBeforeUnloadListener() {
-    window.addEventListener('beforeunload', (event) => {
-      event.preventDefault();
-      event.returnValue = 'Se perderán los resultados. ¿Estás seguro de recargar la página?';
-    });
-  }
 }

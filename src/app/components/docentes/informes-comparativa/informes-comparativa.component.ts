@@ -41,12 +41,11 @@ interface Respuesta {
   styleUrls: ['./informes-comparativa.component.css']
 })
 export class InformesComparativaComponent implements OnInit{
-  colors: string[] = ['red', 'blue', 'green', 'yellow', 'orange'];
   encuesta: any[] = [];
   comparativa: any[] = [];
   strings: any; // Variable para almacenar los textos
   asignaturas: any[]  = [];
-  comparaciones: string[] = ['asignatura', 'grupo', 'departamento', 'curso', 'titulacion', 'centro'];
+  comparaciones: string[] = ['asignatura.historico','asignatura', 'grupo', 'departamento', 'curso', 'titulacion', 'centro'];
   selectedAsignatura: Asignatura | null = null;
   selectedYear: any;
   selectedYearDrop: boolean = false;
@@ -134,10 +133,10 @@ export class InformesComparativaComponent implements OnInit{
       (encuesta: Object) => {
         // Realizar conversión de tipo a Pregunta[]
         this.encuesta = Object.values(encuesta) as Pregunta[];
-        this.encuestaCargada = true;
 
         // Filtrar las preguntas numéricas
         this.encuesta = this.encuesta.filter(pregunta => pregunta.numerica === 1);
+        this.encuesta = this.encuesta.filter(pregunta => pregunta.cod_pregunta !== "prg001");
 
         // Obtener los valores del array 'cuantos' de cada pregunta y almacenarlos en 'cuantos'
         this.encuesta.forEach(pregunta => {
@@ -150,7 +149,6 @@ export class InformesComparativaComponent implements OnInit{
           pregunta.media_respuestas = media !== 0 ? media.toFixed(2) : '-';
   
         });
-
         this.cargarComparativas();
 
       },
@@ -163,6 +161,9 @@ export class InformesComparativaComponent implements OnInit{
   cargarComparativas(){
 
     switch (this.selectedComparacion) {
+      case 'asignatura.historico':
+        this.getMediaAsignaturaHistorico();
+      break;
       case 'asignatura':
         this.getMediaAsignatura();
       break;
@@ -187,38 +188,44 @@ export class InformesComparativaComponent implements OnInit{
 
   // --------------- calculo de las diferenets medias comparativas del informe ----------------
 
+  getMediaAsignaturaHistorico(){
+    this.authService.getMediaAsignaturaHistorico(this.situacion_docente["asignatura"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+      this.getMediaGeneral(res);
+    });
+  }
+
   getMediaAsignatura(){
-    this.authService.getMediaAsignatura(this.situacion_docente["asignatura"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+    this.authService.getMediaAsignatura(this.situacion_docente["curso"]["año_curso"], this.situacion_docente["asignatura"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
       this.getMediaGeneral(res);
     });
   }
 
   getMediaGrupo(){
-    this.authService.getMediaGrupo(this.situacion_docente["grupo"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+    this.authService.getMediaGrupo(this.situacion_docente["curso"]["año_curso"],this.situacion_docente["grupo"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
       this.getMediaGeneral(res);
     });
   }
 
   getMediaDepartamento(){
-    this.authService.getMediaDepartamento(this.situacion_docente["departamento"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+    this.authService.getMediaDepartamento(this.situacion_docente["curso"]["año_curso"],this.situacion_docente["departamento"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
       this.getMediaGeneral(res);
     });
   }
 
   getMediaCurso(){
-    this.authService.getMediaCurso(this.situacion_docente["curso"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+    this.authService.getMediaCurso(this.situacion_docente["curso"]["año_curso"],this.situacion_docente["curso"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
       this.getMediaGeneral(res);
     });
   }
 
   getMediaTitulacion(){
-    this.authService.getMediaTitulacion(this.situacion_docente["titulacion"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+    this.authService.getMediaTitulacion(this.situacion_docente["curso"]["año_curso"],this.situacion_docente["titulacion"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
       this.getMediaGeneral(res);
     });
   }
 
   getMediaCentro(){
-    this.authService.getMediaCentro(this.situacion_docente["centro"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
+    this.authService.getMediaCentro(this.situacion_docente["curso"]["año_curso"],this.situacion_docente["centro"]["codigo"],this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
       this.getMediaGeneral(res);
     });
   }
@@ -228,10 +235,10 @@ export class InformesComparativaComponent implements OnInit{
 
     // Realizar conversión de tipo a Pregunta[]
     this.comparativa = Object.values(res) as Pregunta[];
-    this.encuestaCargada = true;
 
     // Filtrar las preguntas numéricas
     this.comparativa = this.comparativa.filter(pregunta => pregunta.numerica === 1);
+    this.comparativa = this.comparativa.filter(pregunta => pregunta.cod_pregunta !== "prg001");
 
     // Obtener los valores del array 'cuantos' de cada pregunta y almacenarlos en 'cuantos'
     this.comparativa.forEach(pregunta => {
@@ -250,5 +257,6 @@ export class InformesComparativaComponent implements OnInit{
   cargarGrafica(){
     this.rdo_personales = this.encuesta.map(pregunta => pregunta.media_respuestas);
     this.rdo_media = this.comparativa.map(pregunta => pregunta.media_respuestas);
+    this.encuestaCargada = true;
   }
 }

@@ -17,7 +17,6 @@ export class GraficaMediasComponent implements AfterViewInit {
   rdo_media: any;
   strings: any; // Variable para almacenar los textos
 
-
   constructor(
     private languageService: LanguageService, // Servicio de idioma
   ) {}
@@ -35,10 +34,6 @@ export class GraficaMediasComponent implements AfterViewInit {
             this.rdo_personales = this.parametros['rdo_personales'];
             this.rdo_media = this.parametros['rdo_media'];
 
-            
-            console.log("this.rdo_personales: "+this.rdo_personales)
-            console.log("this.rdo_media: "+this.rdo_media)
-            
           }
           this.renderChart();
           this.addBeforeUnloadListener();
@@ -52,11 +47,9 @@ export class GraficaMediasComponent implements AfterViewInit {
 
   }
 
-
-
   renderChart() {
     const data = {
-      labels: [22],
+      labels: [this.strings["media"]],
       datasets: [
         {
           label: this.strings['personal'],
@@ -78,7 +71,7 @@ export class GraficaMediasComponent implements AfterViewInit {
       data: data,
       options: {
         indexAxis: 'y',
-        aspectRatio: 6, // Ajusta el valor según tu preferencia para hacer el gráfico más achatado
+        aspectRatio: 4.5, // Ajusta el valor según tu preferencia para hacer el gráfico más achatado
         elements: {
           bar: {
             borderWidth: 2.5,

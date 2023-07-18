@@ -15,6 +15,7 @@ interface Pregunta {
   numerica: number;
   respuestas: any[];
   texto_pregunta: string;
+  total_respuestas: number;
   cuantos: number[][] // Variable auxiliar para almacenar los valores del array 'cuantos'
   media_respuestas?: number; // Nuevo campo para almacenar la media de las respuestas
 }
@@ -24,6 +25,7 @@ interface Respuesta {
   año_curso: string;
   cod_pregunta: string;
   texto_pregunta: string;
+  texto: string;
   numerica: number;
   respuestas: {
     cod_respuesta: string;
@@ -41,6 +43,7 @@ export class InformesPersonalesComponent implements OnInit {
   
   colors: string[] = ['red', 'blue', 'green', 'yellow', 'orange'];
   encuesta: any[] = [];
+  contexto: any[] = [];
   strings: any; // Variable para almacenar los textos
   asignaturas: any[]  = [];
   selectedAsignatura: Asignatura | null = null;
@@ -117,13 +120,26 @@ export class InformesPersonalesComponent implements OnInit {
   cargarInforme() {
     this.authService.getResultadosInformePersonal(this.situacion_docente["situaciones"], this.situacion_docente["encuesta"], this.languageService.getCurrentLanguageValue()).subscribe(
       (encuesta: Object) => {
+
+        // -------------------------- preguntas no numericas -----------------------------//
+
+        // Realizar conversión de tipo a Pregunta[]
+        this.contexto = Object.values(encuesta) as Pregunta[];
+
+        // Filtrar las preguntas numéricas
+        this.contexto = this.contexto.filter(pregunta => pregunta.numerica === 0 || pregunta.cod_pregunta === "prg001");
+        console.log(this.contexto)
+
+        // -------------------------- preguntas numericas -----------------------------//
+
         // Realizar conversión de tipo a Pregunta[]
         this.encuesta = Object.values(encuesta) as Pregunta[];
         this.encuestaCargada = true;
   
         // Filtrar las preguntas numéricas
         this.encuesta = this.encuesta.filter(pregunta => pregunta.numerica === 1);
-  
+        this.encuesta = this.encuesta.filter(pregunta => pregunta.cod_pregunta !== "prg001");
+
         // Obtener los valores del array 'cuantos' de cada pregunta y almacenarlos en 'cuantos'
         this.encuesta.forEach(pregunta => {
           pregunta.cuantos = pregunta.respuestas.map((respuesta: any) => respuesta.cuantos);
@@ -135,8 +151,11 @@ export class InformesPersonalesComponent implements OnInit {
           pregunta.media_respuestas = media !== 0 ? media.toFixed(2) : '-';
   
         });
-  
+
+
+
       },
+
       (error) => {
         console.error(error);
       }
@@ -147,6 +166,7 @@ export class InformesPersonalesComponent implements OnInit {
   mostrarGraficoPregunta(cod_pregunta: string, texto_pregunta: string) {
     this.authService.getHistoricoPregunta(this.situacion_docente["asignatura"]["codigo"], cod_pregunta, this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
       this.historicoPregunta = res;
+      console.log(this.historicoPregunta)
   
       this.historicoPregunta.forEach((pregunta: any) => {
         const numerador = pregunta.respuestas.reduce((sum: number, respuesta: any) => sum + Number(respuesta.cod_respuesta) * respuesta.cuantos, 0);

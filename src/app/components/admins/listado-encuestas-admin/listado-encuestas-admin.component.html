@@ -29,7 +29,7 @@
             {{strings['todos.años']}}
           </div>
           <div *ngIf="anno !== 'todos.años'">
-            {{ anno }}
+            {{ anno["nombre"] }}&nbsp;({{anno["año_curso"]}})
           </div> 
         </a>
       </div>

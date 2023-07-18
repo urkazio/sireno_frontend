@@ -48,7 +48,8 @@
     background-color: #F7A237;
 }
 
-.container h5{
+.container h5,
+.container h6{
     color: #FFFFFF;
     font-weight: bold;
     margin-top: 5px;
@@ -137,9 +138,9 @@ p strong.separation2 {
   background-color: #eeeeee;
 }
 
-.card-body {
+.cuerpo-formulario {
   display: grid;
-  grid-template-columns: 55% 30% 13%;
+  grid-template-columns: 55% 5% 25% 13%;
   gap: 10px;
 }
 
@@ -150,7 +151,15 @@ p strong.separation2 {
   align-items: center;
 }
 
-.column-mid-preguntas {
+.column-mid1-preguntas {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.column-mid2-preguntas {
   text-align: center;
   flex: 1;
   display: flex;
@@ -213,9 +222,9 @@ p strong.separation2 {
 
 /*++++++++++++++++++++++*/
 
-.card-header {
+.cabecera-formulario {
   display: grid;
-  grid-template-columns: 55% 30% 12%;
+  grid-template-columns: 55% 5% 25% 12%;
   gap: 10px;
 }
  
@@ -227,8 +236,17 @@ p strong.separation2 {
   align-items: center;
 }
 
-.cabecera-mid {
+.cabecera-mid1 {
   text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.cabecera-mid2 {
+  text-align: left;
   flex: 1;
   display: flex;
   align-items: center;
@@ -245,3 +263,24 @@ p strong.separation2 {
   justify-content: center;
 }
 
+
+.cabecera-contexto{
+  background-color: #F7A237;
+  color: #F7A237;
+}
+
+.container-contexto {
+  background-color: #F7A237;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.centrado-contexto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}

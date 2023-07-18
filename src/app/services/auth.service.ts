@@ -68,7 +68,7 @@ export class AuthService {
     const datos_respuesta = {
       cod_situacion_docente : cod_situacion_docente
     };
-    return this.http.post(`${this.URL}/alumno/isActiva`, datos_respuesta);
+    return this.http.post(`${this.URL}/public/isActiva`, datos_respuesta);
   }
 
   enviarRespuestasAlumno(respuestas:any, cod_situacion_docente:string){
@@ -148,9 +148,21 @@ export class AuthService {
 
 // ---------- getters de la media de un conjunto de situaciones docnetyes para la comparativa de informes ----------
 
- getMediaAsignatura(cod_asignatura:string, cod_encuesta:string, idioma:string){
+getMediaAsignaturaHistorico(cod_asignatura:string, cod_encuesta:string, idioma:string){
+
+  const datos_encuesta = {
+    cod_asignatura : cod_asignatura,
+    cod_encuesta : cod_encuesta,
+    idioma : idioma
+  };
+  return this.http.post(`${this.URL}/docente/getMediaAsignaturaHistorico`, datos_encuesta);
+}
+
+
+ getMediaAsignatura(año_curso:string, cod_asignatura:string, cod_encuesta:string, idioma:string){
 
     const datos_encuesta = {
+      año_curso: año_curso,
       cod_asignatura : cod_asignatura,
       cod_encuesta : cod_encuesta,
       idioma : idioma
@@ -158,9 +170,10 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getMediaAsignatura`, datos_encuesta);
   }
 
-  getMediaGrupo(cod_grupo:string, cod_encuesta:string, idioma:string){
+  getMediaGrupo(año_curso:string, cod_grupo:string, cod_encuesta:string, idioma:string){
     
     const datos_encuesta = {
+      año_curso: año_curso,
       cod_grupo : cod_grupo,
       cod_encuesta : cod_encuesta,
       idioma : idioma
@@ -168,9 +181,10 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getMediaGrupo`, datos_encuesta);
   }
 
-  getMediaDepartamento(cod_departamento:string, cod_encuesta:string, idioma:string){
+  getMediaDepartamento(año_curso:string, cod_departamento:string, cod_encuesta:string, idioma:string){
 
     const datos_encuesta = {
+      año_curso: año_curso,
       cod_departamento : cod_departamento,
       cod_encuesta : cod_encuesta,
       idioma : idioma
@@ -178,9 +192,10 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getMediaDepartamento`, datos_encuesta);
   }
 
-  getMediaCurso(cod_curso:string, cod_encuesta:string, idioma:string){
+  getMediaCurso(año_curso:string, cod_curso:string, cod_encuesta:string, idioma:string){
 
     const datos_encuesta = {
+      año_curso: año_curso,
       cod_curso : cod_curso,
       cod_encuesta : cod_encuesta,
       idioma : idioma
@@ -188,9 +203,10 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getMediaCurso`, datos_encuesta);
   }
 
-  getMediaTitulacion(cod_titulacion:string, cod_encuesta:string, idioma:string){
+  getMediaTitulacion(año_curso:string, cod_titulacion:string, cod_encuesta:string, idioma:string){
 
     const datos_encuesta = {
+      año_curso: año_curso,
       cod_titulacion : cod_titulacion,
       cod_encuesta : cod_encuesta,
       idioma : idioma
@@ -198,9 +214,10 @@ export class AuthService {
     return this.http.post(`${this.URL}/docente/getMediaTitulacion`, datos_encuesta);
   }
 
-  getMediaCentro(cod_centro:string, cod_encuesta:string, idioma:string){
+  getMediaCentro(año_curso:string, cod_centro:string, cod_encuesta:string, idioma:string){
 
     const datos_encuesta = {
+      año_curso: año_curso,
       cod_centro : cod_centro,
       cod_encuesta : cod_encuesta,
       idioma : idioma
@@ -210,9 +227,9 @@ export class AuthService {
 
   //---------------------------------- admins  ----------------------------------------------
 
-  getCampanasAdmin(año_curso:string, ratio_respuestas:any,){
+  getCampanasAdmin(cod_campana:string, ratio_respuestas:any,){
     const datos_activacion = {
-      año_curso : año_curso,
+      cod_campana : cod_campana,
       ratio_respuestas : ratio_respuestas,
     };
     return this.http.post(`${this.URL}/admin/getCampannas`, datos_activacion);

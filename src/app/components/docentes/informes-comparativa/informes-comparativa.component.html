@@ -38,49 +38,52 @@
 
 
 <div class="container custom-background-2">
-    <div class="row justify-content-center">
-
-      <div class="mt-2 col-md-6">
-        <div class="dropdown">
-          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 600px;">
-            {{ selectedAsignatura ? selectedAsignatura['nombre_asignatura'] :  strings['asignatura'] }}
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" *ngFor="let asignatura of asignaturas" (click)="selectAsignatura(asignatura)">
-              {{ asignatura['nombre_asignatura'] }}
-            </a>
+    <div class="opciones">
+      <div class="opciones-left">
+        <div>
+          <div class="dropdown">
+            <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 600px;">
+              {{ selectedAsignatura ? selectedAsignatura['nombre_asignatura'] :  strings['asignatura'] }}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" *ngFor="let asignatura of asignaturas" (click)="selectAsignatura(asignatura)">
+                {{ asignatura['nombre_asignatura'] }}
+              </a>
+            </div>
+          </div>
+        </div> 
+    
+        <div *ngIf="selectedAsignatura">
+          <div class="dropdown">
+            <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
+              {{ selectedYear ? selectedYear :  strings['año.del.curso'] }}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" *ngFor="let year of getAsignaturaYears(selectedAsignatura)" (click)="selectedYear = year">
+                {{ year }}
+              </a>
+            </div>
           </div>
         </div>
-      </div> 
   
-      <div class="mt-2 col-md-2" *ngIf="selectedAsignatura">
-        <div class="dropdown">
-          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
-            {{ selectedYear ? selectedYear :  strings['año.del.curso'] }}
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" *ngFor="let year of getAsignaturaYears(selectedAsignatura)" (click)="selectedYear = year">
-              {{ year }}
-            </a>
+        <div *ngIf="selectedYearDrop">
+          <div class="dropdown">
+            <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 200px;">
+              {{ selectedComparacion ? strings[selectedComparacion] : strings['comparativa'] }}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" *ngFor="let comparacion of comparaciones" (click)="selectComparacion(comparacion)">
+                {{ strings[comparacion] }}
+              </a>
+            </div>
           </div>
-        </div>
+        </div> 
       </div>
-
-      <div class="mt-2 col-md-2" *ngIf="selectedYearDrop">
-        <div class="dropdown">
-          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
-            {{ selectedComparacion ? strings[selectedComparacion] : strings['comparativa'] }}
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" *ngFor="let comparacion of comparaciones" (click)="selectComparacion(comparacion)">
-              {{ strings[comparacion] }}
-            </a>
-          </div>
+     
+      <div class="opciones-right">
+        <div *ngIf="selectedComparacionDrop">
+          <button class="btn btn-primary btn-orange" type="button"(click)="mostrarInforme()"> {{strings['consultar.informe']}} </button>
         </div>
-      </div>      
-      
-      <div class="mt-2 col-md-2" *ngIf="selectedComparacionDrop">
-        <button class="btn btn-primary btn-orange" type="button"(click)="mostrarInforme()"> {{strings['consultar.informe']}} </button>
       </div>
         
     </div>

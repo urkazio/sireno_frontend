@@ -113,7 +113,7 @@
   "mensaje.abrir.encuesta.body": "Enter a message to notify the extraordinary opening of surveys to the corresponding students",
   "mensaje.abrir.encuesta.asunto": "Extraordinary opening of survey",
   "mensaje.abrir.encuesta.email": "Dear student,\n\nAn extraordinary opening of a course evaluation survey to which you belong has been made.\nWe invite you to participate and provide your valuable feedback on the quality of the course and the teaching received.\n\nBest regards,\n\nUniversity of the Basque Country/Euskal Herriko Unibertsitatea",
-  "activar.seleccionadas": "Activate Selected",
+  "activar.seleccionadas": "Open Selected",
   "mostrar.encuestas": "Show Surveys",
   "mas" : "More",
   "expirada": "Expired Survey",
@@ -123,6 +123,9 @@
   "popup.activaciones.body": "Choose the date and time the surveys close.",
   "popup.activacionERRA.body": "The selected date must be after the current date.",
   "popup.ErrorAbiertaAdmin.head": "Survey opened by administration.",
-  "popup.ErrorAbiertaAdmin.body": "The selected survey cannot be closed as it has been opened extraordinarily by administration."
+  "popup.ErrorAbiertaAdmin.body": "The selected survey cannot be closed as it has been opened extraordinarily by administration.",
+  "popup.activacionOK2.head": "Open Surveys",
+  "popup.activacionOK2.body": "The surveys have been successfully opened until the specified deadline.",
+  "valoracion": "Rating"
 
 }

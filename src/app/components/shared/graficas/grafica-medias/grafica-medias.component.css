@@ -2,11 +2,11 @@
   display: inline-block;
   padding: 0;
   margin: 0;
-  width: 295px;
+  width: 200px;
 }
 
 .canvas-container canvas {
   display: block;
   height: 100px;
-  width: 295px;
+  width: 200px;
 }

@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import type { ChartOptions } from 'chart.js';
+import { LanguageService } from '../../../../services/languaje.service';
 
 Chart.register(...registerables);
 
@@ -12,9 +13,25 @@ Chart.register(...registerables);
 export class BarraPorcentajeRespuestasComponent implements AfterViewInit {
   @Input() cuantos: number[] = []; // Entrada para recibir los datos del array 'cuantos'
   @ViewChild('canvas') canvasRef!: ElementRef<HTMLCanvasElement>;
+  strings: any; // Variable para almacenar los textos
+
+  constructor(
+    private languageService: LanguageService, // Servicio de idioma
+  ) {}
 
   ngAfterViewInit() {
-    this.renderChart();
+    const lang = 'es'; // Idi oma predeterminado
+    this.languageService.currentLanguage$.subscribe(lang => { // Suscripción a cambios en el idioma actual
+      this.languageService.loadStrings(lang).subscribe( // Carga los strings correspondientes al idioma actual
+        data => {
+          this.strings = data; // Almacena los textos cargados en la variable 'strings'
+          this.renderChart();
+        },
+        error => {
+          console.error(`Error loading strings for ${lang}:`, error); // Muestra un mensaje de error si falla la carga de los textos
+        }
+      );
+    });
   }
 
   renderChart() {
@@ -22,7 +39,7 @@ export class BarraPorcentajeRespuestasComponent implements AfterViewInit {
     const normalizedData = this.cuantos.map(value => value*100 / total);
 
     const data = {
-      labels: ['valoración'],
+      labels: [this.strings["valoracion"]],
       datasets: [
         {
           label: '1',
