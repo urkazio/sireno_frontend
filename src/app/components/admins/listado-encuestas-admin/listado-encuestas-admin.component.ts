@@ -182,21 +182,24 @@ export class ListadoEncuestasAdminComponent implements OnInit {
   }
 
   activarEncuestasSeleccionadas() {
+
     const encuestasSeleccionadas = this.selectedEncuestasService.obtenerEncuestas();
     if (encuestasSeleccionadas.length > 0) {
       var num_enc = encuestasSeleccionadas.length.toString();
       this.popupfactoryService.openFechaHoraPopup(this.strings["popup.activaciones.head1"]+num_enc+this.strings["popup.activaciones.head2"], this.strings["popup.activacion.body"])
-      .then((selectedDateTime: string) => {
-        this.popupfactoryService.openMensajePopup().then((res: any) => {
-          if (res) { // si el segundo modal devuelve true:
-            this.mensajeEmail = res;
-            for (let index = 0; index < encuestasSeleccionadas.length; index++) {
-              const element = encuestasSeleccionadas[index];
-              element.activarConMensaje(this.mensajeEmail, selectedDateTime)
+        .then((selectedDateTime: string) => {
+          this.popupfactoryService.openMensajePopup().then((res: any) => {
+            if (res) { // si el segundo modal devuelve true:
+              this.mensajeEmail = res;
+              const promises = encuestasSeleccionadas.map((element: any) =>
+                element.activarConMensaje(this.mensajeEmail, selectedDateTime)
+              );
+              Promise.all(promises).then(() => {
+                localStorage.setItem('encuestaAbiertaOK', 'true');
+              });
             }
-          }
+          });
         });
-      });
     }
   }
 
@@ -288,6 +291,7 @@ export class ListadoEncuestasAdminComponent implements OnInit {
   }
 
   checkDialogo(){
+    console.log("checkDialogo")
     // Verifica si se debe mostrar el diálogo de encuesta bierta satisfactoriamente
     const mostrarDialogoAbierta = localStorage.getItem('encuestaAbiertaOK');
     if (mostrarDialogoAbierta === 'true') {
@@ -307,6 +311,8 @@ export class ListadoEncuestasAdminComponent implements OnInit {
   }
   
   mostrarDialogo(tipo:string){
+    console.log("mostrarDialogo")
+
     setTimeout(() => {
       if (tipo == 'abierta'){
         this.popupfactoryService.openOkPoup(this.strings["popup.activacionOK.head"], this.strings["popup.activacionOK.body"]);

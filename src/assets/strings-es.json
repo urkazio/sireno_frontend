@@ -111,22 +111,22 @@
   "todos.años": "Todos los años",
   "mensaje.abrir.encuesta.head": "Notifiación de apertura extraordinaria",
   "mensaje.abrir.encuesta.body": "Ingrese un mensaje para notificar la apertura extraordinaria de las encuestas a los alumnos correspondientes",
+  "mensaje.abrir.encuesta.asunto": "Apertura extraordinaria de encuesta",
   "mensaje.abrir.encuesta.email": "Estimado alumno:\n\nSe ha realizado una apertura extraordinaria de una encuesta de evaluación de una asignatura a la que perteneces.\nTe invitamos a participar y brindar tu valiosa retroalimentación sobre la calidad del curso y la enseñanza recibida.\n\nUn cordial saludo.\n\nUniversidad del País Vasco/Euskal Herriko Unibertsitatea",
   "activar.seleccionadas": "Activar Seleccionadas",
   "mostrar.encuestas": "Mostrar Encuestas",
   "mas" : "Más",
   "expirada": "Encuesta Expirada",
   "filtros.campaña": "Por favor, seleccione las opciones de filtrado disponibles en los menús desplegables para visualizar las encuestas correspondientes.",
-
   "popup.activaciones.head1": "Se van a abrir ",
   "popup.activaciones.head2": " encuestas",
   "popup.activaciones.body": "Elija la fecha y hora del cierre de las encuestas.",
   "popup.activacionERRA.body": "La fecha seleccionada debe ser posterior a la fecha actual.",
   "popup.ErrorAbiertaAdmin.head": "Encuesta abierta por administración.",
-  "popup.ErrorAbiertaAdmin.body": "No se puede cerrar la encuesta seleccionada ya que ha sido abierta de forma extraordinaria por administración."
+  "popup.ErrorAbiertaAdmin.body": "No se puede cerrar la encuesta seleccionada ya que ha sido abierta de forma extraordinaria por administración.",
 
+  "popup.activacionOK2.head": "Encuestas abiertas",
+  "popup.activacionOK2.body": "La encuestas se ha abierto correctamente hasta el plazo indicado."
   
-
-
   }
   

@@ -122,13 +122,16 @@ export class CampanaAdminComponent implements OnInit {
 
         this.authService.abrirCampannaAdmin(mensaje, situaciones, selectedDateTime).subscribe((res: any) => {
 
-          console.log("res "+res)
-
           // Comprobar si todas las respuestas son true
-          if (res==true || (Array.isArray(res) && res.every((respuesta) => respuesta === true))) {
-            this.authService.mandarMensajeApertura(mensaje, situaciones).subscribe((res: any) => {
-              localStorage.setItem('encuestaAbiertaOK', 'true'); // Almacena un indicador en el almacenamiento local del navegador
+          if (res === true || (Array.isArray(res) && res.every((respuesta) => respuesta === true))) {
+            this.authService.mandarMensajeApertura(this.strings["mensaje.abrir.encuesta.asunto"] ,mensaje, situaciones).subscribe((res: any) => {
               this.listadoEncuestasService.mostrarEncuestasFiltros(); // Llamar al método a través del servicio
+
+              const encuestasSeleccionadas = this.selectedEncuestasService.obtenerEncuestas();
+              console.log("encuestasSeleccionadas.length "+encuestasSeleccionadas.length)
+              if (encuestasSeleccionadas.length === 0) {
+                this.popupfactoryService.openOkPoup(this.strings["popup.activacionOK.head"], this.strings["popup.activacionOK.body"]);
+              }
             });
 
           } else {

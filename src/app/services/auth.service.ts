@@ -247,8 +247,9 @@ export class AuthService {
     return this.http.post(`${this.URL}/admin/abrirCampannaAdmin`, datos_activacion);
   }
 
-  mandarMensajeApertura(mensaje:string, situaciones:any){
+  mandarMensajeApertura(asunto:string, mensaje:string, situaciones:any){
     const datos_activacion = {
+      asunto : asunto,
       mensaje : mensaje,
       situaciones : situaciones
     };

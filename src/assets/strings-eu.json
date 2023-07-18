@@ -111,16 +111,19 @@
   "todos.años": "Urte guztiak",
   "mensaje.abrir.encuesta.head": "Ezohiko Irekitze Jakinarazpena",
   "mensaje.abrir.encuesta.body": "Sartu mezu bat dagozkien ikasleei inkesten ezohiko irekiera jakinarazteko",
+  "mensaje.abrir.encuesta.asunto": "Inkestaren ezohiko irekiera",
   "mensaje.abrir.encuesta.email": "Ikasle agurgarria,\n\nPartaide zaren kurtsoaren ebaluazio-inkesta baten zabalketa apartekoa egin da.\nParte hartzera gonbidatzen zaitugu eta ikastaroaren kalitateari eta jasotako irakaskuntzari buruzko iritzi baliotsuak ematera gonbidatzen zaitugu.\n\nAgur bero bat, \n\nUniversidad del País Vasco/Euskal Herriko Unibertsitatea",
   "activar.seleccionadas": "Hautatuak aktibatu",
   "mostrar.encuestas": "Erakutsi inkestak",
   "mas" : "Gehiago",
   "expirada": "Iraungitako inkesta",
   "filtros.campaña": "Mesedez, hautatu eskuragarri dauden iragazki-aukerak goitibeherako menuetan dagozkion inkestak ikusteko.",
-
   "popup.activaciones.head1": "",
   "popup.activaciones.head2": " inkesta irekiko dira",
-  "popup.activaciones.body": "Aukeratu inkestak ixteko eguna eta ordua."
+  "popup.activaciones.body": "Aukeratu inkestak ixteko eguna eta ordua.",
+  "popup.activacionERRA.body": "Hautatutako datak uneko dataren ondorengoa izan behar du.",
+  "popup.ErrorAbiertaAdmin.head": "Administrazioak irekitako inkesta.",
+  "popup.ErrorAbiertaAdmin.body": "Hautatutako inkesta ezin da itxi administrazioak ohiz kanpo ireki duelako."
 
 
 
