@@ -130,7 +130,9 @@
   "valoracion": "Valoración",
   "asignatura.historico" : "Histórico\nAsignatura",
   "deseleccionar.todas": "Deseleccionar todas",
-  "seleccionar.todas": "Seleccionar todas"
+  "seleccionar.todas": "Seleccionar todas",
+  "informe.situacion": "Informe de la situación docente",
+  "datos.contexto": "Datos para la contextualización del grupo de estudiantes"
   
   }
   

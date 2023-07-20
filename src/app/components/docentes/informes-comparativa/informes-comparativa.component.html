@@ -11,6 +11,63 @@
     </div>
 </div>
 
+<div class="container custom-background-2">
+  <div class="opciones">
+    <div class="opciones-left">
+        <div class="dropdown">
+          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 600px;">
+            {{ selectedAsignatura ? selectedAsignatura['nombre_asignatura'] :  strings['asignatura'] }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" *ngFor="let asignatura of asignaturas" (click)="selectAsignatura(asignatura)">
+              {{ asignatura['nombre_asignatura'] }}
+            </a>
+          </div>
+        </div>
+  
+      <div *ngIf="selectedAsignatura">
+        <div class="dropdown">
+          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
+            {{ selectedYear ? selectedYear :  strings['año.del.curso'] }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" *ngFor="let year of getAsignaturaYears(selectedAsignatura)" (click)="selectedYear = year">
+              {{ year }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="selectedYearDrop">
+        <div class="dropdown">
+          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 200px;">
+            {{ selectedComparacion ? strings[selectedComparacion] : strings['comparativa'] }}
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" *ngFor="let comparacion of comparaciones" (click)="selectComparacion(comparacion)">
+              {{ strings[comparacion] }}
+            </a>
+          </div>
+        </div>
+      </div> 
+    </div>
+   
+    <div class="opciones-right">
+      <div *ngIf="selectedComparacionDrop">
+        <button class="btn btn-primary btn-orange" type="button"(click)="mostrarInforme()"> {{strings['consultar.informe']}} </button>
+      </div>
+    </div>
+      
+  </div>
+</div>
+
+<div class="container custom-background" *ngIf="datos_informe">
+  <div class="row justify-content-center container-naranja "> 
+    <h5>{{ strings['informe.situacion'] }}</h5>
+  </div>
+</div>
+
+
 <div class="container-info container custom-background">
   <div class="centrado" *ngIf="datos_informe">
     <div class="column-left">
@@ -36,58 +93,6 @@
   </div>
 </div>
 
-
-<div class="container custom-background-2">
-    <div class="opciones">
-      <div class="opciones-left">
-        <div>
-          <div class="dropdown">
-            <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 600px;">
-              {{ selectedAsignatura ? selectedAsignatura['nombre_asignatura'] :  strings['asignatura'] }}
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" *ngFor="let asignatura of asignaturas" (click)="selectAsignatura(asignatura)">
-                {{ asignatura['nombre_asignatura'] }}
-              </a>
-            </div>
-          </div>
-        </div> 
-    
-        <div *ngIf="selectedAsignatura">
-          <div class="dropdown">
-            <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
-              {{ selectedYear ? selectedYear :  strings['año.del.curso'] }}
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" *ngFor="let year of getAsignaturaYears(selectedAsignatura)" (click)="selectedYear = year">
-                {{ year }}
-              </a>
-            </div>
-          </div>
-        </div>
-  
-        <div *ngIf="selectedYearDrop">
-          <div class="dropdown">
-            <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 200px;">
-              {{ selectedComparacion ? strings[selectedComparacion] : strings['comparativa'] }}
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" *ngFor="let comparacion of comparaciones" (click)="selectComparacion(comparacion)">
-                {{ strings[comparacion] }}
-              </a>
-            </div>
-          </div>
-        </div> 
-      </div>
-     
-      <div class="opciones-right">
-        <div *ngIf="selectedComparacionDrop">
-          <button class="btn btn-primary btn-orange" type="button"(click)="mostrarInforme()"> {{strings['consultar.informe']}} </button>
-        </div>
-      </div>
-        
-    </div>
-  </div>
 
   <div class="encuesta" *ngIf="encuestaCargada">
     <div class="mt-5 col-md-8 mx-auto">

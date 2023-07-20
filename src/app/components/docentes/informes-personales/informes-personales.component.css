@@ -38,22 +38,39 @@
     margin-top: 15px;
 }
 
+.custom-background-context{
+  background-color: #F5F5F5;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+
 .custom-background-2 {
   background-color: #F5F5F5;
-  margin-top: 15px;
+  margin-top: 10;
   padding-bottom: 8px;
+  margin-bottom: 60px;
+  width: 70%;
+  margin: 0 auto
 }
 
-.container-naranja {
-    background-color: #F7A237;
+.contenedor-naranja {
+  background-color: #F7A237;
+  margin-bottom: 15px;
 }
 
-.container h5,
-.container h6{
+.contenedor h5,
+.contenedor h6{
     color: #FFFFFF;
     font-weight: bold;
     margin-top: 5px;
     text-align: center;
+}
+
+.contenedor{
+  width: 70%;
+  margin: 0 auto; /* Agrega margen automático para centrar verticalmente */
+  margin-top: 20px;
 }
 
   .dropdown-item.active,
@@ -92,9 +109,6 @@ p strong.separation2 {
   margin-left: 40px;
 }
 
-.container-info {
-  display: flex;
-}
 
 .centrado {
   display: flex;
@@ -138,6 +152,17 @@ p strong.separation2 {
   background-color: #eeeeee;
 }
 
+.fila-gris-oscuro-context {
+  background-color: #e0e0e0;
+  height: 50px;
+}
+
+.fila-gris-claro-context {
+  background-color: #eeeeee;
+  height: 50px;
+}
+
+
 .cuerpo-formulario {
   display: grid;
   grid-template-columns: 55% 5% 25% 13%;
@@ -177,7 +202,7 @@ p strong.separation2 {
 
 
 
-.color-squares-container {
+.color-squares-contenedor {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -269,18 +294,47 @@ p strong.separation2 {
   color: #F7A237;
 }
 
-.container-contexto {
+.contenedor-contexto {
+  width: 65%;
   background-color: #F7A237;
   margin-top: 50px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
 }
 
-.centrado-contexto {
-  display: flex;
-  justify-content: center;
+
+.contenedor-contexto-gris {
   align-items: center;
-  width: 70%;
+  display: flex;
+}
+
+.contenedor-custom {
+  width: 100%;
+  margin: 0 auto; /* Agrega margen automático para centrar verticalmente */
+}
+
+.opciones {
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.opciones-left {
+  flex: 1;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  margin-top: 7px;
+}
+
+.opciones-right {
+  flex: 1;
+  gap: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+  margin-top: 7px;
 }

@@ -2,48 +2,22 @@
 <app-navbar-docentes></app-navbar-docentes>
 
 <div class="orange-bar pt-3 pb-2">
-    <h3 class="text-center">{{ strings['navbar.informes.pers'] }}</h3>
+  <h3 class="text-center">{{ strings['navbar.informes.pers'] }}</h3>
 </div>
 
-<div class="container custom-background">
-    <div class="row justify-content-center container-naranja "> <!-- Agregamos una fila y centramos su contenido -->
-        <h5> {{ strings['informes.pers.head']}} </h5>
-    </div>
-</div>
-
-<div class="container-info container custom-background">
-  <div class="centrado" *ngIf="datos_informe">
-    <div class="column-left">
-      <p><strong>{{ strings['centro']}}:</strong></p>
-      <p><strong>{{ strings['titulacion']}}:</strong></p>
-      <p><strong>{{ strings['departamento']}}:</strong></p>
-      <p><strong>{{ strings['docente']}}:</strong> </p>
-      <p><strong>{{ strings['asignatura']}}:</strong> </p>
-      <p><strong>{{ strings['grupo']}}:</strong> </p>
-      <p><strong>{{ strings['curso']}}:</strong> </p>
-      <p><strong>{{ strings['plazas']}}:</strong> </p>
-    </div>
-    <div class="column-right">
-      <p> {{ situacion_docente["centro"]["codigo"] }} - {{ situacion_docente["centro"]["nombre"] }}</p>
-      <p> {{ situacion_docente["titulacion"]["codigo"] }} - {{ situacion_docente["titulacion"]["nombre"] }}</p>
-      <p> {{ situacion_docente["departamento"]["codigo"] }} - {{ situacion_docente["departamento"]["nombre"] }}</p>
-      <p> {{ situacion_docente["profesor"]["codigo"] }} - {{ situacion_docente["profesor"]["nombre"] }}</p>
-      <p> {{ situacion_docente["asignatura"]["codigo"] }} - {{ situacion_docente["asignatura"]["nombre"] }}</p>
-      <p> {{ situacion_docente["grupo"]["codigo"] }} - {{ situacion_docente["grupo"]["nombre"] }}</p>
-      <p> {{ situacion_docente["curso"]["codigo"] }} <strong class="separation"> {{ strings['año.curso']}}:</strong> {{ situacion_docente["curso"]["año_curso"] }}  </p>
-      <p> {{ situacion_docente["plazasMatriculadas"] }} <strong class="separation2"> {{ strings['num.cuestionarios']}}:</strong> {{ situacion_docente["numCuestionarios"] }}</p>
-    </div>
+<div class="contenedor custom-background">
+  <div class="row justify-content-center contenedor-naranja">
+    <!-- Agregamos una fila y centramos su contenido -->
+    <h5>{{ strings['informes.pers.head'] }}</h5>
   </div>
 </div>
 
-
-<div class="container custom-background-2">
-    <div class="row justify-content-center">
-
-      <div class="mt-2 col-md-6">
+<div class="custom-background-2">
+    <div class="opciones">
+      <div class="opciones-left">
         <div class="dropdown">
           <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 600px;">
-            {{ selectedAsignatura ? selectedAsignatura['nombre_asignatura'] :  strings['asignatura'] }}
+            {{ selectedAsignatura ? selectedAsignatura['nombre_asignatura'] : strings['asignatura'] }}
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" *ngFor="let asignatura of asignaturas" (click)="selectAsignatura(asignatura)">
@@ -51,94 +25,125 @@
             </a>
           </div>
         </div>
-      </div> 
-  
-      <div class="mt-2 col-md-2" *ngIf="selectedAsignatura">
-        <div class="dropdown">
-          <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
-            {{ selectedYear ? selectedYear :  strings['año.del.curso'] }}
-          </button>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" *ngFor="let year of getAsignaturaYears(selectedAsignatura)" (click)="selectedYear = year">
-              {{ year }}
-            </a>
+        <div *ngIf="selectedAsignatura">
+          <div class="dropdown">
+            <button class="btn btn-custom dropdown-toggle custom-dropdown-toggle" type="button" data-toggle="dropdown" style="width: 150px;">
+              {{ selectedYear ? selectedYear : strings['año.del.curso'] }}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" *ngFor="let year of getAsignaturaYears(selectedAsignatura)" (click)="selectedYear = year">
+                {{ year }}
+              </a>
+            </div>
           </div>
         </div>
       </div>
-      
-      <div class="mt-2 col-md-2" *ngIf="selectedYearDrop">
-        <button class="btn btn-primary btn-orange" type="button"(click)="mostrarInforme()"> {{strings['consultar.informe']}} </button>
+      <div class="opciones-right">
+        <div *ngIf="selectedYearDrop">
+          <button class="btn btn-primary btn-orange" type="button" (click)="mostrarInforme()">{{ strings['consultar.informe'] }}</button>
+        </div>
       </div>
-        
     </div>
   </div>
 
-
-  <div class="container container-contexto" *ngIf="datos_informe">
-    <h6> DATOS PARA LA CONTEXTUALIZACIÓN DEL GRUPO DE ESTUDIANTES </h6>
+  <div class="contenedor custom-background" *ngIf="datos_informe">
+    <div class="row justify-content-center contenedor-naranja">
+      <!-- Agregamos una fila y centramos su contenido -->
+      <h5>{{ strings['informe.situacion'] }}</h5>
+    </div>
   </div>
 
-  <div class="centrado-contexto container-info container custom-background">
-    <div *ngIf="datos_informe">
-      <ng-container *ngFor="let pregunta of contexto; let i = index">
-        <div class="contexto-cuerpo" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
-          {{ pregunta.texto_pregunta }}
+<div class="contenedor-info contenedor custom-background">
+  <div class="centrado" *ngIf="datos_informe">
+    <div class="column-left">
+      <p><strong>{{ strings['centro'] }}:</strong></p>
+      <p><strong>{{ strings['titulacion'] }}:</strong></p>
+      <p><strong>{{ strings['departamento'] }}:</strong></p>
+      <p><strong>{{ strings['docente'] }}:</strong></p>
+      <p><strong>{{ strings['asignatura'] }}:</strong></p>
+      <p><strong>{{ strings['grupo'] }}:</strong></p>
+      <p><strong>{{ strings['curso'] }}:</strong></p>
+      <p><strong>{{ strings['plazas'] }}:</strong></p>
+    </div>
+    <div class="column-right">
+      <p>{{ situacion_docente["centro"]["codigo"] }} - {{ situacion_docente["centro"]["nombre"] }}</p>
+      <p>{{ situacion_docente["titulacion"]["codigo"] }} - {{ situacion_docente["titulacion"]["nombre"] }}</p>
+      <p>{{ situacion_docente["departamento"]["codigo"] }} - {{ situacion_docente["departamento"]["nombre"] }}</p>
+      <p>{{ situacion_docente["profesor"]["codigo"] }} - {{ situacion_docente["profesor"]["nombre"] }}</p>
+      <p>{{ situacion_docente["asignatura"]["codigo"] }} - {{ situacion_docente["asignatura"]["nombre"] }}</p>
+      <p>{{ situacion_docente["grupo"]["codigo"] }} - {{ situacion_docente["grupo"]["nombre"] }}</p>
+      <p>{{ situacion_docente["curso"]["codigo"] }} <strong class="separation">{{ strings['año.curso'] }}:</strong> {{ situacion_docente["curso"]["año_curso"] }}</p>
+      <p>{{ situacion_docente["plazasMatriculadas"] }} <strong class="separation2">{{ strings['num.cuestionarios'] }}:</strong> {{ situacion_docente["numCuestionarios"] }}</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="contenedor custom-background-context" *ngIf="datos_informe">
+  <div class="row justify-content-center contenedor-naranja">
+    <h5>{{strings["datos.contexto"]}}</h5>
+  </div>
+</div>
+
+  <div class="contenedor" *ngIf="datos_informe">
+    <ng-container *ngFor="let pregunta of contexto; let i = index">
+      <div class="contenedor-contexto-gris" [ngClass]="{'fila-gris-oscuro-context': i % 2 === 0, 'fila-gris-claro-context': i % 2 !== 0}">
+        &nbsp;&nbsp;{{ pregunta.texto_pregunta }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <ng-container *ngFor="let respuesta of pregunta.respuestas; let lastResponse = last as isLastResponse">
+          <small>{{ respuesta.texto_respuesta }}:&nbsp;<b><i>{{ calcularPorcentaje(respuesta, pregunta) }}</i></b>%</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <span *ngIf="!isLastResponse"></span>
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+
+<div class="encuesta" *ngIf="encuestaCargada">
+  <div class="mt-5 col-md-8 mx-auto">
+    <div class="card shadow">
+      <div class="cabecera-formulario card-header text-center float-right">
+        <div class="cabecera-left card-title d-inline">
+          {{ strings['pregunta'] }}
+          <div class="nota" *ngIf="encuestaCargada">
+            {{ strings['click.pregunta'] }}
+          </div>
+        </div>
+        <div class="cabecera-mid1 d-inline">
+          nº
+        </div>
+        <div class="cabecera-mid2 d-inline">
+          <div class="color-squares-contenedor d-flex justify-content-left align-items-left">
+            1: <div class="orange-square1"></div>
+            2: <div class="orange-square2"></div>
+            3: <div class="orange-square3"></div>
+            4: <div class="orange-square4"></div>
+            5: <div class="orange-square5"></div>
+          </div>
+        </div>
+        <div class="cabecera-right card-title d-inline">
+          {{ strings['respuesta.media'] }}
+        </div>
+      </div>
+      <ng-container *ngFor="let pregunta of encuesta; let i = index">
+        <div class="cuerpo-formulario card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
+          <div class="column-left-preguntas">
+            <div class="pregunta" (click)="mostrarGraficoPregunta(pregunta.cod_pregunta, pregunta.texto_pregunta)">{{ pregunta.texto_pregunta }}</div>
+          </div>
+          <div class="column-mid1-preguntas">
+            {{ pregunta.total_respuestas }}
+          </div>
+          <div class="column-mid2-preguntas">
+            <ng-container *ngIf="pregunta.total_respuestas === 0">
+              <div class="no-respuestas">{{ strings['no.respuestas'] }}</div>
+            </ng-container>
+            <ng-container *ngIf="pregunta.total_respuestas !== 0">
+              <app-barra-porcentaje-respuestas [cuantos]="pregunta.cuantos"></app-barra-porcentaje-respuestas>
+            </ng-container>
+          </div>
+          <div class="column-right-preguntas">
+            <div class="media">{{ pregunta.media_respuestas }}</div>
+          </div>
         </div>
       </ng-container>
     </div>
   </div>
-
-  <div class="encuesta" *ngIf="encuestaCargada">
-    <div class="mt-5 col-md-8 mx-auto">
-      <div class="card shadow">
-        <div class="cabecera-formulario card-header text-center float-right">
-          <div class="cabecera-left card-title d-inline">
-            {{strings['pregunta']}}
-            <div class="nota" *ngIf="encuestaCargada">
-              {{strings['click.pregunta']}}
-            </div>
-          </div>
-          <div class="cabecera-mid1 d-inline">
-            nº
-          </div>
-          <div class="cabecera-mid2 d-inline">
-            <div class="color-squares-container d-flex justify-content-left align-items-left">
-              1: <div class="orange-square1"></div>
-              2: <div class="orange-square2"></div>
-              3: <div class="orange-square3"></div>
-              4: <div class="orange-square4"></div>
-              5: <div class="orange-square5"></div>
-            </div>
-          </div>
-          <div class="cabecera-right card-title d-inline">
-            {{strings['respuesta.media']}}
-          </div>
-        </div>           
-        <ng-container *ngFor="let pregunta of encuesta; let i = index">
-          <div class="cuerpo-formulario card-body" [ngClass]="{'fila-gris-oscuro': i % 2 === 0, 'fila-gris-claro': i % 2 !== 0}">
-            <div class="column-left-preguntas">
-              <div class="pregunta" (click)="mostrarGraficoPregunta(pregunta.cod_pregunta, pregunta.texto_pregunta)">{{ pregunta.texto_pregunta }}</div>
-            </div>
-            <div class="column-mid1-preguntas">
-              {{pregunta.total_respuestas}}
-            </div>
-            <div class="column-mid2-preguntas">
-              <ng-container *ngIf="pregunta.total_respuestas === 0">
-                <div class="no-respuestas">{{strings['no.respuestas']}}</div>
-              </ng-container>
-              <ng-container *ngIf="pregunta.total_respuestas !== 0">
-                <app-barra-porcentaje-respuestas [cuantos]="pregunta.cuantos"></app-barra-porcentaje-respuestas>
-              </ng-container>
-            </div>
-            <div class="column-right-preguntas">
-              <div class="media">{{ pregunta.media_respuestas }}</div>
-            </div>
-          </div>
-        </ng-container>
-        
-      </div>
-    </div>
-  </div>
-  
-  
-  
+</div>

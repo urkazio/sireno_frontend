@@ -48,7 +48,16 @@
     background-color: #F7A237;
 }
 
-.container h5{
+.container h5
+{
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.container h6
+{
     color: #FFFFFF;
     font-weight: bold;
     margin-top: 5px;

@@ -238,7 +238,6 @@ export class InformesComparativaComponent implements OnInit{
 
     // Filtrar las preguntas numéricas
     this.comparativa = this.comparativa.filter(pregunta => pregunta.numerica === 1);
-    this.comparativa = this.comparativa.filter(pregunta => pregunta.cod_pregunta !== "prg001");
 
     // Obtener los valores del array 'cuantos' de cada pregunta y almacenarlos en 'cuantos'
     this.comparativa.forEach(pregunta => {

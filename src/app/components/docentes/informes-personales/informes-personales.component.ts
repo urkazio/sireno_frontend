@@ -127,7 +127,7 @@ export class InformesPersonalesComponent implements OnInit {
         this.contexto = Object.values(encuesta) as Pregunta[];
 
         // Filtrar las preguntas numéricas
-        this.contexto = this.contexto.filter(pregunta => pregunta.numerica === 0 || pregunta.cod_pregunta === "prg001");
+        this.contexto = this.contexto.filter(pregunta => pregunta.numerica === 0);
         console.log(this.contexto)
 
         // -------------------------- preguntas numericas -----------------------------//
@@ -138,7 +138,6 @@ export class InformesPersonalesComponent implements OnInit {
   
         // Filtrar las preguntas numéricas
         this.encuesta = this.encuesta.filter(pregunta => pregunta.numerica === 1);
-        this.encuesta = this.encuesta.filter(pregunta => pregunta.cod_pregunta !== "prg001");
 
         // Obtener los valores del array 'cuantos' de cada pregunta y almacenarlos en 'cuantos'
         this.encuesta.forEach(pregunta => {
@@ -149,11 +148,7 @@ export class InformesPersonalesComponent implements OnInit {
           const denominador = pregunta.respuestas.reduce((sum: number, respuesta: any) => sum + respuesta.cuantos, 0);
           const media = denominador !== 0 ? numerador / denominador : 0;
           pregunta.media_respuestas = media !== 0 ? media.toFixed(2) : '-';
-  
         });
-
-
-
       },
 
       (error) => {
@@ -161,12 +156,14 @@ export class InformesPersonalesComponent implements OnInit {
       }
     );
   }
-  
+
+  isLastResponse(index: number, totalResponses: number): boolean {
+    return index === totalResponses - 1;
+  }  
 
   mostrarGraficoPregunta(cod_pregunta: string, texto_pregunta: string) {
     this.authService.getHistoricoPregunta(this.situacion_docente["asignatura"]["codigo"], cod_pregunta, this.languageService.getCurrentLanguageValue()).subscribe((res: any) => {
       this.historicoPregunta = res;
-      console.log(this.historicoPregunta)
   
       this.historicoPregunta.forEach((pregunta: any) => {
         const numerador = pregunta.respuestas.reduce((sum: number, respuesta: any) => sum + Number(respuesta.cod_respuesta) * respuesta.cuantos, 0);
@@ -187,5 +184,12 @@ export class InformesPersonalesComponent implements OnInit {
     });
   }
   
-    
+  calcularPorcentaje(respuesta: any, pregunta: any): string {
+    if (pregunta.total_respuestas !== 0) {
+      const porcentaje = (respuesta.cuantos / pregunta.total_respuestas) * 100;
+      return porcentaje.toFixed(2);
+    } else {
+      return '0';
+    }
+  }
 }

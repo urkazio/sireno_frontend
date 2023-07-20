@@ -126,6 +126,11 @@
   "popup.ErrorAbiertaAdmin.body": "The selected survey cannot be closed as it has been opened extraordinarily by administration.",
   "popup.activacionOK2.head": "Open Surveys",
   "popup.activacionOK2.body": "The surveys have been successfully opened until the specified deadline.",
-  "valoracion": "Rating"
+  "valoracion": "Rating",
+  "asignatura.historico": "Historical\nSubject",
+  "deseleccionar.todas": "Deselect All",
+  "seleccionar.todas": "Select All",
+  "informe.situacion": "Teaching Situation Report",
+  "datos.contexto": "Data for student group contextualization"
 
 }

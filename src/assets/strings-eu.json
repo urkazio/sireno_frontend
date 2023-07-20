@@ -126,9 +126,11 @@
   "popup.ErrorAbiertaAdmin.body": "Hautatutako inkesta ezin da itxi administrazioak ohiz kanpo ireki duelako.",
   "popup.activacionOK2.head": "Inkesten irekiera",
   "popup.activacionOK2.body": "Inkestak behar bezala ireki dira zehaztutako epe arte.",
-  "valoracion": "Balorazioa"
-
-
-
+  "valoracion": "Balorazioa",
+  "asignatura.historico": "Gai\nhistorikoa",
+  "deseleccionar.todas": "Desautatu guztiak",
+  "seleccionar.todas": "Hautatu guztiak",
+  "informe.situacion": "Irakaskuntza-egoeraren txostena",
+  "datos.contexto": "Ikasle taldeen testuingururako datuak"
 
 }
