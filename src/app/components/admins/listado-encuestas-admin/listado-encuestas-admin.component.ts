@@ -1,11 +1,10 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { LanguageService } from '../../../services/languaje.service';
-import { Router } from '@angular/router';
 import { CampanaAdminComponent } from '../../shared/campañas/campana-admin/campana-admin.component';
 import { CampanaAdminAbiertaComponent } from '../../shared/campañas/campana-admin-abierta/campana-admin-abierta.component';
 import { SelectedEncuestasService } from '../../../services/selected-encuestas-service.service';
-import {ListadoEncuestasService} from '../../../services/listado-encuestas-service.service';
+import { ListadoEncuestasService } from '../../../services/listado-encuestas-service.service';
 import { PopupfactoryService } from '../../../services/popupfactory.service';
 
 
@@ -27,7 +26,7 @@ export class ListadoEncuestasAdminComponent implements OnInit {
 
   // ---- atributos para la paginacion ----
   totalCampanas!: number;
-  campanasPorPagina: number = 5;
+  campanasPorPagina: number = 1;
   paginas: number[] = [];
   paginaActual: number = 1;
   campanasPagina: any[] = [];
