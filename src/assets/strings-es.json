@@ -124,7 +124,6 @@
   "popup.activacionERRA.body": "La fecha seleccionada debe ser posterior a la fecha actual.",
   "popup.ErrorAbiertaAdmin.head": "Encuesta abierta por administración.",
   "popup.ErrorAbiertaAdmin.body": "No se puede cerrar la encuesta seleccionada ya que ha sido abierta de forma extraordinaria por administración.",
-
   "popup.activacionOK2.head": "Encuestas abiertas",
   "popup.activacionOK2.body": "La encuestas se ha abierto correctamente hasta el plazo indicado.",
   "valoracion": "Valoración",
@@ -132,7 +131,8 @@
   "deseleccionar.todas": "Deseleccionar todas",
   "seleccionar.todas": "Seleccionar todas",
   "informe.situacion": "Informe de la situación docente",
-  "datos.contexto": "Datos para la contextualización del grupo de estudiantes"
+  "datos.contexto": "Datos para la contextualización del grupo de estudiantes",
+  "campaña": "Campaña"
   
   }
   

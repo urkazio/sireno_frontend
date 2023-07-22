@@ -26,7 +26,7 @@ export class ListadoEncuestasAdminComponent implements OnInit {
 
   // ---- atributos para la paginacion ----
   totalCampanas!: number;
-  campanasPorPagina: number = 1;
+  campanasPorPagina: number = 2;
   paginas: number[] = [];
   paginaActual: number = 1;
   campanasPagina: any[] = [];
@@ -226,7 +226,7 @@ export class ListadoEncuestasAdminComponent implements OnInit {
     if (anno){
       return anno === 'todos.años' ? this.strings['todos.años'] : anno["nombre"]+" ("+anno["año_curso"]+")";
     }else{
-      return this.strings['año.del.curso']
+      return this.strings['campaña']
     }
   }
 
