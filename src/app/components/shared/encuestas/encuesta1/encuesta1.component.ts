@@ -35,13 +35,14 @@ export class Encuesta1Component implements OnInit {
     ) {}
 
 
-    @HostListener('window:beforeunload', ['$event'])
-    unloadHandler(event: Event) {
-      event.preventDefault();
-      event.returnValue = false;
+  @HostListener('window:beforeunload', ['$event'])
+  async unloadNotification($event: any): Promise<void> {
+    const hasUnansweredQuestions = await this.verificarRespuestas();
+    if (hasUnansweredQuestions) {
+      $event.returnValue = true;
     }
-    
-
+  }
+  
   ngOnInit() {
 
     //recuperar los parametros pasados por la vista llamadora

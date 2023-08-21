@@ -131,6 +131,10 @@
   "deseleccionar.todas": "Desautatu guztiak",
   "seleccionar.todas": "Hautatu guztiak",
   "informe.situacion": "Irakaskuntza-egoeraren txostena",
-  "datos.contexto": "Ikasle taldeen testuingururako datuak"
+  "datos.contexto": "Ikasle taldeen testuingururako datuak",
+  "logout.head": "Saioa amaitu",
+  "logout.body": "Saioa itxi nahi duzu? Uneko datuak galdu daitezke.",
+  "home.head": "Hasierara nabigatu",
+  "home.body": "Hasierako orrialdera joan nahi duzu? Uneko datuak galdu daitezke."
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { LanguageService } from '../../../../services/languaje.service';
+import { PopupfactoryService } from '../../../../services/popupfactory.service';
 
 @Component({
   selector: 'app-navbar-docentes',
@@ -15,7 +16,8 @@ export class NavbarDocentesComponent {
   constructor(
     private authService: AuthService, // Servicio de autenticación
     private router: Router, // Router para navegar entre las páginas
-    private languageService: LanguageService // Servicio de idioma
+    private languageService: LanguageService, // Servicio de idioma
+    private popupfactoryService: PopupfactoryService
   ) { }
 
   ngOnInit() {
@@ -32,9 +34,19 @@ export class NavbarDocentesComponent {
     });
   }
 
-  onLogoutClick() {
-    this.authService.logOut(); // Realiza la operación de cierre de sesión
-    this.router.navigate(["login"]); // Navega hacia la página de inicio de sesión
+  async onLogoutClick() {
+    const cerrar = await this.popupfactoryService.openOkPoup(this.strings["logout.head"], this.strings["logout.body"]);
+    if (cerrar){
+      this.authService.logOut(); // Realiza la operación de cierre de sesión
+      this.router.navigate(["login"]); // Navega hacia la página de inicio de sesión
+    }
+  }
+
+  async onHomeClick() {
+    const cerrar = await this.popupfactoryService.openOkPoup(this.strings["home.head"], this.strings["home.body"]);
+    if (cerrar){
+      this.router.navigate(["indexDocentes"]); // Navega hacia la página de inicio de sesión
+    }
   }
 
   isLoggedIn(): boolean {
