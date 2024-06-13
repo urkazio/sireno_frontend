@@ -132,7 +132,10 @@
   "seleccionar.todas": "Seleccionar todas",
   "informe.situacion": "Informe de la situación docente",
   "datos.contexto": "Datos para la contextualización del grupo de estudiantes",
-  "campaña": "Campaña"
-  
+  "campaña": "Campaña",
+  "logout.head": "Cerrar sesión",
+  "logout.body": "¿Deseas cerrar la sesión? Los datos en curso podrían perderse.",
+  "home.head": "Navegar al inicio",
+  "home.body": "¿Deseas navegar a la página principal? Los datos en curso podrían perderse."
   }
   
