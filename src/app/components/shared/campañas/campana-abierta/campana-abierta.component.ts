@@ -85,7 +85,7 @@ export class CampanaAbiertaComponent implements OnInit {
       // Calcula las horas, minutos y segundos
       const segundos = Math.floor(diferenciaMs / 1000);
       const minutos = Math.floor(segundos / 60);
-      const horas = Math.floor(minutos / 60);
+      const horas = Math.floor(minutos / 60); 
   
       // Formatea la diferencia en hh:mm:ss
       const horasFormateadas = this.agregarCerosIzquierda(horas);
